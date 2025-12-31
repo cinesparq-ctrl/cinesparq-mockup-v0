@@ -1,46 +1,82 @@
+/* ===== Auth Layout (REPLACE your current auth/login CSS block with this) ===== */
+
 .auth{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding: 28px 18px;
-  position:relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  position: relative;
+  box-sizing: border-box;
 }
 
+/* Hard width controls so it NEVER spans full page */
 .auth__shell{
-  width: min(420px, 92vw);
-  margin: 0 auto;
+  box-sizing: border-box;
+
+  /* width behavior */
+  inline-size: min(420px, 100%);
+  max-inline-size: 420px;
+  flex: 0 1 420px;
+
+  /* visual */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* make sure it sits above glow */
+  z-index: 2;
 }
 
 .auth__brand{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   gap: 14px;
-  padding: 10px 6px 16px 6px;
+  margin-bottom: 18px;
+
+  /* prevents logo row from stretching container */
+  min-width: 0;
 }
 
+/* If you're using an <img> logo mark, this prevents it from breaking layout */
+.auth__brand img{
+  inline-size: 44px;
+  block-size: 44px;
+  flex: 0 0 auto;
+  display: block;
+}
+
+/* If you're still using the div brandmark, keep it stable too */
 .brandmark{
-  width:44px;
-  height:44px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+
   border-radius: 14px;
-  position:relative;
+  position: relative;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
   box-shadow: 0 14px 50px rgba(0,0,0,0.35);
-  overflow:hidden;
+  overflow: hidden;
 }
+
 .brandmark__dot{
-  position:absolute;
-  width:10px; height:10px;
-  border-radius:999px;
+  position: absolute;
+  width: 10px; height: 10px;
+  border-radius: 999px;
   left: 14px; top: 16px;
   background: var(--cs-yellow);
   box-shadow: 0 0 30px rgba(248,212,24,0.35);
 }
+
 .brandmark__ring{
-  position:absolute;
-  width:62px; height:62px;
-  border-radius:999px;
-  left:-16px; top:-18px;
+  position: absolute;
+  width: 62px; height: 62px;
+  border-radius: 999px;
+  left: -16px; top: -18px;
   border: 2px solid rgba(10,79,132,0.45);
   filter: blur(0.2px);
 }
@@ -50,11 +86,18 @@
   letter-spacing: 0.2px;
   font-size: 18px;
   line-height: 1.1;
+
+  /* prevents weird overflow */
+  min-width: 0;
 }
+
 .brandtag{
   font-size: 13px;
   color: var(--muted);
   margin-top: 2px;
+
+  /* prevents long taglines from forcing width */
+  overflow-wrap: anywhere;
 }
 
 .authcard{
@@ -65,13 +108,18 @@
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   padding: 22px;
+
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .authcard__top{ margin-bottom: 18px; }
+
 .authcard__title{
   font-size: 28px;
   letter-spacing: -0.3px;
 }
+
 .authcard__caption{
   margin-top: 8px;
   color: var(--muted);
@@ -81,13 +129,14 @@
 .form{ display:flex; flex-direction:column; gap: 14px; }
 
 .field{ display:flex; flex-direction:column; gap: 8px; }
+
 .field__label{
   font-size: 13px;
   color: var(--muted);
 }
 
 .field__input{
-  width:100%;
+  width: 100%;
   height: 46px;
   padding: 0 14px;
   border-radius: 14px;
@@ -95,7 +144,9 @@
   background: rgba(7,9,13,0.55);
   color: var(--text);
   outline: none;
+  box-sizing: border-box;
 }
+
 .field__input::placeholder{ color: rgba(249,245,239,0.45); }
 
 .field__input:focus{
@@ -110,14 +161,15 @@
 }
 
 .iconbtn{
-  height:46px;
+  height: 46px;
   padding: 0 14px;
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(255,255,255,0.04);
   color: var(--text);
-  cursor:pointer;
+  cursor: pointer;
 }
+
 .iconbtn:hover{ border-color: rgba(255,255,255,0.18); }
 .iconbtn:focus{ outline:none; box-shadow: var(--ring); }
 
@@ -141,6 +193,7 @@
   font-size: 13px;
   color: var(--muted);
 }
+
 .check input{ accent-color: var(--cs-yellow); }
 
 .btn{
@@ -155,6 +208,8 @@
   font-weight: 650;
   letter-spacing: 0.1px;
   user-select:none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn--primary{
@@ -162,17 +217,15 @@
   color: rgba(7,9,13,0.96);
   border-color: rgba(248,212,24,0.35);
 }
-.btn--primary:hover{
-  filter: brightness(1.03);
-}
+
+.btn--primary:hover{ filter: brightness(1.03); }
 
 .btn--secondary{
   background: rgba(255,255,255,0.05);
   color: rgba(249,245,239,0.92);
 }
-.btn--secondary:hover{
-  border-color: rgba(255,255,255,0.18);
-}
+
+.btn--secondary:hover{ border-color: rgba(255,255,255,0.18); }
 
 .divider{
   display:flex;
@@ -180,11 +233,13 @@
   gap: 12px;
   margin: 2px 0;
 }
+
 .divider__line{
   height: 1px;
-  flex:1;
+  flex: 1;
   background: rgba(255,255,255,0.10);
 }
+
 .divider__text{
   font-size: 12px;
   color: var(--faint);
@@ -223,8 +278,8 @@
 
 .auth__glow{
   position:absolute;
-  inset:-140px -140px -140px -140px;
-  z-index:1;
+  inset:-140px;
+  z-index: 1;
   pointer-events:none;
   background:
     radial-gradient(600px 420px at 50% 20%, rgba(10,79,132,0.22), transparent 60%),
@@ -234,6 +289,7 @@
 }
 
 @media (max-width: 420px){
+  .auth__shell{ padding: 22px; }
   .authcard{ padding: 18px; }
   .authcard__title{ font-size: 24px; }
   .form__meta{ flex-direction:column; align-items:flex-start; }
