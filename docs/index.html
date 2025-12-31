@@ -2,93 +2,345 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0a4f84" />
-  <title>CineSparq — Welcome back</title>
+  <title>CineSparq | Welcome back</title>
 
-  <!-- App CSS -->
-  <link rel="stylesheet" href="./css/tokens.css" />
-  <link rel="stylesheet" href="./css/base.css" />
-  <link rel="stylesheet" href="./css/components.css" />
-
-  <!-- Minimal system font stack for sleek UI -->
   <style>
-    :root { color-scheme: dark; }
+    :root{
+      --bg0:#07090d;
+      --bg1:#0b0f18;
+      --text:#f9f5ef;
+      --muted: rgba(249,245,239,0.70);
+      --faint: rgba(249,245,239,0.48);
+
+      --cs-blue:#0a4f84;
+      --cs-yellow:#f8d418;
+
+      --card: rgba(255,255,255,0.03);
+      --card-border: rgba(255,255,255,0.10);
+      --radius: 18px;
+
+      --shadow: 0 18px 70px rgba(0,0,0,0.55);
+      --ring: 0 0 0 4px rgba(248,212,24,0.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 50% 15%, rgba(10,79,132,0.28), transparent 60%),
+        radial-gradient(800px 520px at 50% 75%, rgba(248,212,24,0.10), transparent 62%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      overflow-x:hidden;
+    }
+
+    a{ color: inherit; }
+    .link{
+      color: rgba(249,245,239,0.86);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(249,245,239,0.22);
+    }
+    .link:hover{ border-bottom-color: rgba(249,245,239,0.40); }
+
+    .auth{
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 56px 16px;
+      position: relative;
+    }
+
+    .auth__glow{
+      position:absolute;
+      inset:-140px -140px -140px -140px;
+      z-index:0;
+      pointer-events:none;
+      background:
+        radial-gradient(600px 420px at 50% 20%, rgba(10,79,132,0.22), transparent 60%),
+        radial-gradient(520px 360px at 55% 60%, rgba(248,212,24,0.10), transparent 60%);
+      filter: blur(18px);
+      opacity: 0.85;
+    }
+
+    /* IMPORTANT: keep this constrained */
+    .auth__shell{
+      position: relative;
+      z-index:1;
+      width: min(420px, 100%);
+      margin-inline: auto;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .auth__brand{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .brandmark{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow:hidden;
+      flex: 0 0 44px;
+    }
+
+    .brandmark img{
+      width: 24px;
+      height: 24px;
+      display:block;
+      opacity: 0.98;
+    }
+
+    .brandname{
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    .brandtag{
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .authcard{
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 22px;
+    }
+
+    .authcard__top{ margin-bottom: 18px; }
+    .authcard__title{
+      font-size: 28px;
+      letter-spacing: -0.3px;
+      margin: 0;
+    }
+    .authcard__caption{
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .form{ display:flex; flex-direction:column; gap: 14px; }
+    .field{ display:flex; flex-direction:column; gap: 8px; }
+    .field__label{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .field__input{
+      width:100%;
+      height: 46px;
+      padding: 0 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(7,9,13,0.55);
+      color: var(--text);
+      outline: none;
+    }
+    .field__input::placeholder{ color: rgba(249,245,239,0.45); }
+    .field__input:focus{
+      border-color: rgba(248,212,24,0.26);
+      box-shadow: var(--ring);
+    }
+
+    .form__meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .check{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      user-select:none;
+    }
+    .check input{ accent-color: var(--cs-yellow); }
+
+    .btn{
+      height: 46px;
+      border-radius: 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 0 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      cursor:pointer;
+      font-weight: 650;
+      letter-spacing: 0.1px;
+      user-select:none;
+      text-decoration:none;
+    }
+
+    .btn--primary{
+      background: linear-gradient(180deg, rgba(248,212,24,0.95), rgba(248,212,24,0.82));
+      color: rgba(7,9,13,0.96);
+      border-color: rgba(248,212,24,0.35);
+    }
+    .btn--primary:hover{ filter: brightness(1.03); }
+
+    .btn--secondary{
+      background: rgba(255,255,255,0.05);
+      color: rgba(249,245,239,0.92);
+    }
+    .btn--secondary:hover{ border-color: rgba(255,255,255,0.18); }
+
+    .divider{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      margin: 2px 0;
+    }
+    .divider__line{
+      height: 1px;
+      flex:1;
+      background: rgba(255,255,255,0.10);
+    }
+    .divider__text{
+      font-size: 12px;
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+
+    .fineprint{
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--faint);
+      line-height: 1.45;
+    }
+
+    .auth__footer{
+      margin-top: 14px;
+      padding: 0 4px;
+    }
+
+    .auth__hint{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--faint);
+    }
+
+    .pill{
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: rgba(249,245,239,0.78);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 420px){
+      .auth__shell{ padding: 22px; }
+      .authcard{ padding: 18px; }
+      .authcard__title{ font-size: 24px; }
+      .form__meta{ flex-direction:column; align-items:flex-start; }
+      .auth__hint{ flex-direction:column; align-items:flex-start; }
+    }
   </style>
 </head>
 
-<header class="auth__brand">
-  <img
-    class="auth__logo"
-    src="assets/logo/cs-logo-white.svg"
-    alt="CineSparq"
-    width="180"
-    height="36"
-  />
-  <div class="brandtag">Creator-first readiness infrastructure</div>
-</header>
+<body>
+  <main class="auth">
+    <div class="auth__glow" aria-hidden="true"></div>
 
+    <section class="auth__shell" role="region" aria-label="Sign in">
+      <header class="auth__brand">
+        <div class="brandmark" aria-hidden="true">
+          <img src="./assets/logo/cs-logo-white.svg" alt="" />
+        </div>
+        <div>
+          <div class="brandname">CineSparq</div>
+          <div class="brandtag">Creator-first readiness infrastructure</div>
+        </div>
+      </header>
 
-      <div class="authcard" role="region" aria-label="Sign in">
+      <section class="authcard">
         <div class="authcard__top">
           <h1 class="authcard__title">Welcome back</h1>
-          <p class="authcard__caption">Sign in to manage your projects and track your funding path forward.</p>
+          <p class="authcard__caption">
+            Sign in to manage your projects and track your funding path forward.
+          </p>
         </div>
 
-        <form class="form" action="#" method="post" autocomplete="on">
-          <label class="field">
-            <span class="field__label">Email</span>
-            <input class="field__input" type="email" name="email" placeholder="you@studio.com" autocomplete="email" required />
-          </label>
+        <form class="form" action="./pages/creator-profile.html" method="get">
+          <div class="field">
+            <label class="field__label" for="email">Email</label>
+            <input class="field__input" id="email" name="email" type="email" placeholder="you@studio.com" autocomplete="email" required />
+          </div>
 
-          <label class="field">
-            <span class="field__label">Password</span>
-            <div class="field__row">
-              <input id="password" class="field__input" type="password" name="password" placeholder="••••••••••" autocomplete="current-password" required />
-              <button class="iconbtn" type="button" data-toggle="password" aria-label="Show password" aria-controls="password">
-                <span class="iconbtn__text" data-state="hidden">Show</span>
-              </button>
-            </div>
-          </label>
+          <div class="field">
+            <label class="field__label" for="password">Password</label>
+            <input class="field__input" id="password" name="password" type="password" placeholder="••••••••••" autocomplete="current-password" required />
+          </div>
 
           <div class="form__meta">
             <label class="check">
               <input type="checkbox" name="remember" />
-              <span>Remember me</span>
+              Remember me
             </label>
-
-            <a class="link" href="./pages/login.html" aria-label="Forgot password (mock link)">Forgot password?</a>
+            <a class="link" href="./pages/roadmap.html">Forgot password?</a>
           </div>
 
           <button class="btn btn--primary" type="submit">Sign in</button>
 
           <div class="divider" aria-hidden="true">
-            <span class="divider__line"></span>
-            <span class="divider__text">or</span>
-            <span class="divider__line"></span>
+            <div class="divider__line"></div>
+            <div class="divider__text">or</div>
+            <div class="divider__line"></div>
           </div>
 
-          <a class="btn btn--secondary" href="./pages/creator-profile.html">Create account</a>
+          <a class="btn btn--secondary" href="./pages/project-create.html">Create account</a>
 
           <p class="fineprint">
-            By continuing, you agree to our
-            <a class="link" href="./plain.html">Terms</a>
-            and
-            <a class="link" href="./plain.html">Privacy</a>.
+            By continuing, you agree to our <a class="link" href="./pages/roadmap.html">Terms</a> and <a class="link" href="./pages/roadmap.html">Privacy</a>.
           </p>
         </form>
-      </div>
+      </section>
 
       <footer class="auth__footer">
-  <div class="auth__hint">
-    <span>© CineSparq</span>
-  </div>
-</footer>
+        <div class="auth__hint">
+          <span>© <span id="year"></span> CineSparq</span>
+          <span class="pill">Secure access</span>
+        </div>
+      </footer>
     </section>
-
-    <aside class="auth__glow" aria-hidden="true"></aside>
   </main>
 
-  <script src="./js/app.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
