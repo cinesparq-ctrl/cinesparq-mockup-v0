@@ -217,3 +217,38 @@
 }
 .cs-check h3 { margin: 0; font-size: 15px; }
 
+.cs-formCard {
+  background: var(--cs-white);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.cs-formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .cs-formGrid { grid-template-columns: 1fr; }
+}
+
+.cs-field { display: grid; gap: 6px; }
+.cs-span2 { grid-column: span 2; }
+@media (max-width: 900px) {
+  .cs-span2 { grid-column: span 1; }
+}
+
+.cs-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: var(--cs-white);
+  font: inherit;
+}
+
+.cs-textarea { min-height: 90px; resize: vertical; }
+
+
