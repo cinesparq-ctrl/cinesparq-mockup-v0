@@ -1,8 +1,29 @@
-:root {
+:root{
+  /* Brand */
   --cs-navy: #0a4f84;
   --cs-cream: #f9f5ef;
   --cs-yellow: #f8d418;
   --cs-charcoal: #1c1f26;
   --cs-sand: #efd99d;
   --cs-white: #ffffff;
+
+  /* App surface (dark) */
+  --bg-0: #07090d;
+  --bg-1: #0b0f17;
+  --bg-2: #101827;
+
+  --card: rgba(16, 24, 39, 0.72);
+  --card-border: rgba(255,255,255,0.08);
+
+  --text: rgba(249,245,239,0.92);
+  --muted: rgba(249,245,239,0.70);
+  --faint: rgba(249,245,239,0.52);
+
+  --shadow: 0 24px 80px rgba(0,0,0,0.55);
+  --radius: 18px;
+
+  --ring: 0 0 0 3px rgba(248,212,24,0.18);
+
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }

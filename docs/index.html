@@ -3,63 +3,94 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CineSparq Mockup v0</title>
+  <meta name="theme-color" content="#0a4f84" />
+  <title>CineSparq — Welcome back</title>
 
+  <!-- App CSS -->
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
+
+  <!-- Minimal system font stack for sleek UI -->
+  <style>
+    :root { color-scheme: dark; }
+  </style>
 </head>
+
 <body>
-  <main class="cs-shell">
-    <header class="cs-topbar">
-      <div class="cs-brand">
-        <span class="cs-mark"></span>
-        <span class="cs-wordmark">CineSparq</span>
-        <span class="cs-badge">Mockup v0</span>
+  <main class="auth">
+    <section class="auth__shell">
+      <header class="auth__brand">
+        <div class="brandmark" aria-hidden="true">
+          <span class="brandmark__dot"></span>
+          <span class="brandmark__ring"></span>
+        </div>
+        <div>
+          <div class="brandname">CineSparq</div>
+          <div class="brandtag">Creator-first readiness infrastructure</div>
+        </div>
+      </header>
+
+      <div class="authcard" role="region" aria-label="Sign in">
+        <div class="authcard__top">
+          <h1 class="authcard__title">Welcome back</h1>
+          <p class="authcard__caption">Sign in to manage your projects and track your funding path forward.</p>
+        </div>
+
+        <form class="form" action="#" method="post" autocomplete="on">
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input class="field__input" type="email" name="email" placeholder="you@studio.com" autocomplete="email" required />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Password</span>
+            <div class="field__row">
+              <input id="password" class="field__input" type="password" name="password" placeholder="••••••••••" autocomplete="current-password" required />
+              <button class="iconbtn" type="button" data-toggle="password" aria-label="Show password" aria-controls="password">
+                <span class="iconbtn__text" data-state="hidden">Show</span>
+              </button>
+            </div>
+          </label>
+
+          <div class="form__meta">
+            <label class="check">
+              <input type="checkbox" name="remember" />
+              <span>Remember me</span>
+            </label>
+
+            <a class="link" href="./pages/login.html" aria-label="Forgot password (mock link)">Forgot password?</a>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Sign in</button>
+
+          <div class="divider" aria-hidden="true">
+            <span class="divider__line"></span>
+            <span class="divider__text">or</span>
+            <span class="divider__line"></span>
+          </div>
+
+          <a class="btn btn--secondary" href="./pages/creator-profile.html">Create account</a>
+
+          <p class="fineprint">
+            By continuing, you agree to our
+            <a class="link" href="./plain.html">Terms</a>
+            and
+            <a class="link" href="./plain.html">Privacy</a>.
+          </p>
+        </form>
       </div>
-      <nav class="cs-topnav">
-        <a href="./pages/funding-paths.html">Start demo</a>
-      </nav>
-    </header>
 
-    <section class="cs-page">
-      <h1>Mockup v0</h1>
-      <p>
-        Creator → project creation → readiness assessment → funding path clarity → roadmap
-      </p>
-
-      <div class="cs-grid">
-        <a class="cs-card" href="./pages/creator-profile.html">
-          <h2>Creator Profile</h2>
-          <p>Set your baseline</p>
-        </a>
-
-        <a class="cs-card" href="./pages/project-create.html">
-          <h2>Project Create</h2>
-          <p>Define project reality</p>
-        </a>
-
-        <a class="cs-card" href="./pages/readiness-summary.html">
-          <h2>Readiness Summary</h2>
-          <p>Eligibility + feasibility</p>
-        </a>
-
-        <a class="cs-card" href="./pages/funding-paths.html">
-          <h2>Funding Path Clarity</h2>
-          <p>Most realistic routes forward</p>
-        </a>
-
-        <a class="cs-card" href="./pages/roadmap.html">
-          <h2>Roadmap</h2>
-          <p>Sequenced next actions</p>
-        </a>
-
-        <a class="cs-card" href="./pages/login.html">
-          <h2>Login</h2>
-          <p>Mockup only</p>
-        </a>
-      </div>
+      <footer class="auth__footer">
+  <div class="auth__hint">
+    <span>© CineSparq</span>
+  </div>
+</footer>
     </section>
+
+    <aside class="auth__glow" aria-hidden="true"></aside>
   </main>
+
+  <script src="./js/app.js"></script>
 </body>
 </html>
