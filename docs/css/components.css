@@ -141,3 +141,52 @@
 }
 
 .cs-ctaRow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+.cs-roadmap { display: grid; gap: 14px; margin-top: 16px; }
+
+.cs-roadTop {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.cs-roadMeta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.cs-stepGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+.cs-stepGrid--two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) {
+  .cs-stepGrid--two { grid-template-columns: 1fr; }
+}
+
+.cs-step {
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(0,0,0,.02);
+}
+
+.cs-stepHead { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+
+.cs-stepNum {
+  width: 28px; height: 28px;
+  border-radius: 10px;
+  background: var(--cs-yellow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+.cs-step h3 { margin: 0 0 4px; font-size: 15px; }
+.cs-step p { margin: 0; }
+
