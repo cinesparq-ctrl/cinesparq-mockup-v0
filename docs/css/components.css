@@ -251,4 +251,18 @@
 
 .cs-textarea { min-height: 90px; resize: vertical; }
 
+.cs-chipRow { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.cs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(0,0,0,.02);
+  font-size: 13px;
+}
+.cs-chip input { transform: translateY(1px); }
+
 
