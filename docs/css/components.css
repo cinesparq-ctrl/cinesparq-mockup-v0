@@ -265,4 +265,15 @@
 }
 .cs-chip input { transform: translateY(1px); }
 
+.cs-auth { display: grid; place-items: center; margin-top: 18px; }
+.cs-authCard {
+  width: 100%;
+  max-width: 420px;
+  background: var(--cs-white);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+
 
