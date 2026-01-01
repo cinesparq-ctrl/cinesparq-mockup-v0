@@ -51,7 +51,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 56px 16px;
+      padding: 64px 16px;
       position: relative;
     }
 
@@ -61,64 +61,99 @@
       z-index:0;
       pointer-events:none;
       background:
-        radial-gradient(600px 420px at 50% 20%, rgba(10,79,132,0.22), transparent 60%),
-        radial-gradient(520px 360px at 55% 60%, rgba(248,212,24,0.10), transparent 60%);
+        radial-gradient(700px 480px at 50% 18%, rgba(10,79,132,0.24), transparent 62%),
+        radial-gradient(560px 400px at 55% 62%, rgba(248,212,24,0.11), transparent 62%);
       filter: blur(18px);
-      opacity: 0.85;
+      opacity: 0.9;
+    }
+
+    .auth__grid{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(600px 420px at 50% 35%, rgba(0,0,0,1), rgba(0,0,0,0));
+      opacity: 0.35;
     }
 
     /* IMPORTANT: keep this constrained */
     .auth__shell{
       position: relative;
       z-index:1;
-      width: min(420px, 100%);
+      width: min(980px, 100%);
       margin-inline: auto;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      border-radius: 18px;
-      padding: 28px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.15fr 420px;
+      gap: 28px;
+      align-items: start;
     }
 
-    .auth__brand{
-      display:flex;
-      align-items:center;
-      gap: 14px;
+    .hero{
+      padding: 10px 6px;
+    }
+
+    .hero__logo{
+      width: min(380px, 92%);
+      height: auto;
+      display:block;
+      opacity: 0.98;
       margin-bottom: 18px;
     }
 
-    .brandmark{
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      overflow:hidden;
-      flex: 0 0 44px;
+    .hero__title{
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.05;
+      letter-spacing: -0.6px;
     }
 
-    .brandmark img{
-      width: 24px;
-      height: 24px;
-      display:block;
-      opacity: 0.98;
-    }
-
-    .brandname{
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      font-size: 18px;
-      line-height: 1.1;
-    }
-
-    .brandtag{
-      font-size: 13px;
+    .hero__subtitle{
+      margin: 12px 0 0;
       color: var(--muted);
-      margin-top: 2px;
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 52ch;
+    }
+
+    .hero__bullets{
+      margin-top: 18px;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullet{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: rgba(249,245,239,0.86);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      margin-top: 4px;
+      background: var(--cs-yellow);
+      box-shadow: 0 0 28px rgba(248,212,24,0.28);
+      flex: 0 0 10px;
+    }
+
+    .authpanel{
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
     }
 
     .authcard{
@@ -133,7 +168,7 @@
 
     .authcard__top{ margin-bottom: 18px; }
     .authcard__title{
-      font-size: 28px;
+      font-size: 26px;
       letter-spacing: -0.3px;
       margin: 0;
     }
@@ -262,8 +297,18 @@
       white-space: nowrap;
     }
 
+    @media (max-width: 980px){
+      .auth__shell{
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+      .hero{ padding: 0 6px 10px; }
+      .hero__title{ font-size: 32px; }
+      .hero__logo{ width: min(360px, 95%); }
+    }
+
     @media (max-width: 420px){
-      .auth__shell{ padding: 22px; }
+      .authpanel{ padding: 18px; }
       .authcard{ padding: 18px; }
       .authcard__title{ font-size: 24px; }
       .form__meta{ flex-direction:column; align-items:flex-start; }
@@ -275,67 +320,79 @@
 <body>
   <main class="auth">
     <div class="auth__glow" aria-hidden="true"></div>
+    <div class="auth__grid" aria-hidden="true"></div>
 
-    <section class="auth__shell" role="region" aria-label="Sign in">
-      <header class="auth__brand">
-        <div class="brandmark" aria-hidden="true">
-          <img src="./assets/logo/cs-logo-white.svg" alt="" />
-        </div>
-        <div>
-          <div class="brandname">CineSparq</div>
-          <div class="brandtag">Helping Creators Connect to Production Capital</div>
-        </div>
-      </header>
+    <section class="auth__shell" role="region" aria-label="Welcome">
+      <!-- Landing-style left panel -->
+      <section class="hero" aria-label="CineSparq overview">
+        <img class="hero__logo" src="./assets/logo/cs-side-slogan-white.svg" alt="CineSparq" />
+        <h1 class="hero__title">Know what funding fits, and why.</h1>
+        <p class="hero__subtitle">
+          CineSparq turns your slate into a clear readiness picture—then matches each project to real funding routes,
+          time windows, and next best moves.
+        </p>
 
-      <section class="authcard">
-        <div class="authcard__top">
-          <h1 class="authcard__title">Welcome Back</h1>
-          <p class="authcard__caption">
-            Sign in to manage your projects and track your funding progress.
-          </p>
-        </div>
-
-        <form class="form" action="./pages/creator-dashboard.html" method="get">
-          <div class="field">
-            <label class="field__label" for="email">Email</label>
-            <input class="field__input" id="email" name="email" type="email" placeholder="you@studio.com" autocomplete="email" required />
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="password">Password</label>
-            <input class="field__input" id="password" name="password" type="password" placeholder="••••••••••" autocomplete="current-password" required />
-          </div>
-
-          <div class="form__meta">
-            <label class="check">
-              <input type="checkbox" name="remember" />
-              Remember me
-            </label>
-            <a class="link" href="#" onclick="return false;">Forgot password?</a>
-          </div>
-
-          <button class="btn btn--primary" type="submit">Sign In</button>
-
-          <div class="divider" aria-hidden="true">
-            <div class="divider__line"></div>
-            <div class="divider__text">or</div>
-            <div class="divider__line"></div>
-          </div>
-
-          <a class="btn btn--secondary" href="./pages/creator-dashboard.html">Create account</a>
-
-          <p class="fineprint">
-            By continuing, you agree to our <a class="link" href="#">Terms</a> and <a class="link" href="#">Privacy</a>.
-          </p>
-        </form>
+        <ul class="hero__bullets">
+          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Opportunity matching across grants, brands, impact, private capital, and buyers.</span></li>
+          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Roadmaps that convert “not ready yet” into an action plan you can execute.</span></li>
+          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Signals that keep you moving without guessing or chasing the wrong rooms.</span></li>
+        </ul>
       </section>
 
-      <footer class="auth__footer">
-        <div class="auth__hint">
-          <span>© <span id="year"></span> CineSparq</span>
-          <span class="pill">Secure access</span>
-        </div>
-      </footer>
+      <!-- Login panel -->
+      <aside class="authpanel" aria-label="Sign in panel">
+        <section class="authcard">
+          <div class="authcard__top">
+            <h2 class="authcard__title">Welcome back</h2>
+            <p class="authcard__caption">
+              Sign in to view your dashboard and project readiness.
+            </p>
+          </div>
+
+          <form class="form" action="./pages/creator-dashboard.html" method="get">
+            <div class="field">
+              <label class="field__label" for="email">Email</label>
+              <input class="field__input" id="email" name="email" type="email" placeholder="you@studio.com" autocomplete="email" required />
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="password">Password</label>
+              <input class="field__input" id="password" name="password" type="password" placeholder="••••••••••" autocomplete="current-password" required />
+            </div>
+
+            <div class="form__meta">
+              <label class="check">
+                <input type="checkbox" name="remember" />
+                Remember me
+              </label>
+              <!-- keep for realism; safe placeholder -->
+              <a class="link" href="#">Forgot password?</a>
+            </div>
+
+            <button class="btn btn--primary" type="submit">Sign In</button>
+
+            <div class="divider" aria-hidden="true">
+              <div class="divider__line"></div>
+              <div class="divider__text">or</div>
+              <div class="divider__line"></div>
+            </div>
+
+            <!-- keep for realism; safe placeholder -->
+            <a class="btn btn--secondary" href="#">Create account</a>
+
+            <p class="fineprint">
+              By continuing, you agree to our <a class="link" href="#">Terms</a> and <a class="link" href="#">Privacy</a>.
+            </p>
+          </form>
+        </section>
+
+        <footer class="auth__footer">
+          <div class="auth__hint">
+            <span>© <span id="year"></span> CineSparq</span>
+            <span class="pill">Secure access</span>
+          </div>
+        </footer>
+      </aside>
     </section>
   </main>
 
