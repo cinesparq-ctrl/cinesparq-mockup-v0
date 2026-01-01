@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a4f84" />
+  <title>CineSparq | Creator Dashboard</title>
+
+  <style>
+    :root{
+      --bg0:#07090d;
+      --bg1:#0b0f18;
+
+      --text:#f9f5ef;
+      --muted: rgba(249,245,239,0.70);
+      --faint: rgba(249,245,239,0.48);
+
+      --cs-blue:#0a4f84;
+      --cs-yellow:#f8d418;
+
+      --card: rgba(255,255,255,0.03);
+      --card-2: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.10);
+      --radius: 18px;
+
+      --shadow: 0 18px 70px rgba(0,0,0,0.55);
+      --shadow-soft: 0 12px 40px rgba(0,0,0,0.35);
+
+      --ring: 0 0 0 4px rgba(248,212,24,0.18);
+
+      --sidebar-w: 264px;
+      --sidebar-collapsed: 88px;
+
+      --ok: rgba(120, 255, 195, 0.95);
+      --warn: rgba(255, 210, 90, 0.95);
+      --info: rgba(130, 200, 255, 0.95);
+      --danger: rgba(255, 120, 150, 0.95);
+
+      --pill-bg: rgba(255,255,255,0.05);
+      --pill-br: rgba(255,255,255,0.10);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 30% 5%, rgba(10,79,132,0.22), transparent 60%),
+        radial-gradient(800px 520px at 75% 70%, rgba(248,212,24,0.10), transparent 62%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      overflow-x:hidden;
+    }
+
+    a{ color: inherit; }
+    .link{
+      color: rgba(249,245,239,0.90);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(249,245,239,0.22);
+    }
+    .link:hover{ border-bottom-color: rgba(249,245,239,0.40); }
+
+    /* App layout */
+    .app{
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      grid-template-rows: 72px 1fr;
+      grid-template-areas:
+        "sidebar topbar"
+        "sidebar main";
+    }
+
+    .glow{
+      position: fixed;
+      inset: -160px -160px -160px -160px;
+      pointer-events:none;
+      z-index:0;
+      background:
+        radial-gradient(700px 480px at 25% 0%, rgba(10,79,132,0.20), transparent 62%),
+        radial-gradient(640px 420px at 70% 65%, rgba(248,212,24,0.09), transparent 62%);
+      filter: blur(18px);
+      opacity: 0.85;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      grid-area: sidebar;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 2;
+
+      background: rgba(11,15,24,0.72);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 10px 0 50px rgba(0,0,0,0.35);
+
+      padding: 14px 14px 18px;
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .brand__left{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand__mark{
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      flex: 0 0 38px;
+      overflow:hidden;
+    }
+    .brand__mark img{
+      width: 22px;
+      height: 22px;
+      display:block;
+      opacity: 0.98;
+    }
+
+    .brand__text{
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .brand__name{
+      font-weight: 750;
+      letter-spacing: 0.2px;
+      font-size: 14px;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand__sub{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .collapseBtn{
+      height: 38px;
+      width: 38px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      color: rgba(249,245,239,0.92);
+      flex: 0 0 38px;
+    }
+    .collapseBtn:hover{ border-color: rgba(255,255,255,0.18); }
+    .collapseBtn:focus{ outline:none; box-shadow: var(--ring); }
+
+    .nav{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 4px;
+    }
+
+    .nav__label{
+      margin: 10px 10px 6px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(249,245,239,0.50);
+    }
+
+    .nav__item{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      text-decoration:none;
+      background: transparent;
+      color: rgba(249,245,239,0.86);
+    }
+
+    .nav__item:hover{
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .nav__item--active{
+      background: rgba(10,79,132,0.18);
+      border-color: rgba(10,79,132,0.28);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+
+    .ico{
+      width: 18px;
+      height: 18px;
+      display:inline-block;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      flex: 0 0 18px;
+    }
+    .nav__text{
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar__footer{
+      margin-top: auto;
+      padding: 8px 4px 0;
+    }
+    .minihelp{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: rgba(249,245,239,0.80);
+      text-decoration:none;
+    }
+    .minihelp:hover{ border-color: rgba(255,255,255,0.16); }
+
+    /* Top bar */
+    .topbar{
+      grid-area: topbar;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 16px;
+
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(11,15,24,0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .topbar__left{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .pagetitle{
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(249,245,239,0.88);
+      white-space: nowrap;
+    }
+
+    .search{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      width: min(520px, 52vw);
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .search input{
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: rgba(249,245,239,0.92);
+      font-size: 13px;
+    }
+    .search input::placeholder{ color: rgba(249,245,239,0.45); }
+
+    .topbar__right{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+
+    .iconbtn{
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      cursor:pointer;
+      color: rgba(249,245,239,0.90);
+      position: relative;
+    }
+    .iconbtn:hover{ border-color: rgba(255,255,255,0.18); }
+    .iconbtn:focus{ outline:none; box-shadow: var(--ring); }
+
+    .dot{
+      position:absolute;
+      top: 9px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--cs-yellow);
+      box-shadow: 0 0 24px rgba(248,212,24,0.35);
+    }
+
+    .userchip{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      white-space: nowrap;
+    }
+    .avatar{
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: radial-gradient(14px 14px at 30% 30%, rgba(248,212,24,0.35), rgba(10,79,132,0.25));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .username{
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: rgba(249,245,239,0.86);
+    }
+
+    /* Main */
+    .main{
+      grid-area: main;
+      z-index: 1;
+      padding: 18px 18px 26px;
+    }
+
+    .wrap{
+      max-width: 1220px;
+      margin: 0 auto;
+      display:flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Four tiles */
+    .tiles{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .tile{
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+      min-height: 120px;
+      padding: 16px 16px 14px;
+    }
+
+    .tile::before{
+      content:"";
+      position:absolute;
+      inset: -120px -120px auto -120px;
+      height: 220px;
+      background:
+        radial-gradient(220px 160px at 20% 40%, rgba(255,255,255,0.12), transparent 60%),
+        radial-gradient(240px 160px at 80% 30%, rgba(255,255,255,0.08), transparent 62%);
+      filter: blur(10px);
+      opacity: 0.75;
+      pointer-events:none;
+    }
+
+    .tile__top{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tile__label{
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(249,245,239,0.62);
+    }
+
+    .tile__value{
+      margin-top: 8px;
+      font-size: 28px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    .tile__sub{
+      margin-top: 6px;
+      font-size: 12px;
+      color: rgba(249,245,239,0.72);
+      line-height: 1.35;
+      max-width: 46ch;
+    }
+
+    .tile__chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.15);
+      color: rgba(249,245,239,0.78);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .tile--yellow{ background: linear-gradient(135deg, rgba(248,212,24,0.22), rgba(255,255,255,0.03)); }
+    .tile--blue{ background: linear-gradient(135deg, rgba(10,79,132,0.26), rgba(255,255,255,0.03)); }
+    .tile--pink{ background: linear-gradient(135deg, rgba(255,120,150,0.18), rgba(255,255,255,0.03)); }
+    .tile--teal{ background: linear-gradient(135deg, rgba(120,255,195,0.14), rgba(255,255,255,0.03)); }
+
+    /* 3D ring */
+    .ring{
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,0.25), transparent 60%),
+        conic-gradient(from 220deg, rgba(249,245,239,0.10), rgba(249,245,239,0.20), rgba(249,245,239,0.10));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        inset 0 2px 10px rgba(255,255,255,0.08),
+        0 16px 50px rgba(0,0,0,0.35);
+      position: relative;
+      flex: 0 0 54px;
+    }
+    .ring::after{
+      content:"";
+      position:absolute;
+      inset: 10px;
+      border-radius: 999px;
+      background: rgba(11,15,24,0.65);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: inset 0 10px 24px rgba(0,0,0,0.35);
+    }
+    .ring__fill{
+      position:absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: conic-gradient(var(--ringColor) calc(var(--p)*1%), rgba(255,255,255,0.08) 0);
+      filter: saturate(1.1);
+      opacity: 0.95;
+    }
+    .ring__fill::after{
+      content:"";
+      position:absolute;
+      inset: 10px;
+      border-radius: 999px;
+      background: rgba(11,15,24,0.70);
+    }
+    .ring__txt{
+      position:absolute;
+      inset: 0;
+      display:grid;
+      place-items:center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: rgba(249,245,239,0.88);
+      z-index: 1;
+    }
+
+    /* Projects */
+    .section{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+
+    .section__head{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .section__title{
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(249,245,239,0.72);
+      font-weight: 800;
+    }
+
+    .pager{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: rgba(249,245,239,0.72);
+      font-size: 12px;
+    }
+
+    .pagerbtn{
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      cursor:pointer;
+    }
+    .pagerbtn:hover{ border-color: rgba(255,255,255,0.18); }
+    .pagerbtn:focus{ outline:none; box-shadow: var(--ring); }
+
+    .projectList{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px;
+    }
+
+    .project{
+      display:grid;
+      grid-template-columns: 74px 1.1fr 0.9fr;
+      gap: 14px;
+      align-items: stretch;
+
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.30);
+      overflow:hidden;
+      position: relative;
+    }
+
+    .project::before{
+      content:"";
+      position:absolute;
+      inset: -120px -120px auto -120px;
+      height: 220px;
+      background:
+        radial-gradient(220px 160px at 18% 40%, rgba(255,255,255,0.10), transparent 60%),
+        radial-gradient(240px 160px at 82% 30%, rgba(255,255,255,0.06), transparent 62%);
+      filter: blur(12px);
+      opacity: 0.75;
+      pointer-events:none;
+    }
+
+    .poster{
+      padding: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .poster__img{
+      width: 54px;
+      height: 72px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.55);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .projMid{
+      padding: 14px 0 14px 0;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .projTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-right: 12px;
+    }
+
+    .projTitle{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .projTitle a{
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+      text-decoration:none;
+      color: rgba(249,245,239,0.94);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 44ch;
+    }
+    .projTitle a:hover{
+      color: rgba(249,245,239,1);
+      text-decoration: underline;
+      text-decoration-color: rgba(248,212,24,0.35);
+      text-underline-offset: 3px;
+    }
+
+    .metaRow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items:center;
+      color: rgba(249,245,239,0.78);
+      font-size: 12px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--pill-br);
+      background: var(--pill-bg);
+      color: rgba(249,245,239,0.78);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.18);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .badge__dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: rgba(249,245,239,0.35);
+      box-shadow: 0 0 20px rgba(255,255,255,0.12);
+    }
+
+    .status--building .badge__dot{ background: rgba(130,200,255,0.95); box-shadow: 0 0 24px rgba(130,200,255,0.22); }
+    .status--review .badge__dot{ background: rgba(255,210,90,0.95); box-shadow: 0 0 24px rgba(255,210,90,0.18); }
+    .status--active .badge__dot{ background: rgba(120,255,195,0.95); box-shadow: 0 0 24px rgba(120,255,195,0.18); }
+    .status--hold .badge__dot{ background: rgba(249,245,239,0.22); box-shadow: none; }
+
+    .projStats{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+      color: rgba(249,245,239,0.74);
+      font-size: 12px;
+      padding-right: 12px;
+    }
+
+    .stat{
+      display:inline-flex;
+      align-items:baseline;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .stat b{
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      color: rgba(249,245,239,0.92);
+    }
+
+    .projRight{
+      padding: 14px 14px 14px 0;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .roadmapRow{
+      display:flex;
+      align-items:center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .btn{
+      height: 40px;
+      border-radius: 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      cursor:pointer;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      font-size: 12px;
+      user-select:none;
+      text-decoration:none;
+      white-space: nowrap;
+      min-width: 154px;
+      box-shadow: 0 16px 45px rgba(0,0,0,0.25);
+    }
+
+    .btn--roadmapOn{
+      background: linear-gradient(180deg, rgba(248,212,24,0.96), rgba(248,212,24,0.78));
+      color: rgba(7,9,13,0.96);
+      border-color: rgba(248,212,24,0.35);
+    }
+    .btn--roadmapOn:hover{ filter: brightness(1.03); }
+
+    .btn--roadmapOff{
+      background: rgba(255,255,255,0.04);
+      color: rgba(249,245,239,0.55);
+      border-color: rgba(255,255,255,0.08);
+      cursor: default;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .muteline{
+      font-size: 12px;
+      color: rgba(249,245,239,0.65);
+      text-align: right;
+      line-height: 1.35;
+    }
+
+    /* On-hold visual */
+    .project.is-hold{
+      opacity: 0.55;
+      filter: saturate(0.85);
+    }
+    .project.is-hold .projTitle a,
+    .project.is-hold .muteline,
+    .project.is-hold .pill,
+    .project.is-hold .badge{
+      color: rgba(249,245,239,0.58);
+    }
+
+    /* Sidebar collapse */
+    .app.is-collapsed{
+      grid-template-columns: var(--sidebar-collapsed) 1fr;
+    }
+    .app.is-collapsed .brand__text,
+    .app.is-collapsed .nav__text,
+    .app.is-collapsed .nav__label,
+    .app.is-collapsed .minihelp span{
+      display:none;
+    }
+    .app.is-collapsed .brand{
+      justify-content: center;
+    }
+    .app.is-collapsed .brand__left{
+      justify-content: center;
+    }
+    .app.is-collapsed .nav__item{
+      justify-content: center;
+      padding: 12px 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .search{ display:none; }
+      .tiles{ grid-template-columns: 1fr; }
+      .tile{ min-height: 110px; }
+      .project{ grid-template-columns: 74px 1fr; }
+      .projRight{ padding: 0 14px 14px 14px; }
+      .projMid{ padding: 14px 14px 0 0; }
+      .roadmapRow{ justify-content: flex-start; }
+      .muteline{ text-align: left; }
+    }
+
+    @media (max-width: 760px){
+      .app{ grid-template-columns: 1fr; grid-template-areas: "topbar" "main"; }
+      .sidebar{ display:none; }
+      .main{ padding: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="app" id="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="brand__left">
+          <div class="brand__mark" aria-hidden="true">
+            <img src="../assets/logo/cs-mark-white.svg" alt="" />
+          </div>
+          <div class="brand__text">
+            <div class="brand__name">CineSparq</div>
+            <div class="brand__sub">Creator Dashboard</div>
+          </div>
+        </div>
+
+        <button class="collapseBtn" id="collapseBtn" type="button" aria-label="Collapse sidebar" title="Collapse sidebar">
+          ≡
+        </button>
+      </div>
+
+      <nav class="nav">
+        <div class="nav__label">Workspace</div>
+
+        <a class="nav__item nav__item--active" href="./creator-dashboard.html" aria-current="page" title="Dashboard">
+          <span class="ico" aria-hidden="true"></span>
+          <span class="nav__text">Dashboard</span>
+        </a>
+
+        <a class="nav__item" href="./project-as-time-goes-by.html" title="Projects">
+          <span class="ico" aria-hidden="true"></span>
+          <span class="nav__text">Projects</span>
+        </a>
+
+        <a class="nav__item" href="./funding-paths.html" title="Funding Paths">
+          <span class="ico" aria-hidden="true"></span>
+          <span class="nav__text">Funding Paths</span>
+        </a>
+
+        <a class="nav__item" href="./roadmap.html" title="Roadmap Library">
+          <span class="ico" aria-hidden="true"></span>
+          <span class="nav__text">Roadmap</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <a class="minihelp" href="./roadmap.html" title="Support">
+          <span class="ico" aria-hidden="true"></span>
+          <span>Support</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- TOPBAR -->
+    <header class="topbar" aria-label="Top bar">
+      <div class="topbar__left">
+        <div class="pagetitle">Dashboard</div>
+
+        <div class="search" role="search" aria-label="Search projects">
+          <span aria-hidden="true" style="opacity:.75;">⌕</span>
+          <input type="search" placeholder="Search projects, paths, opportunities…" />
+        </div>
+      </div>
+
+      <div class="topbar__right">
+        <button class="iconbtn" type="button" aria-label="Search" title="Search">
+          ⌕
+        </button>
+
+        <button class="iconbtn" type="button" aria-label="Notifications" title="Notifications">
+          🔔
+          <span class="dot" aria-hidden="true"></span>
+        </button>
+
+        <button class="iconbtn" type="button" aria-label="Account settings" title="Account settings">
+          ⚙
+        </button>
+
+        <div class="userchip" title="Account">
+          <div class="avatar" aria-hidden="true"></div>
+          <div class="username">EUNICE</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main" aria-label="Dashboard content">
+      <div class="wrap">
+
+        <!-- 4-UP TILES -->
+        <section class="tiles" aria-label="Account overview">
+          <article class="tile tile--yellow" style="grid-column: span 3;">
+            <div class="tile__top">
+              <div>
+                <div class="tile__label">Opportunity Match</div>
+                <div class="tile__value">42</div>
+                <div class="tile__sub">Matched opportunities surfaced across all projects.</div>
+              </div>
+              <div class="ring" style="--p:72; --ringColor: rgba(248,212,24,0.92);">
+                <div class="ring__fill"></div>
+                <div class="ring__txt">72%</div>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="tile__chip">Grants 14</span>
+              <span class="tile__chip">Brands 9</span>
+              <span class="tile__chip">Impact 7</span>
+              <span class="tile__chip">Private 8</span>
+              <span class="tile__chip">Buyers 4</span>
+            </div>
+          </article>
+
+          <article class="tile tile--pink" style="grid-column: span 3;">
+            <div class="tile__top">
+              <div>
+                <div class="tile__label">Action Required</div>
+                <div class="tile__value">6</div>
+                <div class="tile__sub">Time-sensitive windows opening soon.</div>
+              </div>
+              <div class="ring" style="--p:54; --ringColor: rgba(255,120,150,0.92);">
+                <div class="ring__fill"></div>
+                <div class="ring__txt">30d</div>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="tile__chip">Next 30 days: 3</span>
+              <span class="tile__chip">31–90 days: 2</span>
+              <span class="tile__chip">Ongoing: 1</span>
+            </div>
+          </article>
+
+          <article class="tile tile--blue" style="grid-column: span 3;">
+            <div class="tile__top">
+              <div>
+                <div class="tile__label">Opportunity Momentum</div>
+                <div class="tile__value">+11</div>
+                <div class="tile__sub">New opportunities unlocked in the last 60–90 days.</div>
+              </div>
+              <div class="ring" style="--p:66; --ringColor: rgba(130,200,255,0.92);">
+                <div class="ring__fill"></div>
+                <div class="ring__txt">90d</div>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="tile__chip">Rolling view</span>
+              <span class="tile__chip">Last refresh: Today</span>
+            </div>
+          </article>
+
+          <article class="tile tile--teal" style="grid-column: span 3;">
+            <div class="tile__top">
+              <div>
+                <div class="tile__label">Project Roll-up</div>
+                <div class="tile__value">4</div>
+                <div class="tile__sub">Projects in your account (showing 1–4).</div>
+              </div>
+              <div class="ring" style="--p:48; --ringColor: rgba(120,255,195,0.88);">
+                <div class="ring__fill"></div>
+                <div class="ring__txt">4</div>
+              </div>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="tile__chip">Building: 1</span>
+              <span class="tile__chip">In Review: 1</span>
+              <span class="tile__chip">Active: 1</span>
+              <span class="tile__chip">On Hold: 1</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- PROJECT STRIP -->
+        <section class="section" aria-label="Projects">
+          <header class="section__head">
+            <div class="section__title">Your Projects</div>
+            <div class="pager" aria-label="Project paging">
+              <button class="pagerbtn" type="button" aria-label="Previous projects" title="Previous">‹</button>
+              <span>Showing 1–4 of 12</span>
+              <button class="pagerbtn" type="button" aria-label="Next projects" title="Next">›</button>
+            </div>
+          </header>
+
+          <div class="projectList">
+
+            <!-- 1 -->
+            <article class="project status--review">
+              <div class="poster">
+                <img class="poster__img" src="../assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
+              </div>
+
+              <div class="projMid">
+                <div class="projTop">
+                  <div class="projTitle">
+                    <a href="./project-as-time-goes-by.html" title="Access project">As Time Goes By</a>
+                    <div class="metaRow">
+                      <span class="pill">Drama</span>
+                      <span class="pill">Budget: $100–250K</span>
+                      <span class="badge status--review"><span class="badge__dot"></span>In Review</span>
+                      <span class="pill">Owner</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="projStats">
+                  <div class="stat"><b>18</b> matched</div>
+                  <div class="stat"><b>Grant</b> + Brand</div>
+                  <div class="stat"><b>Market-Aligned</b></div>
+                  <div class="stat"><b>Constraint</b> Rights/Legal</div>
+                  <div class="stat"><b>Time</b> 2 windows opening soon</div>
+                </div>
+              </div>
+
+              <div class="projRight">
+                <div class="roadmapRow">
+                  <a class="btn btn--roadmapOff" href="#" aria-disabled="true">View Roadmap</a>
+                </div>
+                <div class="muteline">
+                  Last activity: Assets updated • opportunities refreshing
+                </div>
+              </div>
+            </article>
+
+            <!-- 2 -->
+            <article class="project status--active">
+              <div class="poster">
+                <img class="poster__img" src="../assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
+              </div>
+
+              <div class="projMid">
+                <div class="projTop">
+                  <div class="projTitle">
+                    <a href="./project-hard-sale.html" title="Access project">Hard Sale</a>
+                    <div class="metaRow">
+                      <span class="pill">Thriller</span>
+                      <span class="pill">Budget: $25–75K</span>
+                      <span class="badge status--active"><span class="badge__dot"></span>Active</span>
+                      <span class="pill">Owner</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="projStats">
+                  <div class="stat"><b>12</b> matched</div>
+                  <div class="stat"><b>Impact</b> + Private</div>
+                  <div class="stat"><b>Submission-Ready</b></div>
+                  <div class="stat"><b>Constraint</b> Packaging</div>
+                  <div class="stat"><b>Time</b> Ongoing</div>
+                </div>
+              </div>
+
+              <div class="projRight">
+                <div class="roadmapRow">
+                  <a class="btn btn--roadmapOn" href="./hard-sale-roadmap.html">View Roadmap</a>
+                </div>
+                <div class="muteline">
+                  Last activity: Roadmap issued • 3 actions open
+                </div>
+              </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="project status--building">
+              <div class="poster">
+                <img class="poster__img" src="../assets/posters/haunted-poster.png" alt="Haunted poster" />
+              </div>
+
+              <div class="projMid">
+                <div class="projTop">
+                  <div class="projTitle">
+                    <a href="./project-haunted.html" title="Access project">Haunted</a>
+                    <div class="metaRow">
+                      <span class="pill">Horror</span>
+                      <span class="pill">Budget: Under $25K</span>
+                      <span class="badge status--building"><span class="badge__dot"></span>Building</span>
+                      <span class="pill">Owner</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="projStats">
+                  <div class="stat"><b>7</b> matched</div>
+                  <div class="stat"><b>Grant</b></div>
+                  <div class="stat"><b>Emerging</b></div>
+                  <div class="stat"><b>Constraint</b> Proof-of-Concept</div>
+                  <div class="stat"><b>Time</b> No active windows</div>
+                </div>
+              </div>
+
+              <div class="projRight">
+                <div class="roadmapRow">
+                  <a class="btn btn--roadmapOff" href="#" aria-disabled="true">View Roadmap</a>
+                </div>
+                <div class="muteline">
+                  Last activity: Profile updated • awaiting submission
+                </div>
+              </div>
+            </article>
+
+            <!-- 4 (On Hold) -->
+            <article class="project status--hold is-hold">
+              <div class="poster">
+                <img class="poster__img" src="../assets/posters/in-memory-poster.png" alt="In Memory poster" />
+              </div>
+
+              <div class="projMid">
+                <div class="projTop">
+                  <div class="projTitle">
+                    <a href="./project-in-memory.html" title="Access project">In Memory</a>
+                    <div class="metaRow">
+                      <span class="pill">Drama</span>
+                      <span class="pill">Budget: $75–100K</span>
+                      <span class="badge status--hold"><span class="badge__dot"></span>On Hold</span>
+                      <span class="pill">Owner</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="projStats">
+                  <div class="stat"><b>5</b> matched</div>
+                  <div class="stat"><b>Brand</b></div>
+                  <div class="stat"><b>Exploration</b></div>
+                  <div class="stat"><b>Constraint</b> Audience</div>
+                  <div class="stat"><b>Time</b> Later / Ongoing</div>
+                </div>
+              </div>
+
+              <div class="projRight">
+                <div class="roadmapRow">
+                  <a class="btn btn--roadmapOff" href="#" aria-disabled="true">View Roadmap</a>
+                </div>
+                <div class="muteline">
+                  Last activity: Paused by owner • no actions due
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Sidebar collapse (mock-safe)
+    const app = document.getElementById("app");
+    const btn = document.getElementById("collapseBtn");
+
+    btn.addEventListener("click", () => {
+      const collapsed = app.classList.toggle("is-collapsed");
+      btn.setAttribute("aria-label", collapsed ? "Expand sidebar" : "Collapse sidebar");
+      btn.setAttribute("title", collapsed ? "Expand sidebar" : "Collapse sidebar");
+    });
+  </script>
+</body>
+</html>
