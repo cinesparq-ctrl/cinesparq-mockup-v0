@@ -98,14 +98,19 @@
   }
 
   .hero__logo{
-  width: min(320px, 100%);
+  width: min(300px, 100%);
   height: auto;
   display: block;
 
-  /* remove extra space under logo */
+  /* neutralize PNG baseline + inline spacing */
+  vertical-align: top;
+  line-height: 0;
+
+  /* ensure flex alignment behaves */
+  align-self: flex-start;
+
   margin: 0;
 }
-
 
   .hero__title{
   margin: 0;
