@@ -93,49 +93,58 @@
     }
 
     .hero{
-      padding: 10px 6px;
-    }
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
 
-    .hero__logo{
-      width: min(380px, 92%);
-      height: auto;
-      display:block;
-      opacity: 0.98;
-      margin-bottom: 18px;
-    }
+   .hero__logo{
+  width: 360px;   /* was 420px */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 18px; /* was 22px */
+}
 
     .hero__title{
-      margin: 0;
-      font-size: 38px;
-      line-height: 1.05;
-      letter-spacing: -0.6px;
-    }
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.6px;
+  max-width: 14ch;
+}
 
-    .hero__subtitle{
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      max-width: 52ch;
-    }
+.hero__subtitle{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 42ch;
+}
 
     .hero__bullets{
-      margin-top: 18px;
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 0;
-      list-style: none;
-    }
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 52ch;
+}
 
-    .bullet{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      color: rgba(249,245,239,0.86);
-      font-size: 13px;
-      line-height: 1.45;
-    }
+.bullet{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(249,245,239,0.9);
+}
+
+.bullet span:last-child{
+  display: block;
+}
 
     .dot{
       width: 10px; height: 10px;
@@ -326,16 +335,15 @@
       <!-- Landing-style left panel -->
       <section class="hero" aria-label="CineSparq overview">
         <img class="hero__logo" src="./assets/logo/cs-side-slogan-white.svg" alt="CineSparq" />
-        <h1 class="hero__title">Know what funding fits, and why.</h1>
+        <h1 class="hero__title">Secure Funding That Fits Your Needs</h1>
         <p class="hero__subtitle">
-          CineSparq turns your slate into a clear readiness picture—then matches each project to real funding routes,
-          time windows, and next best moves.
+          CineSparq helps creators make smarter funding decisions.
         </p>
 
         <ul class="hero__bullets">
-          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Opportunity matching across grants, brands, impact, private capital, and buyers.</span></li>
-          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Roadmaps that convert “not ready yet” into an action plan you can execute.</span></li>
-          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Signals that keep you moving without guessing or chasing the wrong rooms.</span></li>
+          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Identify funding opportunities that align with your production goals.</span></li>
+          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Prepare to meet funding requirements and secure production capital.</span></li>
+          <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Explore non-traditional funding options with clarity around risk, ownership, and long-term impact.</span></li>
         </ul>
       </section>
 
