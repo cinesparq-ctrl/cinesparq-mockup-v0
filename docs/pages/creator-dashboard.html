@@ -6,15 +6,15 @@
   <meta name="theme-color" content="#0a4f84" />
   <title>CineSparq | Creator Dashboard</title>
 
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="./css/tokens.css">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/components.css">
-  <link rel="stylesheet" href="./css/dashboard.css">
+  <!-- IMPORTANT: pages/ is one level deeper than css/ -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 
 <body>
-  <!-- Ambient glow (safe) -->
   <div class="glow" aria-hidden="true"></div>
 
   <div class="app" id="app">
@@ -36,8 +36,7 @@
         </button>
       </div>
 
-      <!-- Collapsible nav groups (structure is here; expand later with JS if needed) -->
-      <nav class="nav" aria-label="Workspace">
+      <nav class="nav">
         <div class="nav__label">Workspace</div>
 
         <a class="nav__item nav__item--active" href="./creator-dashboard.html" aria-current="page" title="Dashboard">
@@ -45,7 +44,7 @@
           <span class="nav__text">Dashboard</span>
         </a>
 
-        <a class="nav__item" href="./projects.html" title="Projects">
+        <a class="nav__item" href="./project-create.html" title="Projects">
           <span class="ico" aria-hidden="true"></span>
           <span class="nav__text">Projects</span>
         </a>
@@ -55,28 +54,16 @@
           <span class="nav__text">Funding Paths</span>
         </a>
 
-        <a class="nav__item" href="./roadmap-library.html" title="Roadmap Library">
+        <a class="nav__item" href="./roadmap.html" title="Roadmap">
           <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Roadmap Library</span>
-        </a>
-
-        <div class="nav__label">Account</div>
-
-        <a class="nav__item" href="./profile.html" title="Profile">
-          <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Profile</span>
-        </a>
-
-        <a class="nav__item" href="./support.html" title="Support">
-          <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Support</span>
+          <span class="nav__text">Roadmap</span>
         </a>
       </nav>
 
       <div class="sidebar__footer">
-        <a class="minihelp" href="./support.html" title="Support">
+        <a class="minihelp" href="./roadmap.html" title="Support">
           <span class="ico" aria-hidden="true"></span>
-          <span>Need help?</span>
+          <span>Support</span>
         </a>
       </div>
     </aside>
@@ -87,16 +74,19 @@
         <div class="pagetitle">Dashboard</div>
 
         <div class="search" role="search" aria-label="Search projects">
-          <span aria-hidden="true" style="opacity:.75;">⌕</span>
+          <span aria-hidden="true" class="search__icon">⌕</span>
           <input type="search" placeholder="Search projects, paths, opportunities…" />
         </div>
       </div>
 
       <div class="topbar__right">
         <button class="iconbtn" type="button" aria-label="Search" title="Search">⌕</button>
+
         <button class="iconbtn" type="button" aria-label="Notifications" title="Notifications">
-          🔔 <span class="dot" aria-hidden="true"></span>
+          🔔
+          <span class="dot" aria-hidden="true"></span>
         </button>
+
         <button class="iconbtn" type="button" aria-label="Account settings" title="Account settings">⚙</button>
 
         <div class="userchip" title="Account">
@@ -111,80 +101,77 @@
       <div class="wrap">
 
         <!-- 4-UP TILES -->
-        <section class="tiles" aria-label="Slate overview">
-          <!-- Slate Readiness -->
-          <article class="tile tile--blue" style="grid-column: span 3;">
+        <section class="tiles" aria-label="Account overview">
+          <article class="tile tile--yellow">
             <div class="tile__top">
               <div>
                 <div class="tile__label">Slate Readiness</div>
                 <div class="tile__value">4</div>
-                <div class="tile__sub">A calm snapshot of how positioned your slate is right now.</div>
+                <div class="tile__sub">Overall positioning across your slate.</div>
               </div>
-              <div class="ring" style="--p:64; --ringColor: rgba(78,163,255,0.92);">
+              <div class="ring" style="--p:72; --ringColor: rgba(248,212,24,0.92);">
                 <div class="ring__fill"></div>
-                <div class="ring__txt">Now</div>
+                <div class="ring__txt">72%</div>
               </div>
             </div>
-            <div style="margin-top:10px;">
-              <span class="tile__chip">Building 1</span>
-              <span class="tile__chip">Package Ready 1</span>
-              <span class="tile__chip">Market Active 2</span>
+            <div class="tile__chips">
+              <span class="tile__chip">Building: 1</span>
+              <span class="tile__chip">Package Ready: 1</span>
+              <span class="tile__chip">Market Active: 2</span>
             </div>
           </article>
 
-          <!-- Attention Required -->
-          <article class="tile tile--pink" style="grid-column: span 3;">
+          <article class="tile tile--pink">
             <div class="tile__top">
               <div>
                 <div class="tile__label">Attention Required</div>
-                <div class="tile__value">3</div>
-                <div class="tile__sub">Time-sensitive items across your slate that need a quick look.</div>
+                <div class="tile__value">6</div>
+                <div class="tile__sub">Deadlines, follow-ups, and blockers.</div>
               </div>
-              <div class="ring" style="--p:52; --ringColor: rgba(255,120,150,0.92);">
+              <div class="ring" style="--p:54; --ringColor: rgba(255,120,150,0.92);">
                 <div class="ring__fill"></div>
                 <div class="ring__txt">30d</div>
               </div>
             </div>
-            <div style="margin-top:10px;">
-              <span class="tile__chip">Next 30 days 2</span>
-              <span class="tile__chip">Ongoing 1</span>
+            <div class="tile__chips">
+              <span class="tile__chip">Next 30 days: 3</span>
+              <span class="tile__chip">31–90 days: 2</span>
+              <span class="tile__chip">Ongoing: 1</span>
             </div>
           </article>
 
-          <!-- Active Pathways -->
-          <article class="tile tile--yellow" style="grid-column: span 3;">
+          <article class="tile tile--blue">
             <div class="tile__top">
               <div>
                 <div class="tile__label">Active Pathways</div>
                 <div class="tile__value">2</div>
-                <div class="tile__sub">Projects with real movement happening right now.</div>
+                <div class="tile__sub">Projects with real movement right now.</div>
               </div>
-              <div class="ring" style="--p:70; --ringColor: rgba(245,207,76,0.92);">
+              <div class="ring" style="--p:66; --ringColor: rgba(130,200,255,0.92);">
                 <div class="ring__fill"></div>
-                <div class="ring__txt">Live</div>
+                <div class="ring__txt">Now</div>
               </div>
             </div>
-            <div style="margin-top:10px;">
-              <span class="tile__chip">Submitting 1</span>
-              <span class="tile__chip">Conversations 1</span>
+            <div class="tile__chips">
+              <span class="tile__chip">Submitting: 1</span>
+              <span class="tile__chip">In conversations: 1</span>
             </div>
           </article>
 
-          <!-- Focus Priority -->
-          <article class="tile tile--teal" style="grid-column: span 3;">
+          <article class="tile tile--teal">
             <div class="tile__top">
               <div>
                 <div class="tile__label">Focus Priority</div>
                 <div class="tile__value">Atlas</div>
-                <div class="tile__sub">A gentle nudge toward the one project to move first.</div>
+                <div class="tile__sub">Where to focus next to keep momentum.</div>
               </div>
-              <div class="ring" style="--p:46; --ringColor: rgba(94,234,212,0.92);">
+              <div class="ring" style="--p:48; --ringColor: rgba(120,255,195,0.88);">
                 <div class="ring__fill"></div>
                 <div class="ring__txt">1</div>
               </div>
             </div>
-            <div style="margin-top:10px;">
-              <span class="tile__chip">Primary Focus: As Time Goes By</span>
+            <div class="tile__chips">
+              <span class="tile__chip">Primary: As Time Goes By</span>
             </div>
           </article>
         </section>
@@ -195,7 +182,6 @@
             <div class="section__title">Your Projects</div>
 
             <div class="pager" aria-label="Project paging">
-              <!-- Page 1: previous disabled -->
               <button class="pagerbtn pagerbtn--disabled" type="button" aria-label="Previous projects" title="Previous" disabled>‹</button>
               <span class="pager__meta">Showing 1–4 of 12</span>
               <button class="pagerbtn" type="button" aria-label="Next projects" title="Next">›</button>
@@ -205,82 +191,42 @@
           <div class="projectList">
             <!-- 1 -->
             <article class="project-row" aria-label="Project: As Time Goes By">
-              <a class="project-posterWrap" href="./project-as-time-goes-by.html" title="Access project">
+              <a class="project-posterWrap" href="./readiness-summary.html" title="Access project">
                 <img class="project-poster" src="../assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
               </a>
 
               <div class="project-meta">
                 <div class="project-title">
-                  <a class="project-title__name" href="./project-as-time-goes-by.html">As Time Goes By</a>
+                  <a class="project-title__name" href="./readiness-summary.html">As Time Goes By</a>
                   <span class="status-pill status-pill--inmotion">In Conversations</span>
                 </div>
                 <div class="project-title__meta">Feature • Drama</div>
               </div>
 
               <div class="project-readiness">Ready for funding pathways</div>
-              <a class="project-pathways" href="./project-as-time-goes-by.html#pathways">3 active pathways</a>
+              <a class="project-pathways" href="./funding-paths.html">3 active pathways</a>
               <div class="project-budget">Upper-Mid</div>
               <span class="project-roadmap project-roadmap--off" aria-label="Roadmap not available">—</span>
             </article>
 
             <!-- 2 -->
             <article class="project-row" aria-label="Project: Hard Sale">
-              <a class="project-posterWrap" href="./project-hard-sale.html" title="Access project">
+              <a class="project-posterWrap" href="./readiness-summary.html" title="Access project">
                 <img class="project-poster" src="../assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
               </a>
 
               <div class="project-meta">
                 <div class="project-title">
-                  <a class="project-title__name" href="./project-hard-sale.html">Hard Sale</a>
+                  <a class="project-title__name" href="./readiness-summary.html">Hard Sale</a>
                   <span class="status-pill status-pill--inmotion">Actively Submitting</span>
                 </div>
                 <div class="project-title__meta">Feature • Thriller</div>
               </div>
 
               <div class="project-readiness">Market-active</div>
-              <a class="project-pathways" href="./project-hard-sale.html#pathways">4 active pathways</a>
+              <a class="project-pathways" href="./funding-paths.html">4 active pathways</a>
               <div class="project-budget">Mid</div>
-              <a class="project-roadmap project-roadmap--on" href="./hard-sale-roadmap.html">View roadmap</a>
-            </article>
-
-            <!-- 3 -->
-            <article class="project-row" aria-label="Project: Haunted">
-              <a class="project-posterWrap" href="./project-haunted.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/haunted-poster.png" alt="Haunted poster" />
-              </a>
-
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-haunted.html">Haunted</a>
-                  <span class="status-pill status-pill--packaging">Building Package</span>
-                </div>
-                <div class="project-title__meta">Feature • Horror</div>
-              </div>
-
-              <div class="project-readiness">2 steps remaining</div>
-              <a class="project-pathways" href="./project-haunted.html#pathways">0 active pathways</a>
-              <div class="project-budget">Low</div>
-              <span class="project-roadmap project-roadmap--off" aria-label="Roadmap not available">—</span>
-            </article>
-
-            <!-- 4 -->
-            <article class="project-row" aria-label="Project: In Memory">
-              <a class="project-posterWrap" href="./project-in-memory.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/in-memory-poster.png" alt="In Memory poster" />
-              </a>
-
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-in-memory.html">In Memory</a>
-                  <span class="status-pill status-pill--onhold">On Hold</span>
-                </div>
-                <div class="project-title__meta">Feature • Drama</div>
-              </div>
-
-              <div class="project-readiness">Paused without actions</div>
-              <a class="project-pathways" href="./project-in-memory.html#pathways">0 active pathways</a>
-              <div class="project-budget">Mid</div>
-              <span class="project-roadmap project-roadmap--off" aria-label="Roadmap not available">—</span>
+              <a class="project-roadmap project-roadmap--on" href="./roadmap.html">View roadmap</a>
             </article>
           </div>
         </section>
@@ -293,7 +239,6 @@
     // Sidebar collapse (mock-safe)
     const app = document.getElementById("app");
     const btn = document.getElementById("collapseBtn");
-
     if (btn && app) {
       btn.addEventListener("click", () => {
         const collapsed = app.classList.toggle("is-collapsed");
