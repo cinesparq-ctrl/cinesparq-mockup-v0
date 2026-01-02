@@ -358,9 +358,20 @@ F
 /* ---------- Project strip grid ---------- */
 .project-row {
   display: grid;
-  grid-template-columns: 72px 1.6fr 1.2fr 1.2fr 1fr 0.7fr;
+  grid-template-columns: 72px 2.3fr 1.2fr 1fr 0.8fr 140px;
   gap: 16px;
   align-items: center;
+}
+.project-posterWrap {
+  width: 72px;
+}
+
+.project-poster {
+  width: 56px;
+  height: 84px;
+  border-radius: 8px;
+}
+
 
   background: var(--cs-bg-secondary);
   border: 1px solid var(--cs-border-subtle);
