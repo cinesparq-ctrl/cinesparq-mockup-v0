@@ -130,10 +130,6 @@
   color: var(--muted);
   max-width: 54ch;
 }
-<div class="hero__media" aria-hidden="true">
-  <img class="hero__image" src="./assets/img/cs-mockup-hero-image.png" alt="" />
-</div>
-
 
  .hero__bullets{
   margin: auto 0 0;           /* <-- pushes bullets to the bottom */
@@ -354,10 +350,19 @@
       <!-- Landing-style left panel -->
       <section class="hero" aria-label="CineSparq overview">
         <img class="hero__logo" src="./assets/logo/cs-side-logo-slogan-white.png" alt="CineSparq" />
-        <h1 class="hero__title">Secure Funding That Fits Your Needs</h1>
-        <p class="hero__subtitle">
-          Helping Filmmakers Make Smarter Funding Decisions.
-        </p>
+       <h1 class="hero__title">Secure Funding That Fits Your Needs</h1>
+
+<div class="hero__media" aria-hidden="true">
+  <img
+    class="hero__image"
+    src="./assets/img/cs-mockup-hero-image.png"
+    alt=""
+  />
+</div>
+
+<p class="hero__subtitle">
+  Helping Filmmakers Make Smarter Funding Decisions.
+</p>
 
         <ul class="hero__bullets">
           <li class="bullet"><span class="dot" aria-hidden="true"></span><span>Identify funding opportunities that align with your production goals.</span></li>
