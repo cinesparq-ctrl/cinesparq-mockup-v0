@@ -293,4 +293,41 @@
   .authcard{ padding: 18px; }
   .authcard__title{ font-size: 24px; }
   .form__meta{ flex-direction:column; align-items:flex-start; }
+/* ==================================================
+   CineSparq — Project Status Pills
+   Used in Creator Dashboard + future views
+   ================================================== */
+.status-pill{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:12px;
+  font-weight:500;
+  line-height:1;
+  border:1px solid transparent;
+}
+
+.status-pill--packaging{
+  background: var(--stage-packaging-bg);
+  color: var(--stage-packaging-text);
+  border-color: var(--stage-packaging-border);
+}
+
+.status-pill--ready{
+  background: var(--stage-ready-bg);
+  color: var(--stage-ready-text);
+  border-color: var(--stage-ready-border);
+}
+
+.status-pill--inmotion{
+  background: var(--stage-inmotion-bg);
+  color: var(--stage-inmotion-text);
+  border-color: var(--stage-inmotion-border);
+}
+
+.status-pill--onhold{
+  background: var(--stage-onhold-bg);
+  color: var(--stage-onhold-text);
+  border-color: var(--stage-onhold-border);
 }

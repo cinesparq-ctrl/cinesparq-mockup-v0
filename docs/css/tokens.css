@@ -6,6 +6,8 @@
   --cs-charcoal: #1c1f26;
   --cs-sand: #efd99d;
   --cs-white: #ffffff;
+  --cs-navy-interactive: #4ea3ff;
+
 
   /* App surface (dark) */
   --bg-0: #07090d;
@@ -26,4 +28,62 @@
 
   --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* ==================================================
+     CineSparq Dashboard — Dark UI Semantic Tokens
+     Purpose: Calm, creator-safe status + surfaces
+     ================================================== */
+
+  /* Dashboard surfaces */
+  --cs-bg-primary: var(--bg-0);
+  --cs-bg-secondary: var(--bg-1);
+  --cs-bg-tertiary: var(--bg-2);
+
+  /* Dashboard text */
+  --cs-text-primary: var(--text);
+  --cs-text-secondary: var(--muted);
+  --cs-text-muted: var(--faint);
+
+  /* Dashboard borders */
+--cs-border-subtle: var(--card-border);
+--cs-border-strong: rgba(255,255,255,0.14);
+
+  /* Dashboard accents (dark-safe) */
+  --cs-accent-navy: var(--cs-navy-interactive);
+  --cs-accent-gold: var(--cs-yellow);
+
+  /* Focus + interaction */
+  --cs-hover-bg: rgba(255,255,255,0.04);
+  --cs-focus-ring: rgba(78,163,255,0.55);
+
+  /* Project State Pills */
+
+  /* Building Package */
+  --stage-packaging-bg: rgba(245,207,76,0.18);
+  --stage-packaging-text: #f6d56a;
+  --stage-packaging-border: rgba(245,207,76,0.40);
+
+  /* Package Ready */
+  --stage-ready-bg: rgba(74,222,128,0.16);
+  --stage-ready-text: #6ee7b7;
+  --stage-ready-border: rgba(74,222,128,0.38);
+
+  /* Actively Submitting / In Conversations */
+  --stage-inmotion-bg: rgba(129,140,248,0.18);
+  --stage-inmotion-text: #a5b4fc;
+  --stage-inmotion-border: rgba(129,140,248,0.40);
+
+  /* Financing Secured (future) */
+  --stage-financed-bg: rgba(16,185,129,0.20);
+  --stage-financed-text: #5eead4;
+  --stage-financed-border: rgba(16,185,129,0.42);
+
+  /* On Hold */
+  --stage-onhold-bg: rgba(148,163,184,0.12);
+  --stage-onhold-text: #94a3b8;
+  --stage-onhold-border: rgba(148,163,184,0.28);
+
+  /* Attention signal (very sparing use) */
+  --signal-attention-bg: rgba(248,113,113,0.16);
+  --signal-attention-text: #fca5a5;
+  --signal-attention-border: rgba(248,113,113,0.38);
 }
