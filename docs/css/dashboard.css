@@ -1,54 +1,278 @@
 /* ==================================================
-   CineSparq Creator Dashboard (v0)
-   Page-specific layout + project strip grid
+   CineSparq Creator Dashboard (v0) — dashboard.css
+   Page-specific styles only:
+   - 4-up tiles
+   - progress rings (if not defined elsewhere)
+   - Projects section + pager
+   - Project slate strip grid (spec)
    ================================================== */
 
-/* ---------- Projects list wrapper ---------- */
-.projectList{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+
+/* ---------------------------
+   Page: wrapper helpers
+---------------------------- */
+
+.wrap{
+  /* If wrap is already in layout.css, this just reinforces it */
+  max-width: 1220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* ---------- Pager visibility ---------- */
-.pagerbtn{
-  width:36px;
-  height:36px;
-  border-radius:999px;
-  border: 1px solid var(--cs-border-strong);
-  background: var(--cs-bg-tertiary);
+
+/* ---------------------------
+   4-Up Tiles
+---------------------------- */
+
+.tiles{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.tile{
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.03);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-height: 120px;
+  padding: 16px 16px 14px;
+}
+
+.tile::before{
+  content:"";
+  position:absolute;
+  inset: -120px -120px auto -120px;
+  height: 220px;
+  background:
+    radial-gradient(220px 160px at 20% 40%, rgba(255,255,255,0.12), transparent 60%),
+    radial-gradient(240px 160px at 80% 30%, rgba(255,255,255,0.08), transparent 62%);
+  filter: blur(10px);
+  opacity: 0.75;
+  pointer-events:none;
+}
+
+.tile__top{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.tile__label{
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cs-text-muted);
+}
+
+.tile__value{
+  margin-top: 8px;
+  font-size: 28px;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   color: var(--cs-text-primary);
-  font-size:18px;
-  line-height:1;
+}
+
+.tile__sub{
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--cs-text-secondary);
+  line-height: 1.35;
+  max-width: 46ch;
+}
+
+.tile__chip{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(0,0,0,0.15);
+  color: var(--cs-text-secondary);
+  font-size: 12px;
+  white-space: nowrap;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+/* Optional tile accents (safe, restrained) */
+.tile--yellow{
+  background: linear-gradient(135deg, rgba(245,207,76,0.16), rgba(255,255,255,0.03));
+}
+.tile--blue{
+  background: linear-gradient(135deg, rgba(78,163,255,0.16), rgba(255,255,255,0.03));
+}
+.tile--pink{
+  background: linear-gradient(135deg, rgba(255,120,150,0.12), rgba(255,255,255,0.03));
+}
+.tile--teal{
+  background: linear-gradient(135deg, rgba(94,234,212,0.10), rgba(255,255,255,0.03));
+}
+
+
+/* ---------------------------
+   3D Progress Ring
+   (In case it was lost when you wiped CSS)
+---------------------------- */
+
+.ring{
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  background:
+    radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,0.25), transparent 60%),
+    conic-gradient(from 220deg, rgba(249,245,239,0.10), rgba(249,245,239,0.20), rgba(249,245,239,0.10));
+  border: 1px solid var(--cs-border-subtle);
+  box-shadow:
+    inset 0 2px 10px rgba(255,255,255,0.08),
+    0 16px 50px rgba(0,0,0,0.35);
+  position: relative;
+  flex: 0 0 54px;
+}
+
+.ring::after{
+  content:"";
+  position:absolute;
+  inset: 10px;
+  border-radius: 999px;
+  background: rgba(11,15,24,0.65);
+  border: 1px solid var(--cs-border-subtle);
+  box-shadow: inset 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.ring__fill{
+  position:absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: conic-gradient(var(--ringColor) calc(var(--p)*1%), rgba(255,255,255,0.08) 0);
+  filter: saturate(1.2) brightness(1.05);
+  opacity: 0.98;
+}
+
+.ring__fill::after{
+  content:"";
+  position:absolute;
+  inset: 10px;
+  border-radius: 999px;
+  background: rgba(11,15,24,0.70);
+}
+
+.ring__txt{
+  position:absolute;
+  inset: 0;
   display:grid;
   place-items:center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: rgba(249,245,239,0.90);
+  z-index: 1;
 }
 
-.pagerbtn:hover{
-  background: var(--cs-bg-secondary);
-  transform: translateY(-1px);
+
+/* ---------------------------
+   Projects Section (container + header)
+---------------------------- */
+
+.section{
+  border-radius: 20px;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.03);
+  box-shadow: var(--shadow);
+  overflow:hidden;
 }
 
-.pagerbtn--disabled{
-  opacity:0.45;
+.section__head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.02);
+}
+
+.section__title{
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cs-text-secondary);
+  font-weight: 800;
+}
+
+
+/* ---------------------------
+   Pager (prominent arrows)
+---------------------------- */
+
+.pager{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color: var(--cs-text-secondary);
+  font-size: 12px;
 }
 
 .pager__meta{
   color: var(--cs-text-secondary);
 }
 
-/* =========================================
-   Project Strip Grid (Spec)
-   Works with: .project-row + (poster classes)
-   ========================================= */
+.pagerbtn{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--cs-border-strong);
+  background: rgba(255,255,255,0.04);
+  color: var(--cs-text-primary); /* prominent */
+  font-size: 20px;
+  line-height: 1;
+  display:grid;
+  place-items:center;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
 
+.pagerbtn:hover{
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.pagerbtn--disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ---------------------------
+   Project Slate List + Strips (SPEC)
+---------------------------- */
+
+.projectList{
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+}
+
+/* strip row */
 .project-row{
   display:grid;
-  grid-template-columns: 72px 2.3fr 1.2fr 1fr 0.8fr 140px;
-  gap:16px;
+  grid-template-columns: 92px 2.2fr 1.2fr 1fr 0.7fr 140px;
+  gap: 16px;
   align-items:center;
 
-  background: var(--cs-bg-secondary);
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--cs-border-subtle);
   border-radius: 18px;
   padding: 16px 18px;
@@ -57,139 +281,121 @@
 }
 
 .project-row:hover{
-  background: var(--cs-bg-tertiary);
+  background: rgba(255,255,255,0.05);
   transform: translateY(-1px);
   border-color: var(--cs-border-strong);
 }
 
-/* ---------- Poster (spec classes) ---------- */
+/* poster column */
 .project-posterWrap{
-  width:72px;
+  width: 92px;
   display:block;
 }
 
 .project-poster{
-  width:56px;
-  height:84px; /* 2:3 */
-  border-radius:8px;
-  object-fit:cover;
+  width: 72px;
+  height: 108px; /* 2:3 */
+  border-radius: 10px;
+  object-fit: cover;
   display:block;
+  border: 1px solid var(--cs-border-subtle);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
 }
 
-/* ---------- Poster (your current classes) ---------- */
-.project-row .poster{
-  width:72px;
-}
-
-.project-row .poster__img{
-  width:56px;
-  height:84px; /* 2:3 */
-  border-radius:8px;
-  object-fit:cover;
-  display:block;
-}
-
-/* ---------- Title + status ---------- */
-.project-meta{
-  min-width:0;
-}
+/* title + meta */
+.project-meta{ min-width: 0; }
 
 .project-title{
   display:flex;
   align-items:center;
-  gap:10px;
-  min-width:0;
+  gap: 10px;
+  min-width: 0;
 }
 
 .project-title__name{
   color: var(--cs-text-primary);
   text-decoration:none;
-  font-size:16px;
-  font-weight:600;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  font-size: 16px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-title__name:hover{
-  text-decoration:underline;
+  text-decoration: underline;
+  text-decoration-color: rgba(245,207,76,0.35);
+  text-underline-offset: 3px;
 }
 
 .project-title__meta{
-  margin-top:6px;
-  font-size:12px;
+  margin-top: 6px;
+  font-size: 12px;
   color: var(--cs-text-secondary);
 }
 
-/* ---------- Secondary fields ---------- */
+/* readiness / pathways / budget / roadmap */
 .project-readiness{
-  font-size:12px;
+  font-size: 12px;
   color: var(--cs-text-muted);
 }
 
 .project-pathways{
-  font-size:12px;
+  font-size: 12px;
   color: var(--cs-text-secondary);
   text-decoration:none;
+  white-space: nowrap;
 }
-
 .project-pathways:hover{
   color: var(--cs-text-primary);
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 .project-budget{
-  text-align:right;
-  font-size:12px;
+  text-align: right;
+  font-size: 12px;
   color: var(--cs-text-secondary);
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
-/* ---------- Roadmap ---------- */
 .project-roadmap{
-  justify-self:end;
-  font-size:12px;
+  justify-self: end;
+  font-size: 12px;
   text-decoration:none;
+  white-space: nowrap;
 }
 
 .project-roadmap--on{
   color: var(--cs-accent-navy);
 }
-
 .project-roadmap--on:hover{
-  text-decoration:underline;
+  text-decoration: underline;
 }
-
 .project-roadmap--off{
   color: var(--cs-text-muted);
 }
 
-/* ---------- Emergency clamp (global safety) ---------- */
-.projectList img{
-  max-width: 100%;
-  height: auto;
+
+/* ---------------------------
+   Responsive
+---------------------------- */
+
+@media (max-width: 980px){
+  .tiles{ grid-template-columns: 1fr; }
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 820px){
   .project-row{
-    grid-template-columns: 72px 1fr;
-    grid-auto-rows:auto;
+    grid-template-columns: 92px 1fr;
+    row-gap: 10px;
   }
 
-  .project-meta,
   .project-readiness,
   .project-pathways,
   .project-budget,
   .project-roadmap{
     grid-column: 2 / -1;
-  }
-
-  .project-budget{
-    text-align:left;
-  }
-
-  .project-roadmap{
-    justify-self:start;
+    justify-self: start;
+    text-align: left;
   }
 }

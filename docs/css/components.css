@@ -1,311 +1,228 @@
-/* ===== Auth Layout (REPLACE your current auth/login CSS block with this) ===== */
+/* ==================================================
+   CineSparq — Components
+   Brand, nav, buttons, chips, status pills
+   ================================================== */
 
-.auth{
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 16px;
-  position: relative;
-  box-sizing: border-box;
-}
-
-/* Hard width controls so it NEVER spans full page */
-.auth__shell{
-  box-sizing: border-box;
-
-  /* width behavior */
-  inline-size: min(420px, 100%);
-  max-inline-size: 420px;
-  flex: 0 1 420px;
-
-  /* visual */
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 18px;
-  padding: 28px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  /* make sure it sits above glow */
-  z-index: 2;
-}
-
-.auth__brand{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-
-  /* prevents logo row from stretching container */
-  min-width: 0;
-}
-
-/* If you're using an <img> logo mark, this prevents it from breaking layout */
-.auth__brand img{
-  inline-size: 44px;
-  block-size: 44px;
-  flex: 0 0 auto;
-  display: block;
-}
-
-/* If you're still using the div brandmark, keep it stable too */
-.brandmark{
-  width: 44px;
-  height: 44px;
-  flex: 0 0 auto;
-
-  border-radius: 14px;
-  position: relative;
+/* Brand block */
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid var(--cs-border-subtle);
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: 0 14px 50px rgba(0,0,0,0.35);
-  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
-.brandmark__dot{
-  position: absolute;
-  width: 10px; height: 10px;
-  border-radius: 999px;
-  left: 14px; top: 16px;
-  background: var(--cs-yellow);
-  box-shadow: 0 0 30px rgba(248,212,24,0.35);
-}
-
-.brandmark__ring{
-  position: absolute;
-  width: 62px; height: 62px;
-  border-radius: 999px;
-  left: -16px; top: -18px;
-  border: 2px solid rgba(10,79,132,0.45);
-  filter: blur(0.2px);
-}
-
-.brandname{
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  font-size: 18px;
-  line-height: 1.1;
-
-  /* prevents weird overflow */
+.brand__left{
+  display:flex;
+  align-items:center;
+  gap: 12px;
   min-width: 0;
 }
 
-.brandtag{
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 2px;
-
-  /* prevents long taglines from forcing width */
-  overflow-wrap: anywhere;
-}
-
-.authcard{
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  padding: 22px;
-
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.authcard__top{ margin-bottom: 18px; }
-
-.authcard__title{
-  font-size: 28px;
-  letter-spacing: -0.3px;
-}
-
-.authcard__caption{
-  margin-top: 8px;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-.form{ display:flex; flex-direction:column; gap: 14px; }
-
-.field{ display:flex; flex-direction:column; gap: 8px; }
-
-.field__label{
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.field__input{
-  width: 100%;
-  height: 46px;
-  padding: 0 14px;
+.brand__mark{
+  width: 38px;
+  height: 38px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(7,9,13,0.55);
-  color: var(--text);
-  outline: none;
-  box-sizing: border-box;
+  display:grid;
+  place-items:center;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.03);
+  flex: 0 0 38px;
+  overflow:hidden;
 }
 
-.field__input::placeholder{ color: rgba(249,245,239,0.45); }
-
-.field__input:focus{
-  border-color: rgba(248,212,24,0.26);
-  box-shadow: var(--ring);
+.brand__mark img{
+  width: 22px;
+  height: 22px;
+  display:block;
+  opacity: 0.98;
 }
 
-.field__row{
+.brand__text{
+  display:flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brand__name{
+  font-weight: 750;
+  letter-spacing: 0.2px;
+  font-size: 14px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand__sub{
+  font-size: 12px;
+  color: var(--cs-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.collapseBtn{
+  height: 38px;
+  width: 38px;
+  border-radius: 14px;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.04);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  color: var(--cs-text-primary);
+  flex: 0 0 38px;
+}
+.collapseBtn:hover{ border-color: var(--cs-border-strong); }
+.collapseBtn:focus{ outline:none; box-shadow: var(--ring); }
+
+/* Sidebar nav */
+.nav{ display:flex; flex-direction: column; gap: 6px; padding: 4px; }
+
+.nav__label{
+  margin: 10px 10px 6px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cs-text-muted);
+}
+
+.nav__item{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  text-decoration:none;
+  color: var(--cs-text-primary);
+  opacity: 0.92;
+}
+
+.nav__item:hover{
+  background: var(--cs-hover-bg);
+  border-color: var(--cs-border-subtle);
+}
+
+.nav__item--active{
+  background: rgba(10,79,132,0.18);
+  border-color: rgba(10,79,132,0.28);
+}
+
+.ico{
+  width: 18px;
+  height: 18px;
+  display:inline-block;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid var(--cs-border-subtle);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  flex: 0 0 18px;
+}
+.nav__text{
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Topbar bits */
+.pagetitle{
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(249,245,239,0.88);
+  white-space: nowrap;
+}
+
+.search{
   display:flex;
   align-items:center;
   gap: 10px;
+  width: min(520px, 52vw);
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
+
+.search input{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--cs-text-primary);
+  font-size: 13px;
+}
+.search input::placeholder{ color: var(--cs-text-muted); }
 
 .iconbtn{
-  height: 46px;
-  padding: 0 14px;
+  width: 40px;
+  height: 40px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid var(--cs-border-subtle);
   background: rgba(255,255,255,0.04);
-  color: var(--text);
-  cursor: pointer;
+  cursor:pointer;
+  color: var(--cs-text-primary);
+  position: relative;
 }
-
-.iconbtn:hover{ border-color: rgba(255,255,255,0.18); }
+.iconbtn:hover{ border-color: var(--cs-border-strong); }
 .iconbtn:focus{ outline:none; box-shadow: var(--ring); }
 
-.iconbtn__text{
-  font-size: 13px;
-  color: rgba(249,245,239,0.78);
-}
-
-.form__meta{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-  margin-top: 2px;
-}
-
-.check{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.check input{ accent-color: var(--cs-yellow); }
-
-.btn{
-  height: 46px;
-  border-radius: 14px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 0 14px;
-  border: 1px solid rgba(255,255,255,0.10);
-  cursor:pointer;
-  font-weight: 650;
-  letter-spacing: 0.1px;
-  user-select:none;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.btn--primary{
-  background: linear-gradient(180deg, rgba(248,212,24,0.95), rgba(248,212,24,0.82));
-  color: rgba(7,9,13,0.96);
-  border-color: rgba(248,212,24,0.35);
-}
-
-.btn--primary:hover{ filter: brightness(1.03); }
-
-.btn--secondary{
-  background: rgba(255,255,255,0.05);
-  color: rgba(249,245,239,0.92);
-}
-
-.btn--secondary:hover{ border-color: rgba(255,255,255,0.18); }
-
-.divider{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-  margin: 2px 0;
-}
-
-.divider__line{
-  height: 1px;
-  flex: 1;
-  background: rgba(255,255,255,0.10);
-}
-
-.divider__text{
-  font-size: 12px;
-  color: var(--faint);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-}
-
-.fineprint{
-  margin-top: 6px;
-  font-size: 12px;
-  color: var(--faint);
-  line-height: 1.45;
-}
-
-.auth__footer{
-  margin-top: 14px;
-  padding: 0 4px;
-}
-
-.auth__hint{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--faint);
-}
-
-.pill{
-  font-size: 11px;
-  padding: 5px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.04);
-  color: rgba(249,245,239,0.78);
-}
-
-.auth__glow{
+.dot{
   position:absolute;
-  inset:-140px;
-  z-index: 1;
-  pointer-events:none;
-  background:
-    radial-gradient(600px 420px at 50% 20%, rgba(10,79,132,0.22), transparent 60%),
-    radial-gradient(520px 360px at 55% 60%, rgba(248,212,24,0.10), transparent 60%);
-  filter: blur(18px);
-  opacity: 0.85;
+  top: 9px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cs-accent-gold);
+  box-shadow: 0 0 24px rgba(248,212,24,0.35);
 }
 
-@media (max-width: 420px){
-  .auth__shell{ padding: 22px; }
-  .authcard{ padding: 18px; }
-  .authcard__title{ font-size: 24px; }
-  .form__meta{ flex-direction:column; align-items:flex-start; }
-/* ==================================================
-   CineSparq — Project Status Pills
-   Used in Creator Dashboard + future views
-   ================================================== */
-.status-pill{
-  display:inline-flex;
+.userchip{
+  display:flex;
   align-items:center;
-  border-radius:999px;
-  padding:4px 10px;
-  font-size:12px;
-  font-weight:500;
-  line-height:1;
-  border:1px solid transparent;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--cs-border-subtle);
+  background: rgba(255,255,255,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  white-space: nowrap;
+}
+.avatar{
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--cs-border-subtle);
+  background: radial-gradient(14px 14px at 30% 30%, rgba(248,212,24,0.35), rgba(10,79,132,0.25));
+}
+.username{
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(249,245,239,0.86);
+}
+
+/* Status pills (ties into your tokens) */
+.status-pill{
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .status-pill--packaging{
