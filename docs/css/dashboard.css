@@ -5,11 +5,21 @@
 
 /* ===== Creator Dashboard: Project Slate Strips ===== */
 
+/* ===== Project Strip Grid ===== */
 .project-row{
   display:grid;
-  grid-template-columns: 72px 1.6fr 1.2fr 1.2fr 1fr 0.7fr; /* poster | title | state | readiness | pathways | budget */
+  grid-template-columns: 96px 2.2fr 1.2fr 1fr 0.9fr 160px;
   gap:16px;
   align-items:center;
+
+  background: var(--cs-bg-secondary);
+  border: 1px solid var(--cs-border-subtle);
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+
+.project-row + .project-row{ margin-top: 14px; }
+
 
   background: var(--cs-bg-secondary);
   border: 1px solid var(--cs-border-subtle);
@@ -28,16 +38,46 @@
 
 /* Poster thumbnail (bigger, visible) */
 .project-poster{
-  width: 56px;
-  height: 84px;
-  border-radius: 8px;
+  width: 72px;
+  height: 108px; /* 2:3 */
+  border-radius: 10px;
   object-fit: cover;
   display:block;
 }
 
+
 /* Title + format */
-.project-meta__title{ margin:0; font-size:14px; }
-.project-meta__format{ margin:6px 0 0; font-size:12px; color: var(--cs-text-secondary); }
+.project-meta{
+  min-width: 0;
+}
+
+.project-title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.project-title__name{
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cs-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-title__name:hover{
+  text-decoration: underline;
+}
+
+.project-title__meta{
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--cs-text-secondary);
+}
+
 
 /* Readiness + pathways + budget */
 .project-readiness{ font-size:12px; color: var(--cs-text-muted); }
@@ -171,6 +211,149 @@ F
   font-size: 14px;
   color: var(--cs-text-secondary);
 }
+/* =========================================
+   Creator Dashboard — Project Slate (Spec)
+   ========================================= */
+
+.projectList{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* Row grid */
+.project-row{
+  display:grid;
+  grid-template-columns: 104px 2.3fr 1.2fr 1fr 0.8fr 160px;
+  gap:16px;
+  align-items:center;
+
+  background: var(--cs-bg-secondary);
+  border: 1px solid var(--cs-border-subtle);
+  border-radius: 18px;
+  padding: 16px 18px;
+
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
+}
+
+.project-row:hover{
+  background: var(--cs-bg-tertiary);
+  transform: translateY(-1px);
+  border-color: var(--cs-border-strong);
+}
+
+/* Poster */
+.project-posterWrap{
+  display:block;
+  width:104px;
+}
+
+.project-poster{
+  width: 78px;
+  height: 117px; /* 2:3 */
+  border-radius: 10px;
+  object-fit: cover;
+  display:block;
+}
+
+/* Title + status */
+.project-meta{ min-width:0; }
+
+.project-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.project-title__name{
+  color: var(--cs-text-primary);
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.project-title__name:hover{ text-decoration:underline; }
+
+.project-title__meta{
+  margin-top:6px;
+  font-size:12px;
+  color: var(--cs-text-secondary);
+}
+
+/* Secondary fields */
+.project-readiness{
+  font-size:12px;
+  color: var(--cs-text-muted);
+}
+
+.project-pathways{
+  font-size:12px;
+  color: var(--cs-text-secondary);
+  text-decoration:none;
+}
+
+.project-pathways:hover{
+  color: var(--cs-text-primary);
+  text-decoration:underline;
+}
+
+.project-budget{
+  text-align:right;
+  font-size:12px;
+  color: var(--cs-text-secondary);
+  white-space:nowrap;
+}
+
+/* Roadmap */
+.project-roadmap{
+  justify-self:end;
+  font-size:12px;
+  text-decoration:none;
+}
+
+.project-roadmap--on{
+  color: var(--cs-accent-navy);
+}
+
+.project-roadmap--on:hover{
+  text-decoration:underline;
+}
+
+.project-roadmap--off{
+  color: var(--cs-text-muted);
+}
+
+/* Pager visibility */
+.pagerbtn{
+  width:36px;
+  height:36px;
+  border-radius:999px;
+  border: 1px solid var(--cs-border-strong);
+  background: var(--cs-bg-tertiary);
+  color: var(--cs-text-primary);
+  font-size:18px;
+  line-height:1;
+  display:grid;
+  place-items:center;
+}
+
+.pagerbtn:hover{
+  background: var(--cs-bg-secondary);
+  transform: translateY(-1px);
+}
+
+.pagerbtn--disabled{
+  opacity:0.45;
+}
+
+.pager__meta{
+  color: var(--cs-text-secondary);
+}
+
 
 /* ---------- Project strip grid ---------- */
 .project-row {

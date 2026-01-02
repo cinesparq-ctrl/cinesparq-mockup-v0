@@ -1011,177 +1011,129 @@
           </article>
         </section>
 
-        <!-- PROJECT STRIP -->
-        <section class="section" aria-label="Projects">
-          <header class="section__head">
-            <div class="section__title">Your Projects</div>
-            <div class="pager" aria-label="Project paging">
-              <button class="pagerbtn" type="button" aria-label="Previous projects" title="Previous">‹</button>
-              <span>Showing 1–4 of 12</span>
-              <button class="pagerbtn" type="button" aria-label="Next projects" title="Next">›</button>
-            </div>
-          </header>
+        <!-- PROJECT STRIP (SPEC) -->
+<section class="section" aria-label="Projects">
+  <header class="section__head">
+    <div class="section__title">Your Projects</div>
 
-          <div class="projectList">
+    <div class="pager" aria-label="Project paging">
+      <!-- Page 1: previous disabled -->
+      <button class="pagerbtn pagerbtn--disabled" type="button" aria-label="Previous projects" title="Previous" disabled>‹</button>
+      <span class="pager__meta">Showing 1–4 of 12</span>
+      <button class="pagerbtn" type="button" aria-label="Next projects" title="Next">›</button>
+    </div>
+  </header>
 
-            <!-- 1 -->
-            <article class="project status--review">
-              <div class="poster">
-                <img class="poster__img" src="../assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
-              </div>
+  <div class="projectList">
 
-              <div class="projMid">
-                <div class="projTop">
-                  <div class="projTitle">
-                    <a href="./project-as-time-goes-by.html" title="Access project">As Time Goes By</a>
-                    <div class="metaRow">
-                      <span class="pill">Drama</span>
-                      <span class="pill">Budget: $100–250K</span>
-                      <span class="badge status--review"><span class="badge__dot"></span>In Review</span>
-                      <span class="pill">Owner</span>
-                    </div>
-                  </div>
-                </div>
+    <!-- 1 -->
+    <article class="project-row" aria-label="Project: As Time Goes By">
+      <!-- 1) Poster -->
+      <a class="project-posterWrap" href="./project-as-time-goes-by.html" title="Access project">
+        <img class="project-poster" src="../assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
+      </a>
 
-                <div class="projStats">
-                  <div class="stat"><b>18</b> matched</div>
-                  <div class="stat"><b>Grant</b> + Brand</div>
-                  <div class="stat"><b>Market-Aligned</b></div>
-                  <div class="stat"><b>Constraint</b> Rights/Legal</div>
-                  <div class="stat"><b>Time</b> 2 windows opening soon</div>
-                </div>
-              </div>
-
-              <div class="projRight">
-                <div class="roadmapRow">
-                  <a class="btn btn--roadmapOff" href="#" aria-disabled="true">View Roadmap</a>
-                </div>
-                <div class="muteline">
-                  Last activity: Assets updated • opportunities refreshing
-                </div>
-              </div>
-            </article>
-
-            <!-- 2 -->
-            <article class="project status--active">
-              <div class="poster">
-                <img class="poster__img" src="../assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
-              </div>
-
-              <div class="projMid">
-                <div class="projTop">
-                  <div class="projTitle">
-                    <a href="./project-hard-sale.html" title="Access project">Hard Sale</a>
-                    <div class="metaRow">
-                      <span class="pill">Thriller</span>
-                      <span class="pill">Budget: $25–75K</span>
-                      <span class="badge status--active"><span class="badge__dot"></span>Active</span>
-                      <span class="pill">Owner</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="projStats">
-                  <div class="stat"><b>12</b> matched</div>
-                  <div class="stat"><b>Impact</b> + Private</div>
-                  <div class="stat"><b>Submission-Ready</b></div>
-                  <div class="stat"><b>Constraint</b> Packaging</div>
-                  <div class="stat"><b>Time</b> Ongoing</div>
-                </div>
-              </div>
-
-              <div class="projRight">
-                <div class="roadmapRow">
-                  <a class="btn btn--roadmapOn" href="./hard-sale-roadmap.html">View Roadmap</a>
-                </div>
-                <div class="muteline">
-                  Last activity: Roadmap issued • 3 actions open
-                </div>
-              </div>
-            </article>
-
-            <!-- 3 -->
-            <article class="project status--building">
-              <div class="poster">
-                <img class="poster__img" src="../assets/posters/haunted-poster.png" alt="Haunted poster" />
-              </div>
-
-              <div class="projMid">
-                <div class="projTop">
-                  <div class="projTitle">
-                    <a href="./project-haunted.html" title="Access project">Haunted</a>
-                    <div class="metaRow">
-                      <span class="pill">Horror</span>
-                      <span class="pill">Budget: Under $25K</span>
-                      <span class="badge status--building"><span class="badge__dot"></span>Building</span>
-                      <span class="pill">Owner</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="projStats">
-                  <div class="stat"><b>7</b> matched</div>
-                  <div class="stat"><b>Grant</b></div>
-                  <div class="stat"><b>Emerging</b></div>
-                  <div class="stat"><b>Constraint</b> Proof-of-Concept</div>
-                  <div class="stat"><b>Time</b> No active windows</div>
-                </div>
-              </div>
-
-              <div class="projRight">
-                <div class="roadmapRow">
-                  <a class="btn btn--roadmapOff" href="#" aria-disabled="true">View Roadmap</a>
-                </div>
-                <div class="muteline">
-                  Last activity: Profile updated • awaiting submission
-                </div>
-              </div>
-            </article>
-
-            <!-- 4 (On Hold) -->
-            <article class="project status--hold is-hold">
-              <div class="poster">
-                <img class="poster__img" src="../assets/posters/in-memory-poster.png" alt="In Memory poster" />
-              </div>
-
-              <div class="projMid">
-                <div class="projTop">
-                  <div class="projTitle">
-                    <a href="./project-in-memory.html" title="Access project">In Memory</a>
-                    <div class="metaRow">
-                      <span class="pill">Drama</span>
-                      <span class="pill">Budget: $75–100K</span>
-                      <span class="badge status--hold"><span class="badge__dot"></span>On Hold</span>
-                      <span class="pill">Owner</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="projStats">
-                  <div class="stat"><b>5</b> matched</div>
-                  <div class="stat"><b>Brand</b></div>
-                  <div class="stat"><b>Exploration</b></div>
-                  <div class="stat"><b>Constraint</b> Audience</div>
-                  <div class="stat"><b>Time</b> Later / Ongoing</div>
-                </div>
-              </div>
-
-              <div class="projRight">
-                <div class="roadmapRow">
-                  <a class="btn btn--roadmapOff" href="#" aria-disabled="true">View Roadmap</a>
-                </div>
-                <div class="muteline">
-                  Last activity: Paused by owner • no actions due
-                </div>
-              </div>
-            </article>
-
-          </div>
-        </section>
-
+      <!-- 2) Title + Status -->
+      <div class="project-meta">
+        <div class="project-title">
+          <a class="project-title__name" href="./project-as-time-goes-by.html" title="Access project">
+            As Time Goes By
+          </a>
+          <span class="status-pill status-pill--inmotion">In Conversations</span>
+        </div>
+        <div class="project-title__meta">Feature • Drama</div>
       </div>
-    </main>
+
+      <!-- 3) Readiness Indicator -->
+      <div class="project-readiness">Ready for funding pathways</div>
+
+      <!-- 4) Active Pathways Count -->
+      <a class="project-pathways" href="./project-as-time-goes-by.html#pathways">3 active pathways</a>
+
+      <!-- 5) Budget Band -->
+      <div class="project-budget">Upper-Mid</div>
+
+      <!-- 6) Roadmap link (only if available) -->
+      <span class="project-roadmap project-roadmap--off" aria-label="Roadmap not available">—</span>
+    </article>
+
+    <!-- 2 -->
+    <article class="project-row" aria-label="Project: Hard Sale">
+      <a class="project-posterWrap" href="./project-hard-sale.html" title="Access project">
+        <img class="project-poster" src="../assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
+      </a>
+
+      <div class="project-meta">
+        <div class="project-title">
+          <a class="project-title__name" href="./project-hard-sale.html" title="Access project">
+            Hard Sale
+          </a>
+          <span class="status-pill status-pill--inmotion">Actively Submitting</span>
+        </div>
+        <div class="project-title__meta">Feature • Thriller</div>
+      </div>
+
+      <div class="project-readiness">Market-active</div>
+
+      <a class="project-pathways" href="./project-hard-sale.html#pathways">4 active pathways</a>
+
+      <div class="project-budget">Mid</div>
+
+      <a class="project-roadmap project-roadmap--on" href="./hard-sale-roadmap.html">View roadmap</a>
+    </article>
+
+    <!-- 3 -->
+    <article class="project-row" aria-label="Project: Haunted">
+      <a class="project-posterWrap" href="./project-haunted.html" title="Access project">
+        <img class="project-poster" src="../assets/posters/haunted-poster.png" alt="Haunted poster" />
+      </a>
+
+      <div class="project-meta">
+        <div class="project-title">
+          <a class="project-title__name" href="./project-haunted.html" title="Access project">
+            Haunted
+          </a>
+          <span class="status-pill status-pill--packaging">Building Package</span>
+        </div>
+        <div class="project-title__meta">Feature • Horror</div>
+      </div>
+
+      <div class="project-readiness">2 steps remaining</div>
+
+      <a class="project-pathways" href="./project-haunted.html#pathways">0 active pathways</a>
+
+      <div class="project-budget">Low</div>
+
+      <span class="project-roadmap project-roadmap--off" aria-label="Roadmap not available">—</span>
+    </article>
+
+    <!-- 4 -->
+    <article class="project-row" aria-label="Project: In Memory">
+      <a class="project-posterWrap" href="./project-in-memory.html" title="Access project">
+        <img class="project-poster" src="../assets/posters/in-memory-poster.png" alt="In Memory poster" />
+      </a>
+
+      <div class="project-meta">
+        <div class="project-title">
+          <a class="project-title__name" href="./project-in-memory.html" title="Access project">
+            In Memory
+          </a>
+          <span class="status-pill status-pill--onhold">On Hold</span>
+        </div>
+        <div class="project-title__meta">Feature • Drama</div>
+      </div>
+
+      <div class="project-readiness">Paused without actions</div>
+
+      <a class="project-pathways" href="./project-in-memory.html#pathways">0 active pathways</a>
+
+      <div class="project-budget">Mid</div>
+
+      <span class="project-roadmap project-roadmap--off" aria-label="Roadmap not available">—</span>
+    </article>
+
   </div>
+</section>
 
   <script>
     // Sidebar collapse (mock-safe)
