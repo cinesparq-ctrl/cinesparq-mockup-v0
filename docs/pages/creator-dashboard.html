@@ -207,212 +207,243 @@
 
           <div class="projectList">
 
-            <!-- 1 -->
-            <article class="project-row" aria-label="Project: As Time Goes By">
-              <a class="project-posterWrap" href="./project-create.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
-              </a>
+  <!-- 1 -->
+  <article class="project-row" aria-label="Project: As Time Goes By">
+    <a class="project-posterWrap" href="./project-as-time-goes-by.html" title="Access project">
+      <img class="project-poster" src="../assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
+    </a>
 
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-create.html">As Time Goes By</a>
-                  <span class="stage stage--ready">Ready</span>
-                </div>
-                <div class="project-title__meta">Feature • Drama</div>
-              </div>
+    <!-- Row 1: Title + Format/Genre -->
+    <div class="project-head">
+      <a class="project-title" href="./project-as-time-goes-by.html" title="Access project">
+        As Time Goes By
+      </a>
+      <div class="project-sub">Feature • Drama</div>
+    </div>
 
-              <div class="project-budget">
-                <span class="pill pill--budget">Upper-Mid</span>
-              </div>
+    <!-- Row 2: Columnar status info -->
+    <div class="project-metaGrid" aria-label="Project status info">
+      <div class="cell cell--budget">
+        <span class="cell__label">Budget</span>
+        <span class="pill pill--neutral">Upper-Mid</span>
+      </div>
 
-              <div class="project-nextstep" title="Finalize investor-facing deck + confirm chain of title docs">
-                Finalize investor-facing deck + confirm chain of title docs
-              </div>
+      <div class="cell cell--stage">
+        <span class="cell__label">Stage</span>
+        <span class="pill pill--stage pill--ready">Ready</span>
+      </div>
 
-              <div class="project-deadline">
-                <span class="deadline">Jan 14</span>
-              </div>
+      <div class="cell cell--next">
+        <span class="cell__label">Next step</span>
+        <span class="cell__value" title="Finalize investor-facing deck + proof pack">
+          Finalize investor-facing deck + proof pack
+        </span>
+      </div>
 
-              <div class="project-motion">
-                <span class="motionCount">2 submissions</span>
-              </div>
+      <div class="cell cell--deadline">
+        <span class="cell__label">Deadline</span>
+        <span class="pill pill--deadline">Jan 14</span>
+      </div>
 
-              <div class="project-roadmap">
-                <button class="btn btn--roadmapOn" type="button">View roadmap</button>
-              </div>
-            </article>
+      <div class="cell cell--motion">
+        <span class="cell__label">In Motion</span>
+        <span class="cell__value">2 submissions</span>
+      </div>
+    </div>
 
-            <!-- 2 -->
-            <article class="project-row" aria-label="Project: Hard Sale">
-              <a class="project-posterWrap" href="./project-create.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
-              </a>
+    <!-- Roadmap (spans both rows; always far right) -->
+    <div class="project-roadmapSlot">
+      <a class="btn btn--roadmapOn" href="./as-time-goes-by-roadmap.html">View roadmap</a>
+    </div>
+  </article>
 
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-create.html">Hard Sale</a>
-                  <span class="stage stage--motion">In Motion</span>
-                </div>
-                <div class="project-title__meta">Feature • Thriller</div>
-              </div>
+  <!-- 2 -->
+  <article class="project-row" aria-label="Project: Hard Sale">
+    <a class="project-posterWrap" href="./project-hard-sale.html" title="Access project">
+      <img class="project-poster" src="../assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
+    </a>
 
-              <div class="project-budget">
-                <span class="pill pill--budget">Mid</span>
-              </div>
+    <div class="project-head">
+      <a class="project-title" href="./project-hard-sale.html">Hard Sale</a>
+      <div class="project-sub">Feature • Thriller</div>
+    </div>
 
-              <div class="project-nextstep" title="Log follow-up dates and attach pitch email templates">
-                Log follow-up dates and attach pitch email templates
-              </div>
+    <div class="project-metaGrid">
+      <div class="cell cell--budget">
+        <span class="cell__label">Budget</span>
+        <span class="pill pill--neutral">Mid</span>
+      </div>
 
-              <!-- no deadline -->
-              <div class="project-deadline is-empty" aria-hidden="true"></div>
+      <div class="cell cell--stage">
+        <span class="cell__label">Stage</span>
+        <span class="pill pill--stage pill--motion">In Motion</span>
+      </div>
 
-              <div class="project-motion">
-                <span class="motionCount">4 submissions</span>
-              </div>
+      <div class="cell cell--next">
+        <span class="cell__label">Next step</span>
+        <span class="cell__value" title="Log follow-ups and decision expectations">
+          Log follow-ups and decision expectations
+        </span>
+      </div>
 
-              <div class="project-roadmap">
-                <button class="btn btn--roadmapOn" type="button">View roadmap</button>
-              </div>
-            </article>
+      <div class="cell cell--deadline">
+        <!-- no deadline -> hidden placeholder -->
+        <span class="cell__label">Deadline</span>
+        <span class="cell__value cell__value--muted">—</span>
+      </div>
 
-            <!-- 3 -->
-            <article class="project-row" aria-label="Project: Haunted">
-              <a class="project-posterWrap" href="./project-create.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/haunted-poster.png" alt="Haunted poster" />
-              </a>
+      <div class="cell cell--motion">
+        <span class="cell__label">In Motion</span>
+        <span class="cell__value">4 submissions</span>
+      </div>
+    </div>
 
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-create.html">Haunted</a>
-                  <span class="stage stage--packaging">Packaging</span>
-                </div>
-                <div class="project-title__meta">Feature • Horror</div>
-              </div>
+    <div class="project-roadmapSlot">
+      <a class="btn btn--roadmapOn" href="./hard-sale-roadmap.html">View roadmap</a>
+    </div>
+  </article>
 
-              <div class="project-budget">
-                <span class="pill pill--budget">Low</span>
-              </div>
+  <!-- 3 -->
+  <article class="project-row" aria-label="Project: Haunted">
+    <a class="project-posterWrap" href="./project-haunted.html" title="Access project">
+      <img class="project-poster" src="../assets/posters/haunted-poster.png" alt="Haunted poster" />
+    </a>
 
-              <div class="project-nextstep" title="Add proof-of-concept link + tighten budget top sheet">
-                Add proof-of-concept link + tighten budget top sheet
-              </div>
+    <div class="project-head">
+      <a class="project-title" href="./project-haunted.html">Haunted</a>
+      <div class="project-sub">Feature • Horror</div>
+    </div>
 
-              <div class="project-deadline">
-                <span class="deadline">Feb 02</span>
-              </div>
+    <div class="project-metaGrid">
+      <div class="cell cell--budget">
+        <span class="cell__label">Budget</span>
+        <span class="pill pill--neutral">Low</span>
+      </div>
 
-              <div class="project-motion">
-                <span class="motionCount">0</span>
-              </div>
+      <div class="cell cell--stage">
+        <span class="cell__label">Stage</span>
+        <span class="pill pill--stage pill--packaging">Packaging</span>
+      </div>
 
-              <div class="project-roadmap">
-                <button class="btn btn--roadmapOff" type="button" disabled>Roadmap</button>
-              </div>
-            </article>
+      <div class="cell cell--next">
+        <span class="cell__label">Next step</span>
+        <span class="cell__value" title="Add proof-of-concept and updated budget top sheet">
+          Add proof-of-concept and updated budget top sheet
+        </span>
+      </div>
 
-            <!-- 4 -->
-            <article class="project-row is-hold" aria-label="Project: In Memory">
-              <a class="project-posterWrap" href="./project-create.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/in-memory-poster.png" alt="In Memory poster" />
-              </a>
+      <div class="cell cell--deadline">
+        <span class="cell__label">Deadline</span>
+        <span class="pill pill--deadline">Feb 02</span>
+      </div>
 
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-create.html">In Memory</a>
-                  <span class="stage stage--hold">On Hold</span>
-                </div>
-                <div class="project-title__meta">Feature • Drama</div>
-              </div>
+      <div class="cell cell--motion">
+        <span class="cell__label">In Motion</span>
+        <span class="cell__value">0</span>
+      </div>
+    </div>
 
-              <div class="project-budget">
-                <span class="pill pill--budget">Mid</span>
-              </div>
+    <!-- No roadmap available -->
+    <div class="project-roadmapSlot">
+      <span class="btn btn--roadmapOff" aria-disabled="true">Roadmap</span>
+    </div>
+  </article>
 
-              <div class="project-nextstep" title="Paused by creator — no actions due">
-                Paused by creator — no actions due
-              </div>
+  <!-- 4 -->
+  <article class="project-row" aria-label="Project: In Memory">
+    <a class="project-posterWrap" href="./project-in-memory.html" title="Access project">
+      <img class="project-poster" src="../assets/posters/in-memory-poster.png" alt="In Memory poster" />
+    </a>
 
-              <div class="project-deadline is-empty" aria-hidden="true"></div>
+    <div class="project-head">
+      <a class="project-title" href="./project-in-memory.html">In Memory</a>
+      <div class="project-sub">Feature • Drama</div>
+    </div>
 
-              <div class="project-motion">
-                <span class="motionCount">0</span>
-              </div>
+    <div class="project-metaGrid">
+      <div class="cell cell--budget">
+        <span class="cell__label">Budget</span>
+        <span class="pill pill--neutral">Mid</span>
+      </div>
 
-              <div class="project-roadmap">
-                <button class="btn btn--roadmapOff" type="button" disabled>Roadmap</button>
-              </div>
-            </article>
+      <div class="cell cell--stage">
+        <span class="cell__label">Stage</span>
+        <span class="pill pill--stage pill--hold">On Hold</span>
+      </div>
 
-            <!-- 5 (placeholder project) -->
-            <article class="project-row" aria-label="Project: Atlas (Series)">
-              <a class="project-posterWrap" href="./project-create.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/hard-sale-poster.png" alt="Atlas poster placeholder" />
-              </a>
+      <div class="cell cell--next">
+        <span class="cell__label">Next step</span>
+        <span class="cell__value" title="Resume when cast availability re-opens">
+          Resume when cast availability re-opens
+        </span>
+      </div>
 
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-create.html">Atlas</a>
-                  <span class="stage stage--drafting">Drafting</span>
-                </div>
-                <div class="project-title__meta">Series • Drama</div>
-              </div>
+      <div class="cell cell--deadline">
+        <span class="cell__label">Deadline</span>
+        <span class="cell__value cell__value--muted">—</span>
+      </div>
 
-              <div class="project-budget">
-                <span class="pill pill--budget">Upper-Mid</span>
-              </div>
+      <div class="cell cell--motion">
+        <span class="cell__label">In Motion</span>
+        <span class="cell__value">0</span>
+      </div>
+    </div>
 
-              <div class="project-nextstep" title="Lock logline + define audience anchor">
-                Lock logline + define audience anchor
-              </div>
+    <div class="project-roadmapSlot">
+      <span class="btn btn--roadmapOff" aria-disabled="true">Roadmap</span>
+    </div>
+  </article>
 
-              <div class="project-deadline is-empty" aria-hidden="true"></div>
+  <!-- 5 -->
+  <article class="project-row" aria-label="Project: Atlas">
+    <a class="project-posterWrap" href="./project-atlas.html" title="Access project">
+      <img class="project-poster" src="../assets/posters/atlas-poster.png" alt="Atlas poster" />
+    </a>
 
-              <div class="project-motion">
-                <span class="motionCount">0</span>
-              </div>
+    <div class="project-head">
+      <a class="project-title" href="./project-atlas.html">Atlas</a>
+      <div class="project-sub">Series • Sci-Fi</div>
+    </div>
 
-              <div class="project-roadmap">
-                <button class="btn btn--roadmapOn" type="button">View roadmap</button>
-              </div>
-            </article>
+    <div class="project-metaGrid">
+      <div class="cell cell--budget"><span class="cell__label">Budget</span><span class="pill pill--neutral">Upper</span></div>
+      <div class="cell cell--stage"><span class="cell__label">Stage</span><span class="pill pill--stage pill--drafting">Drafting</span></div>
+      <div class="cell cell--next"><span class="cell__label">Next step</span><span class="cell__value">Lock series logline + season arc</span></div>
+      <div class="cell cell--deadline"><span class="cell__label">Deadline</span><span class="cell__value cell__value--muted">—</span></div>
+      <div class="cell cell--motion"><span class="cell__label">In Motion</span><span class="cell__value">0</span></div>
+    </div>
 
-            <!-- 6 (placeholder project) -->
-            <article class="project-row" aria-label="Project: Quiet Storm">
-              <a class="project-posterWrap" href="./project-create.html" title="Access project">
-                <img class="project-poster" src="../assets/posters/haunted-poster.png" alt="Quiet Storm poster placeholder" />
-              </a>
+    <div class="project-roadmapSlot">
+      <span class="btn btn--roadmapOff" aria-disabled="true">Roadmap</span>
+    </div>
+  </article>
 
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="./project-create.html">Quiet Storm</a>
-                  <span class="stage stage--ready">Ready</span>
-                </div>
-                <div class="project-title__meta">Doc • Music</div>
-              </div>
+  <!-- 6 -->
+  <article class="project-row" aria-label="Project: Small Gods">
+    <a class="project-posterWrap" href="./project-small-gods.html" title="Access project">
+      <img class="project-poster" src="../assets/posters/small-gods-poster.png" alt="Small Gods poster" />
+    </a>
 
-              <div class="project-budget">
-                <span class="pill pill--budget">Low</span>
-              </div>
+    <div class="project-head">
+      <a class="project-title" href="./project-small-gods.html">Small Gods</a>
+      <div class="project-sub">Short • Drama</div>
+    </div>
 
-              <div class="project-nextstep" title="Attach impact statement + outreach list">
-                Attach impact statement + outreach list
-              </div>
+    <div class="project-metaGrid">
+      <div class="cell cell--budget"><span class="cell__label">Budget</span><span class="pill pill--neutral">Micro</span></div>
+      <div class="cell cell--stage"><span class="cell__label">Stage</span><span class="pill pill--stage pill--ready">Ready</span></div>
+      <div class="cell cell--next"><span class="cell__label">Next step</span><span class="cell__value">Prep festival list + submission calendar</span></div>
+      <div class="cell cell--deadline"><span class="cell__label">Deadline</span><span class="pill pill--deadline">Jan 28</span></div>
+      <div class="cell cell--motion"><span class="cell__label">In Motion</span><span class="cell__value">1 submission</span></div>
+    </div>
 
-              <div class="project-deadline">
-                <span class="deadline">Jan 28</span>
-              </div>
+    <div class="project-roadmapSlot">
+      <a class="btn btn--roadmapOn" href="./small-gods-roadmap.html">View roadmap</a>
+    </div>
+  </article>
 
-              <div class="project-motion">
-                <span class="motionCount">3 submissions</span>
-              </div>
+</div>
 
-              <div class="project-roadmap">
-                <button class="btn btn--roadmapOn" type="button">View roadmap</button>
-              </div>
-            </article>
-
-          </div>
         </section>
 
       </div>
