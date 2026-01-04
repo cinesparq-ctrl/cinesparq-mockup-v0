@@ -9,6 +9,15 @@
               linear-gradient(180deg, var(--bg-1, #0b0f17), var(--bg-0, #07090d));
 }
 
+/* ---------- sidebar brand mark sizing (prevents overlap) ---------- */
+.sidebar__mark{
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex: 0 0 28px;
+  display: block;
+}
+
 /* ---------- top 3 cards ---------- */
 
 .tri3{
@@ -74,12 +83,16 @@
   font-size: 14px;
 }
 .triRow--solo{ margin-top: 18px; }
+
+/* UPDATED: underline all numbers in Top Opportunities + totals (even if not "hot") */
 .triNum{
   color: rgba(248,212,24,0.96);
   font-weight: 900;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(248,212,24,0.45);
 }
-.triNum:hover{ text-decoration: underline; text-underline-offset: 3px; }
+.triNum:hover{ text-decoration-color: rgba(248,212,24,0.65); }
 .triNum--hot{
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -94,12 +107,15 @@
   position:relative;
   z-index:1;
 }
+
+/* UPDATED: saved searches should always appear underlined (link-like) */
 .linkItem{
   color: rgba(249,245,239,0.86);
-  text-decoration:none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   font-weight: 700;
 }
-.linkItem:hover{ text-decoration: underline; text-underline-offset: 3px; }
+.linkItem:hover{ text-decoration-color: rgba(248,212,24,0.45); }
 
 .linkCta{
   margin-top: 14px;
@@ -308,14 +324,33 @@
   font-weight: 900;
 }
 
+/* UPDATED: strip labels act like a sticky table header */
 .stripLabels{
-  padding: 10px 14px 0;
+  padding: 10px 14px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11,15,24,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+
+  /* aligns the empty first cell with the poster column */
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 14px;
 }
+
 .stripLabels__cols{
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 14px;
-  margin-left: 120px; /* poster+gap alignment */
+  grid-template-columns:
+    2.2fr   /* Title */
+    1fr     /* Format */
+    1fr     /* Genre */
+    1.2fr   /* Status */
+    1fr     /* Budget Band */
+    1.2fr   /* % Funding Secured */
+    1.3fr;  /* Roadmap Status */
+  gap: 12px;
   color: rgba(249,245,239,0.55);
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -323,7 +358,7 @@
   font-weight: 900;
 }
 
-/* ---------- Project strips (2 rows fixed) ---------- */
+/* ---------- Project strips (table-like single row) ---------- */
 
 .projectList{
   display:flex;
@@ -340,6 +375,12 @@
   overflow: hidden;
   position: relative;
   padding: 14px 14px;
+
+  /* UPDATED: make each strip a single “row” with poster + columns */
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  column-gap: 14px;
+  align-items: center;
 }
 .project-row::before{
   content:"";
@@ -360,24 +401,36 @@
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
 }
 
+/* UPDATED: top now just holds the poster; no 2-col grid needed */
 .project-row__top{
-  display:grid;
-  grid-template-columns: 104px 1fr;
-  gap: 14px;
-  align-items:center;
   position: relative;
   z-index: 1;
 }
 
 .project-row__cols{
-  margin-top: 12px;
-  margin-left: 120px; /* aligns with text block */
+  /* UPDATED: remove margin-left + remove 4-col legacy grid */
+  margin: 0;
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 14px;
+  grid-template-columns:
+    2.2fr
+    1fr
+    1fr
+    1.2fr
+    1fr
+    1.2fr
+    1.3fr;
+  gap: 12px;
   align-items:center;
   position: relative;
   z-index: 1;
+}
+
+/* Optional: keep titles from forcing column blowouts */
+.projectCell{
+  min-width: 0;
+}
+.projectCell--title{
+  min-width: 0;
 }
 
 .project-posterWrap{
@@ -398,6 +451,7 @@
   background: rgba(255,255,255,0.04);
 }
 
+/* (kept for compatibility; no longer used by the new single-row layout) */
 .project-meta{ min-width: 0; }
 .project-title{
   display:flex;
@@ -405,6 +459,7 @@
   gap: 10px;
   min-width: 0;
 }
+
 .project-title__name{
   font-size: 18px;
   font-weight: 900;
@@ -469,6 +524,27 @@
 
 /* Responsive */
 @media (max-width: 900px){
-  .stripLabels__cols{ margin-left: 0; grid-template-columns: 1fr 1fr; }
-  .project-row__cols{ margin-left: 0; grid-template-columns: 1fr 1fr; }
+  /* make sticky header readable + reduce columns */
+  .stripLabels{
+    position: relative;
+    top: auto;
+    display: block;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 0;
+    padding: 10px 14px 0;
+  }
+  .stripLabels__cols{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .project-row{
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
+  .project-row__cols{
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 }

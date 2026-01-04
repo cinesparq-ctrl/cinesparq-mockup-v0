@@ -21,7 +21,8 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar__brand">
-        <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" />
+        <!-- UPDATED: add inline sizing to prevent overlap (no path/name change) -->
+        <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" style="width:28px;height:28px;object-fit:contain;flex:0 0 28px;" />
         <div class="sidebar__brandTxt">
           <div class="sidebar__name">CineSparq</div>
           <div class="sidebar__sub">Creator Dashboard</div>
@@ -81,27 +82,28 @@
           <div class="triList" aria-label="New opportunities by category">
             <div class="triRow">
               <span>Grants &amp; Public Funds</span>
-              <a class="triNum" href="pages/opportunities-grants-public-funds.html">14</a>
+              <!-- UPDATED: underline numbers even when linked -->
+              <a class="triNum" href="pages/opportunities-grants-public-funds.html" style="text-decoration:underline; text-underline-offset:3px;">14</a>
             </div>
 
             <div class="triRow">
               <span>Brand Partnerships &amp; Commissions</span>
-              <a class="triNum" href="pages/opportunities-brand-partnerships.html">9</a>
+              <a class="triNum" href="pages/opportunities-brand-partnerships.html" style="text-decoration:underline; text-underline-offset:3px;">9</a>
             </div>
 
             <div class="triRow">
               <span>Non-Equity Financing</span>
-              <a class="triNum triNum--hot" href="pages/opportunities-non-equity-financing.html">5</a>
+              <a class="triNum triNum--hot" href="pages/opportunities-non-equity-financing.html" style="text-decoration:underline; text-underline-offset:3px;">5</a>
             </div>
 
             <div class="triRow">
               <span>Market-Based Funding</span>
-              <a class="triNum" href="pages/opportunities-market-based-funding.html">4</a>
+              <a class="triNum" href="pages/opportunities-market-based-funding.html" style="text-decoration:underline; text-underline-offset:3px;">4</a>
             </div>
 
             <div class="triRow">
               <span>Incentives &amp; Rebates</span>
-              <a class="triNum triNum--hot" href="pages/opportunities-incentives-rebates.html">2</a>
+              <a class="triNum triNum--hot" href="pages/opportunities-incentives-rebates.html" style="text-decoration:underline; text-underline-offset:3px;">2</a>
             </div>
           </div>
         </article>
@@ -113,7 +115,8 @@
 
           <div class="triRow triRow--solo">
             <span>Total saved</span>
-            <a class="triNum" href="pages/saved-opportunities.html">12</a>
+            <!-- UPDATED: underline total saved number -->
+            <a class="triNum" href="pages/saved-opportunities.html" style="text-decoration:underline; text-underline-offset:3px;">12</a>
           </div>
         </article>
 
@@ -122,11 +125,12 @@
           <div class="triCard__title"><b>Saved Searches</b></div>
           <div class="triCard__asof" data-asof></div>
 
+          <!-- UPDATED: underline saved searches to appear as hyperlinks -->
           <div class="linkList" aria-label="Saved searches">
-            <a class="linkItem" href="pages/search-atl-rfps.html">ATL RFPs</a>
-            <a class="linkItem" href="pages/search-ga-creator-grants.html">GA Creator Grants</a>
-            <a class="linkItem" href="pages/search-series-content-investors.html">Series Content Investors</a>
-            <a class="linkItem" href="pages/search-us-buyer-producers.html">US Buyer/Producers</a>
+            <a class="linkItem" href="pages/search-atl-rfps.html" style="text-decoration:underline; text-underline-offset:3px;">ATL RFPs</a>
+            <a class="linkItem" href="pages/search-ga-creator-grants.html" style="text-decoration:underline; text-underline-offset:3px;">GA Creator Grants</a>
+            <a class="linkItem" href="pages/search-series-content-investors.html" style="text-decoration:underline; text-underline-offset:3px;">Series Content Investors</a>
+            <a class="linkItem" href="pages/search-us-buyer-producers.html" style="text-decoration:underline; text-underline-offset:3px;">US Buyer/Producers</a>
           </div>
 
           <div class="linkCta">
@@ -206,38 +210,43 @@
           </div>
         </div>
 
-        <!-- Column labels -->
+        <!-- UPDATED: Column labels now include Title / Format / Genre and Roadmap Status -->
+        <!-- Also: keep this block for future sticky/freeze in CSS -->
         <div class="stripLabels" aria-hidden="true">
           <div></div>
           <div class="stripLabels__cols">
+            <div>Title</div>
+            <div>Format</div>
+            <div>Genre</div>
             <div>Status</div>
             <div>Budget Band</div>
             <div>% Funding Secured</div>
-            <div>Roadmap Ready</div>
+            <div>Roadmap Status</div>
           </div>
         </div>
 
         <div class="projectList">
           <!-- ONE real linked project (roadmap + funding %) -->
+          <!-- UPDATED: make project strip a single row aligned with headings -->
           <article class="project-row" aria-label="Project: As Time Goes By">
             <div class="project-row__top">
               <a class="project-posterWrap" href="pages/roadmap.html" aria-label="Open project roadmap">
                 <img class="project-poster" src="assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
               </a>
-
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="pages/roadmap.html">As Time Goes By</a>
-                  <span class="project-title__meta">· Feature · Drama</span>
-                </div>
-              </div>
             </div>
 
+            <!-- UPDATED: singular row columns -->
             <div class="project-row__cols">
-              <div><span class="stage stage--motion">In Motion</span></div>
-              <div><span class="pill pill--budget">Upper-Mid</span></div>
-              <div><span class="pill">34%</span></div>
-              <div><span class="pill pill--ready">Roadmap ready</span></div>
+              <div class="projectCell projectCell--title">
+                <a class="project-title__name" href="pages/roadmap.html">As Time Goes By</a>
+              </div>
+              <div class="projectCell">Feature</div>
+              <div class="projectCell">Drama</div>
+
+              <div class="projectCell"><span class="stage stage--motion">In Motion</span></div>
+              <div class="projectCell"><span class="pill pill--budget">Upper-Mid</span></div>
+              <div class="projectCell"><span class="pill">34%</span></div>
+              <div class="projectCell"><span class="pill pill--ready">Roadmap ready</span></div>
             </div>
           </article>
 
@@ -247,20 +256,20 @@
               <a class="project-posterWrap" href="#" onclick="return false;">
                 <img class="project-poster" src="assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
               </a>
-
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="#" onclick="return false;">Hard Sale</a>
-                  <span class="project-title__meta">· Feature · Thriller</span>
-                </div>
-              </div>
             </div>
 
             <div class="project-row__cols">
-              <div><span class="stage stage--packaging">Packaging</span></div>
-              <div><span class="pill pill--budget">Mid</span></div>
-              <div><span class="pill">10%</span></div>
-              <div><span class="pill pill--notready">Not ready</span></div>
+              <div class="projectCell projectCell--title">
+                <a class="project-title__name" href="#" onclick="return false;">Hard Sale</a>
+              </div>
+              <div class="projectCell">Feature</div>
+              <div class="projectCell">Thriller</div>
+
+              <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
+              <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
+              <div class="projectCell"><span class="pill">10%</span></div>
+              <!-- UPDATED: Not ready -> In progress -->
+              <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
             </div>
           </article>
 
@@ -269,20 +278,20 @@
               <a class="project-posterWrap" href="#" onclick="return false;">
                 <img class="project-poster" src="assets/posters/haunted-poster.png" alt="Haunted poster" />
               </a>
-
-              <div class="project-meta">
-                <div class="project-title">
-                  <a class="project-title__name" href="#" onclick="return false;">Haunted</a>
-                  <span class="project-title__meta">· Feature · Horror</span>
-                </div>
-              </div>
             </div>
 
             <div class="project-row__cols">
-              <div><span class="stage stage--ready">Ready</span></div>
-              <div><span class="pill pill--budget">Low</span></div>
-              <div><span class="pill">0%</span></div>
-              <div><span class="pill pill--notready">Not ready</span></div>
+              <div class="projectCell projectCell--title">
+                <a class="project-title__name" href="#" onclick="return false;">Haunted</a>
+              </div>
+              <div class="projectCell">Feature</div>
+              <div class="projectCell">Horror</div>
+
+              <div class="projectCell"><span class="stage stage--ready">Ready</span></div>
+              <div class="projectCell"><span class="pill pill--budget">Low</span></div>
+              <div class="projectCell"><span class="pill">0%</span></div>
+              <!-- UPDATED: Not ready -> In progress -->
+              <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
             </div>
           </article>
         </div>
