@@ -6,434 +6,395 @@
   <meta name="theme-color" content="#0a4f84" />
   <title>CineSparq | Creator Dashboard</title>
 
- <link rel="stylesheet" href="../css/tokens.css">
-<link rel="stylesheet" href="../css/base.css">
-<link rel="stylesheet" href="../css/layout.css">
-<link rel="stylesheet" href="../css/components.css">
-<link rel="stylesheet" href="../css/dashboard.css">
-
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 
 <body class="dash">
-  <div class="app" id="app">
-    <!-- SIDEBAR -->
-    <aside class="sidebar" aria-label="Primary navigation">
-      <div class="brand">
-        <div class="brand__left">
-          <div class="brand__mark" aria-hidden="true">
-            <img src="./assets/logo/cs-mark-white.png" alt="" />
-          </div>
-          <div class="brand__text">
-            <div class="brand__name">CineSparq</div>
-            <div class="brand__sub">Creator Dashboard</div>
-          </div>
+  <!-- Shell -->
+  <div class="appShell">
+    <!-- Sidebar -->
+    <aside class="sideNav" aria-label="Sidebar navigation">
+      <div class="sideNav__brand">
+        <div class="sideNav__mark" aria-hidden="true">
+          <img src="../assets/logo/cs-mark-white.png" alt="" />
         </div>
-
-        <button class="collapseBtn" id="collapseBtn" type="button" aria-label="Collapse sidebar" title="Collapse sidebar">
-          ≡
+        <div class="sideNav__brandTxt">
+          <div class="sideNav__name">CineSparq</div>
+          <div class="sideNav__sub">Creator Dashboard</div>
+        </div>
+        <button class="iconBtn" type="button" aria-label="Menu">
+          <span aria-hidden="true">☰</span>
         </button>
       </div>
 
-      <nav class="nav">
-        <div class="nav__label">Workspace</div>
+      <div class="sideNav__sectionLabel">Workspace</div>
 
-        <a class="nav__item nav__item--active" href="./creator-dashboard.html" aria-current="page" title="Dashboard">
-          <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Dashboard</span>
+      <nav class="sideNav__links" aria-label="Workspace links">
+        <a class="navItem is-active" href="./creator-dashboard.html">
+          <span class="navDot" aria-hidden="true"></span>
+          Dashboard
         </a>
-
-        <a class="nav__item" href="./pages/saved-opportunities.html" title="Saved Opportunities">
-          <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Saved</span>
+        <a class="navItem" href="./saved-opportunities.html">
+          <span class="navDot" aria-hidden="true"></span>
+          Saved
         </a>
-
-        <a class="nav__item" href="./pages/opportunities-grants.html" title="Opportunities">
-          <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Opportunities</span>
+        <a class="navItem" href="./funding-paths.html">
+          <span class="navDot" aria-hidden="true"></span>
+          Funding Paths
         </a>
-
-        <a class="nav__item" href="./project-as-time-goes-by.html" title="Projects">
-          <span class="ico" aria-hidden="true"></span>
-          <span class="nav__text">Projects</span>
+        <a class="navItem" href="./project-create.html">
+          <span class="navDot" aria-hidden="true"></span>
+          Projects
+        </a>
+        <a class="navItem" href="./readiness-summary.html">
+          <span class="navDot" aria-hidden="true"></span>
+          Readiness
         </a>
       </nav>
 
-      <div class="sidebar__footer">
-        <a class="minihelp" href="./pages/saved-opportunities.html" title="Support">
-          <span class="ico" aria-hidden="true"></span>
-          <span>Support</span>
-        </a>
-      </div>
+      <a class="sideNav__support" href="#" aria-label="Support link">Support</a>
     </aside>
 
-    <!-- TOPBAR -->
-    <header class="topbar" aria-label="Top bar">
-      <div class="topbar__left">
-        <div class="pagetitle">Dashboard</div>
+    <!-- Main -->
+    <main class="mainPane" aria-label="Creator dashboard main content">
+      <!-- Top bar -->
+      <header class="topBar" aria-label="Top bar">
+        <div class="topBar__left">
+          <div class="pageKicker">Dashboard</div>
 
-        <div class="search" role="search" aria-label="Search projects">
-          <span aria-hidden="true" style="opacity:.75;">⌕</span>
-          <input type="search" placeholder="Search projects, opportunities…" />
-        </div>
-      </div>
-
-      <div class="topbar__right">
-        <button class="iconbtn" type="button" aria-label="Search" title="Search">⌕</button>
-        <button class="iconbtn" type="button" aria-label="Notifications" title="Notifications">🔔<span class="dot" aria-hidden="true"></span></button>
-        <button class="iconbtn" type="button" aria-label="Account settings" title="Account settings">⚙</button>
-
-        <div class="userchip" title="Account">
-          <div class="avatar" aria-hidden="true"></div>
-          <div class="username">EUNICE</div>
-        </div>
-      </div>
-    </header>
-
-    <!-- MAIN -->
-    <main class="main" aria-label="Dashboard content">
-      <div class="wrap">
-
-        <!-- Page heading -->
-        <div class="pageHead">
-          <div>
-            <h1 class="pageHead__title">Creator Dashboard</h1>
-            <p class="pageHead__sub">Your slate at a glance. Review new opportunities, revisit saved items, and track project stage without noise.</p>
+          <div class="searchBar" role="search" aria-label="Search">
+            <span class="searchIcon" aria-hidden="true">🔎</span>
+            <input
+              type="search"
+              class="searchInput"
+              placeholder="Search projects, opportunities…"
+              aria-label="Search projects and opportunities"
+            />
           </div>
         </div>
 
-        <!-- Pipeline cards (first thing under heading) -->
-        <section class="pipeline3" aria-label="Opportunity pipeline">
+        <div class="topBar__right">
+          <button class="iconBtn" type="button" aria-label="Search shortcuts">🔎</button>
+          <button class="iconBtn" type="button" aria-label="Notifications">🔔</button>
+          <button class="iconBtn" type="button" aria-label="Settings">⚙️</button>
 
+          <div class="userBadge" aria-label="User">
+            <div class="userAvatar" aria-hidden="true"></div>
+            <div class="userName">EUNICE</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="contentWrap" aria-label="Dashboard content">
+        <div class="pageHeader">
+          <h1 class="pageTitle">Creator Dashboard</h1>
+          <p class="pageSubtitle">
+            Your slate at a glance. Review new opportunities, revisit saved items, and track project stage without losing momentum.
+          </p>
+        </div>
+
+        <!-- NEW: 3 cards (first thing creators see) -->
+        <section class="triCards" aria-label="Opportunity overview cards">
           <!-- New Opportunities -->
-          <article class="pipeCard" aria-label="New Opportunities">
-            <div class="pipeCard__top">
+          <article class="triCard triCard--new">
+            <div class="triCard__head">
               <div>
-                <div class="pipeCard__label">New Opportunities</div>
-                <div class="pipeCard__asof" data-asof>As of —</div>
+                <div class="triCard__title">New Opportunities</div>
+                <div class="triCard__asof" data-asof>As of</div>
               </div>
             </div>
 
-            <div class="pipeCard__grid" role="list">
-              <div class="pipeCard__rowLabel" role="listitem">Grants</div>
-              <a class="pipeCard__numLink" href="./pages/opportunities-grants.html" title="View new grants">6</a>
+            <div class="triCard__grid" aria-label="New opportunities by type">
+              <div class="triMetric">
+                <div class="triMetric__label">Grants &amp; Public Funds</div>
+                <a class="triMetric__value" href="./opportunities-grants-public-funds.html">14</a>
+              </div>
 
-              <div class="pipeCard__rowLabel" role="listitem">Buyers</div>
-              <a class="pipeCard__numLink" href="./pages/opportunities-buyers.html" title="View new buyers">3</a>
+              <div class="triMetric">
+                <div class="triMetric__label">Brand Partnerships &amp; Commissions</div>
+                <a class="triMetric__value" href="./opportunities-brand-partnerships.html">9</a>
+              </div>
 
-              <div class="pipeCard__rowLabel" role="listitem">Brand RFP</div>
-              <a class="pipeCard__numLink" href="./pages/opportunities-brand-rfps.html" title="View new brand RFPs">4</a>
+              <div class="triMetric">
+                <div class="triMetric__label">Non-Equity Financing</div>
+                <a class="triMetric__value" href="./opportunities-non-equity-financing.html">5</a>
+              </div>
 
-              <div class="pipeCard__rowLabel" role="listitem">Impact Funds</div>
-              <a class="pipeCard__numLink" href="./pages/opportunities-impact-funds.html" title="View new impact funds">2</a>
+              <div class="triMetric">
+                <div class="triMetric__label">Market-Based Funding</div>
+                <a class="triMetric__value" href="./opportunities-market-based-funding.html">4</a>
+              </div>
+
+              <div class="triMetric">
+                <div class="triMetric__label">Incentives &amp; Rebates</div>
+                <a class="triMetric__value" href="./opportunities-incentives-rebates.html">2</a>
+              </div>
             </div>
           </article>
 
           <!-- Saved Opportunities -->
-          <article class="pipeCard" aria-label="Saved Opportunities">
-            <div class="pipeCard__top">
+          <article class="triCard triCard--saved">
+            <div class="triCard__head">
               <div>
-                <div class="pipeCard__label">Saved Opportunities</div>
-                <div class="pipeCard__asof" data-asof>As of —</div>
+                <div class="triCard__title">Saved Opportunities</div>
+                <div class="triCard__asof" data-asof>As of</div>
               </div>
             </div>
 
-            <div class="pipeCard__grid">
-              <div class="pipeCard__rowLabel">Total saved</div>
-              <a class="pipeCard__numLink" href="./pages/saved-opportunities.html" title="View saved opportunities">12</a>
+            <div class="triCard__single">
+              <div class="triMetric triMetric--single">
+                <div class="triMetric__label">Total saved</div>
+                <a class="triMetric__value" href="./saved-opportunities.html">12</a>
+              </div>
             </div>
           </article>
 
           <!-- Saved Searches -->
-          <article class="pipeCard" aria-label="Saved Searches">
-            <div class="pipeCard__top">
+          <article class="triCard triCard--searches">
+            <div class="triCard__head">
               <div>
-                <div class="pipeCard__label">Saved Searches</div>
-                <div class="pipeCard__asof" data-asof>As of —</div>
+                <div class="triCard__title">Saved Searches</div>
+                <div class="triCard__asof" data-asof>As of</div>
               </div>
             </div>
 
-            <div class="pipeCard__list" aria-label="Saved search list">
-              <a class="pipeCard__link" href="./pages/search-atl-rfps.html">ATL RFPs</a>
-              <a class="pipeCard__link" href="./pages/search-ga-creator-grants.html">GA Creator Grants</a>
-              <a class="pipeCard__link" href="./pages/search-series-content-investors.html">Series Content Investors</a>
-              <a class="pipeCard__link" href="./pages/search-us-buyer-producers.html">US Buyer/Producers</a>
+            <div class="triCard__list" aria-label="Saved searches list">
+              <a class="triLink" href="./search-atl-rfps.html">ATL RFPs</a>
+              <a class="triLink" href="./search-ga-creator-grants.html">GA Creator Grants</a>
+              <a class="triLink" href="./search-series-content-investors.html">Series Content Investors</a>
+              <a class="triLink" href="./search-us-buyer-producers.html">US Buyer/Producers</a>
             </div>
 
-            <div class="pipeCard__cta">
-              <!-- Intentionally NOT created: real MVP functionality -->
-              <a href="./pages/opportunity-search.html" title="Create a new saved search">+ Create new search</a>
+            <div class="triCard__cta">
+              <a class="triCta" href="./funding-paths.html">+ Create new search</a>
             </div>
           </article>
-
         </section>
 
-        <!-- 4-UP slate indicators -->
-        <section class="slate4" aria-label="Slate overview">
-
-          <article class="slateCard slateCard--warm">
+        <!-- 4-up slate indicators -->
+        <section class="slate4" aria-label="Slate-level indicators">
+          <article class="slateCard slateCard--warm" aria-label="Deadlines and next steps">
             <div class="slateCard__top">
               <div>
-                <div class="slateCard__label">Deadlines & Next Steps</div>
+                <div class="slateCard__label">Deadlines &amp; Next Steps</div>
                 <div class="slateCard__value">5</div>
-                <div class="slateCard__sub">Items across your slate that need attention this week.</div>
+                <div class="slateCard__sub">Time-sensitive items across your slate that need attention.</div>
               </div>
-              <div class="ring3d" style="--p:58; --ringColor: rgba(245,207,76,0.92);">
+              <div class="ring3d" style="--p:64; --ringColor: rgba(248,212,24,0.95);" aria-hidden="true">
                 <div class="ring3d__fill"></div>
-                <div class="ring3d__txt">5</div>
+                <div class="ring3d__txt">64%</div>
               </div>
             </div>
-            <div class="slateCard__chips">
-              <span class="chip">2 packaging items</span>
-              <span class="chip">3 follow-ups</span>
+            <div class="slateCard__chips" aria-label="Examples">
+              <span class="chip">2 follow-ups due</span>
+              <span class="chip">1 missing req</span>
+              <span class="chip">2 drafts</span>
             </div>
           </article>
 
-          <article class="slateCard slateCard--cool">
+          <article class="slateCard slateCard--cool" aria-label="New opportunities to review">
             <div class="slateCard__top">
               <div>
                 <div class="slateCard__label">New Opportunities to Review</div>
-                <div class="slateCard__value">15</div>
-                <div class="slateCard__sub">New opportunities surfaced since your last refresh.</div>
+                <div class="slateCard__value">11</div>
+                <div class="slateCard__sub">Newly matched or newly added opportunities since last login.</div>
               </div>
-              <div class="ring3d" style="--p:72; --ringColor: rgba(78,163,255,0.92);">
+              <div class="ring3d" style="--p:34; --ringColor: rgba(10,79,132,0.95);" aria-hidden="true">
                 <div class="ring3d__fill"></div>
-                <div class="ring3d__txt">new</div>
+                <div class="ring3d__txt">34%</div>
               </div>
             </div>
-            <div class="slateCard__chips">
-              <span class="chip">Grants</span>
-              <span class="chip">Brands</span>
-              <span class="chip">Impact</span>
-              <span class="chip">Buyers</span>
+            <div class="slateCard__chips" aria-label="Highlights">
+              <span class="chip">Grants: 4</span>
+              <span class="chip">Brand: 3</span>
+              <span class="chip">Market: 2</span>
+              <span class="chip">Non-Equity: 2</span>
             </div>
           </article>
 
-          <article class="slateCard slateCard--violet">
+          <article class="slateCard slateCard--violet" aria-label="Submissions in motion">
             <div class="slateCard__top">
               <div>
                 <div class="slateCard__label">Submissions in Motion</div>
-                <div class="slateCard__value">7</div>
-                <div class="slateCard__sub">Logged outreach or submissions currently active.</div>
+                <div class="slateCard__value">6</div>
+                <div class="slateCard__sub">Opportunities you’ve logged as submitted and are tracking.</div>
               </div>
-              <div class="ring3d" style="--p:64; --ringColor: rgba(129,140,248,0.92);">
+              <div class="ring3d" style="--p:37; --ringColor: rgba(129,140,248,0.95);" aria-hidden="true">
                 <div class="ring3d__fill"></div>
-                <div class="ring3d__txt">7</div>
+                <div class="ring3d__txt">37%</div>
               </div>
             </div>
-            <div class="slateCard__chips">
-              <span class="chip">3 pending</span>
-              <span class="chip">2 follow-up due</span>
+            <div class="slateCard__chips" aria-label="Breakdown">
               <span class="chip">2 awaiting response</span>
+              <span class="chip">3 follow-ups</span>
+              <span class="chip">1 decision window</span>
             </div>
           </article>
 
-          <article class="slateCard slateCard--mint">
+          <article class="slateCard slateCard--mint" aria-label="Slate health">
             <div class="slateCard__top">
               <div>
                 <div class="slateCard__label">Slate Health</div>
-                <div class="slateCard__value">6</div>
-                <div class="slateCard__sub">Projects across stages (distribution view).</div>
+                <div class="slateCard__value">4</div>
+                <div class="slateCard__sub">Stage distribution across your projects right now.</div>
               </div>
-              <div class="ring3d" style="--p:48; --ringColor: rgba(110,231,183,0.90);">
+              <div class="ring3d" style="--p:58; --ringColor: rgba(110,231,183,0.95);" aria-hidden="true">
                 <div class="ring3d__fill"></div>
-                <div class="ring3d__txt">6</div>
+                <div class="ring3d__txt">58%</div>
               </div>
             </div>
-            <div class="slateCard__chips">
+            <div class="slateCard__chips" aria-label="Stage mix">
               <span class="chip">2 Packaging</span>
               <span class="chip">1 Ready</span>
-              <span class="chip">2 In Motion</span>
+              <span class="chip">1 In Motion</span>
               <span class="chip">1 On Hold</span>
             </div>
           </article>
-
         </section>
 
-        <!-- Project strips (summary status page) -->
-        <section class="section" aria-label="Projects">
-          <header class="section__head">
-            <div class="section__title">Your Projects</div>
+        <!-- Projects -->
+        <section class="panel" aria-label="Your projects">
+          <div class="panel__head">
+            <div class="panel__title">Your Projects</div>
 
-            <div class="pager pagerbtn--onlyNext" aria-label="Project paging">
-              <button class="pagerbtn pagerbtn--prev" type="button" aria-label="Previous projects" title="Previous">‹</button>
-              <span class="pager__meta">Showing 1–6 of 12</span>
-              <button class="pagerbtn" type="button" aria-label="Next projects" title="Next">›</button>
+            <div class="panel__pager" aria-label="Projects pager">
+              <span class="panel__range">Showing 1–6 of 12</span>
+              <button class="pagerbtn" type="button" aria-label="Next page">›</button>
             </div>
-          </header>
+          </div>
 
-          <div class="projectList">
+          <div class="projectList" role="list" aria-label="Project strips">
+            <!-- Strip: As Time Goes By -->
+            <article class="project-row" role="listitem" aria-label="Project: As Time Goes By">
+              <div class="project-posterWrap">
+                <img class="project-poster" src="../assets/img/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
+              </div>
 
-            <article class="project-row" aria-label="Project: As Time Goes By">
-              <div class="project-row__top">
-                <a class="project-posterWrap" href="./project-as-time-goes-by.html" title="Access project">
-                  <img class="project-poster" src="./assets/posters/as-time-goes-by-poster.png" alt="As Time Goes By poster" />
-                </a>
-
-                <div class="project-identity">
-                  <div class="project-titleRow">
-                    <a class="project-title" href="./project-as-time-goes-by.html">As Time Goes By</a>
-                    <span class="project-metaInline">Feature • Drama</span>
-                  </div>
+              <div class="project-meta">
+                <div class="project-title">
+                  <a class="project-title__name" href="./roadmap.html">As Time Goes By</a>
+                  <span class="project-title__meta">· Feature · Drama</span>
                 </div>
               </div>
 
-              <div class="project-row__bottom">
-                <div class="project-col col-budget"><span class="pill pill--budget">Upper-Mid</span></div>
-                <div class="project-col col-stage"><span class="stage stage--motion">In Motion</span></div>
-                <div class="project-col col-next"><div class="project-next">Log outreach targets and attach rights clearance summary</div></div>
-                <div class="project-col col-motion"><div class="motionCount">2 in motion</div></div>
-                <div class="project-col col-roadmap project-roadmap">
-                  <a class="btn btn--roadmapOn" href="./as-time-goes-by-roadmap.html">Review Roadmap</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-row" aria-label="Project: Hard Sale">
-              <div class="project-row__top">
-                <a class="project-posterWrap" href="./project-hard-sale.html" title="Access project">
-                  <img class="project-poster" src="./assets/posters/hard-sale-poster.png" alt="Hard Sale poster" />
-                </a>
-
-                <div class="project-identity">
-                  <div class="project-titleRow">
-                    <a class="project-title" href="./project-hard-sale.html">Hard Sale</a>
-                    <span class="project-metaInline">Feature • Thriller</span>
-                  </div>
-                </div>
+              <div class="project-budget">
+                <span class="pill pill--budget">Upper-Mid</span>
               </div>
 
-              <div class="project-row__bottom">
-                <div class="project-col col-budget"><span class="pill pill--budget">Mid</span></div>
-                <div class="project-col col-stage"><span class="stage stage--motion">In Motion</span></div>
-                <div class="project-col col-next"><div class="project-next">Finalize budget one-pager and update deck attachments</div></div>
-                <div class="project-col col-motion"><div class="motionCount">3 in motion</div></div>
-                <div class="project-col col-roadmap project-roadmap">
-                  <a class="btn btn--roadmapOn" href="./hard-sale-roadmap.html">Review Roadmap</a>
-                </div>
+              <div class="project-stage">
+                <span class="stage stage--motion">In Motion</span>
+              </div>
+
+              <div class="project-secured">
+                <span class="pill">34% secured</span>
+              </div>
+
+              <div class="project-roadmapReady">
+                <span class="pill">Roadmap ready</span>
               </div>
             </article>
 
-            <article class="project-row" aria-label="Project: Haunted">
-              <div class="project-row__top">
-                <a class="project-posterWrap" href="./project-haunted.html" title="Access project">
-                  <img class="project-poster" src="./assets/posters/haunted-poster.png" alt="Haunted poster" />
-                </a>
+            <!-- Strip: Hard Sale -->
+            <article class="project-row" role="listitem" aria-label="Project: Hard Sale">
+              <div class="project-posterWrap">
+                <img class="project-poster" src="../assets/img/hard-sale-poster.png" alt="Hard Sale poster" />
+              </div>
 
-                <div class="project-identity">
-                  <div class="project-titleRow">
-                    <a class="project-title" href="./project-haunted.html">Haunted</a>
-                    <span class="project-metaInline">Feature • Horror</span>
-                  </div>
+              <div class="project-meta">
+                <div class="project-title">
+                  <a class="project-title__name" href="#">Hard Sale</a>
+                  <span class="project-title__meta">· Feature · Thriller</span>
                 </div>
               </div>
 
-              <div class="project-row__bottom">
-                <div class="project-col col-budget"><span class="pill pill--budget">Low</span></div>
-                <div class="project-col col-stage"><span class="stage stage--packaging">Packaging</span></div>
-                <div class="project-col col-next"><div class="project-next">Add proof-of-concept plan and confirm key team roles</div></div>
-                <div class="project-col col-motion"><div class="motionCount">0 in motion</div></div>
-                <div class="project-col col-roadmap project-roadmap">
-                  <span class="btn btn--roadmapOff" aria-label="Roadmap not available">Roadmap Unavailable</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-row is-hold" aria-label="Project: In Memory">
-              <div class="project-row__top">
-                <a class="project-posterWrap" href="./project-in-memory.html" title="Access project">
-                  <img class="project-poster" src="./assets/posters/in-memory-poster.png" alt="In Memory poster" />
-                </a>
-
-                <div class="project-identity">
-                  <div class="project-titleRow">
-                    <a class="project-title" href="./project-in-memory.html">In Memory</a>
-                    <span class="project-metaInline">Feature • Drama</span>
-                  </div>
-                </div>
+              <div class="project-budget">
+                <span class="pill pill--budget">Mid</span>
               </div>
 
-              <div class="project-row__bottom">
-                <div class="project-col col-budget"><span class="pill pill--budget">Mid</span></div>
-                <div class="project-col col-stage"><span class="stage stage--hold">On Hold</span></div>
-                <div class="project-col col-next"><div class="project-next">Paused by creator</div></div>
-                <div class="project-col col-motion"><div class="motionCount">0 in motion</div></div>
-                <div class="project-col col-roadmap project-roadmap">
-                  <span class="btn btn--roadmapOff" aria-label="Roadmap not available">Roadmap Unavailable</span>
-                </div>
+              <div class="project-stage">
+                <span class="stage stage--packaging">Packaging</span>
+              </div>
+
+              <div class="project-secured">
+                <span class="pill">10% secured</span>
+              </div>
+
+              <div class="project-roadmapReady">
+                <span class="pill">Not ready</span>
               </div>
             </article>
 
-            <article class="project-row" aria-label="Project: All By Design">
-              <div class="project-row__top">
-                <a class="project-posterWrap" href="./project-all-by-design.html" title="Access project">
-                  <img class="project-poster" src="./assets/posters/all-by-design-poster.png" alt="All By Design poster" />
-                </a>
+            <!-- Strip: Haunted -->
+            <article class="project-row" role="listitem" aria-label="Project: Haunted">
+              <div class="project-posterWrap">
+                <img class="project-poster" src="../assets/img/haunted-poster.png" alt="Haunted poster" />
+              </div>
 
-                <div class="project-identity">
-                  <div class="project-titleRow">
-                    <a class="project-title" href="./project-all-by-design.html">All By Design</a>
-                    <span class="project-metaInline">Short • Drama</span>
-                  </div>
+              <div class="project-meta">
+                <div class="project-title">
+                  <a class="project-title__name" href="#">Haunted</a>
+                  <span class="project-title__meta">· Feature · Horror</span>
                 </div>
               </div>
 
-              <div class="project-row__bottom">
-                <div class="project-col col-budget"><span class="pill pill--budget">Micro</span></div>
-                <div class="project-col col-stage"><span class="stage stage--ready">Ready</span></div>
-                <div class="project-col col-next"><div class="project-next">Review funding pathways and select targets to pursue</div></div>
-                <div class="project-col col-motion"><div class="motionCount">1 in motion</div></div>
-                <div class="project-col col-roadmap project-roadmap">
-                  <a class="btn btn--roadmapOn" href="./all-by-design-roadmap.html">Review Roadmap</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-row" aria-label="Project: Descent">
-              <div class="project-row__top">
-                <a class="project-posterWrap" href="./project-descent.html" title="Access project">
-                  <img class="project-poster" src="./assets/posters/descent-poster.png" alt="Descent poster" />
-                </a>
-
-                <div class="project-identity">
-                  <div class="project-titleRow">
-                    <a class="project-title" href="./project-descent.html">Descent</a>
-                    <span class="project-metaInline">Series • Thriller</span>
-                  </div>
-                </div>
+              <div class="project-budget">
+                <span class="pill pill--budget">Low</span>
               </div>
 
-              <div class="project-row__bottom">
-                <div class="project-col col-budget"><span class="pill pill--budget">Upper-Mid</span></div>
-                <div class="project-col col-stage"><span class="stage stage--drafting">Drafting</span></div>
-                <div class="project-col col-next"><div class="project-next">Lock series premise and define audience positioning notes</div></div>
-                <div class="project-col col-motion"><div class="motionCount">0 in motion</div></div>
-                <div class="project-col col-roadmap project-roadmap">
-                  <span class="btn btn--roadmapOff" aria-label="Roadmap not available">Roadmap Unavailable</span>
-                </div>
+              <div class="project-stage">
+                <span class="stage stage--ready">Ready</span>
+              </div>
+
+              <div class="project-secured">
+                <span class="pill">0% secured</span>
+              </div>
+
+              <div class="project-roadmapReady">
+                <span class="pill">Not ready</span>
               </div>
             </article>
 
+            <!-- Strip: On Hold example -->
+            <article class="project-row is-hold" role="listitem" aria-label="Project: On Hold example">
+              <div class="project-posterWrap">
+                <img class="project-poster" src="../assets/img/placeholder-poster.png" alt="Project poster placeholder" />
+              </div>
+
+              <div class="project-meta">
+                <div class="project-title">
+                  <a class="project-title__name" href="#">Untitled Project</a>
+                  <span class="project-title__meta">· Series · Drama</span>
+                </div>
+              </div>
+
+              <div class="project-budget">
+                <span class="pill pill--budget">Low</span>
+              </div>
+
+              <div class="project-stage">
+                <span class="stage stage--hold">On Hold</span>
+              </div>
+
+              <div class="project-secured">
+                <span class="pill">0% secured</span>
+              </div>
+
+              <div class="project-roadmapReady">
+                <span class="pill">Not ready</span>
+              </div>
+            </article>
           </div>
         </section>
-
-      </div>
+      </section>
     </main>
   </div>
 
   <script>
-    // Sidebar collapse (mock-safe)
-    (function(){
-      const app = document.getElementById("app");
-      const btn = document.getElementById("collapseBtn");
-      if(btn && app){
-        btn.addEventListener("click", () => {
-          const collapsed = app.classList.toggle("is-collapsed");
-          btn.setAttribute("aria-label", collapsed ? "Expand sidebar" : "Collapse sidebar");
-          btn.setAttribute("title", collapsed ? "Expand sidebar" : "Collapse sidebar");
-        });
-      }
-    })();
-
     // “As of” system date (America/Chicago) for demo freshness
     (function(){
       const els = document.querySelectorAll("[data-asof]");

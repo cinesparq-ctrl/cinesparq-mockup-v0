@@ -3,59 +3,51 @@
    docs/css/dashboard.css
    ================================================== */
 
-/* Page wrapper background (kept subtle to avoid “blue haze” over content) */
 .dash{
-  background:
-    radial-gradient(900px 520px at 30% 5%, rgba(10,79,132,0.18), transparent 60%),
-    radial-gradient(800px 520px at 75% 70%, rgba(248,212,24,0.08), transparent 62%),
-    linear-gradient(180deg, var(--bg-1, #0b0f17), var(--bg-0, #07090d));
+  background: radial-gradient(900px 520px at 30% 5%, rgba(10,79,132,0.22), transparent 60%),
+              radial-gradient(800px 520px at 75% 70%, rgba(248,212,24,0.10), transparent 62%),
+              linear-gradient(180deg, var(--bg-1, #0b0f17), var(--bg-0, #07090d));
 }
 
-/* A safe content surface to prevent gradients from washing over sections */
-.dash .wrap{
-  position: relative;
-  z-index: 1;
+/* ---------------- Layout helpers ---------------- */
+
+.contentWrap{
+  padding: 18px 20px 34px;
 }
 
-/* ---------- Page heading area ---------- */
-.pageHead{
-  display:flex;
-  align-items:flex-start;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 12px;
+.pageHeader{
+  margin: 10px 0 14px;
 }
 
-.pageHead__title{
+.pageTitle{
+  font-size: 38px;
+  letter-spacing: -0.02em;
   margin: 0;
-  font-size: 18px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 850;
-  color: rgba(249,245,239,0.88);
 }
 
-.pageHead__sub{
-  margin: 8px 0 0;
-  font-size: 13px;
-  color: rgba(249,245,239,0.70);
-  max-width: 70ch;
-  line-height: 1.4;
+.pageSubtitle{
+  margin: 10px 0 0;
+  max-width: 72ch;
+  color: rgba(249,245,239,0.72);
+  line-height: 1.5;
 }
 
-/* ---------- Pipeline cards (first thing under heading) ---------- */
-.pipeline3{
-  display:grid;
+/* ==================================================
+   TOP: 3 equal cards (New Opportunities / Saved / Searches)
+   ================================================== */
+
+.triCards{
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
-  margin: 12px 0 16px;
+  margin: 16px 0 16px;
 }
 
 @media (max-width: 1100px){
-  .pipeline3{ grid-template-columns: 1fr; }
+  .triCards{ grid-template-columns: 1fr; }
 }
 
-.pipeCard{
+.triCard{
   position: relative;
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.10);
@@ -63,23 +55,23 @@
   box-shadow: 0 12px 45px rgba(0,0,0,0.35);
   padding: 14px 14px 12px;
   overflow: hidden;
-  min-height: 140px;
+  min-height: 160px;
 }
 
-.pipeCard::before{
+.triCard::before{
   content:"";
   position:absolute;
   inset: -120px -120px auto -120px;
-  height: 220px;
+  height: 240px;
   background:
-    radial-gradient(240px 170px at 18% 40%, rgba(255,255,255,0.10), transparent 60%),
-    radial-gradient(280px 170px at 82% 30%, rgba(255,255,255,0.06), transparent 62%);
+    radial-gradient(260px 180px at 18% 40%, rgba(255,255,255,0.10), transparent 60%),
+    radial-gradient(300px 190px at 82% 28%, rgba(255,255,255,0.06), transparent 62%);
   filter: blur(12px);
-  opacity: 0.75;
+  opacity: 0.8;
   pointer-events:none;
 }
 
-.pipeCard__top{
+.triCard__head{
   display:flex;
   align-items:flex-start;
   justify-content: space-between;
@@ -88,91 +80,126 @@
   z-index: 1;
 }
 
-.pipeCard__label{
-  font-size: 11px;
+.triCard__title{
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: rgba(249,245,239,0.70);
+}
+
+.triCard__asof{
+  margin-top: 8px;
+  font-size: 12px;
   color: rgba(249,245,239,0.66);
 }
 
-.pipeCard__asof{
-  margin-top: 6px;
-  font-size: 12px;
-  color: rgba(249,245,239,0.58);
-}
-
-.pipeCard__grid{
+.triCard__grid{
   margin-top: 12px;
-  display:grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px 12px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   position: relative;
   z-index: 1;
 }
 
-.pipeCard__rowLabel{
+.triMetric{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.triMetric__label{
   font-size: 12px;
-  color: rgba(249,245,239,0.74);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: rgba(249,245,239,0.76);
+  line-height: 1.2;
 }
 
-.pipeCard__numLink{
-  font-size: 13px;
+.triMetric__value{
+  font-size: 16px;
   font-weight: 850;
-  letter-spacing: 0.02em;
-  color: rgba(249,245,239,0.92);
+  letter-spacing: -0.01em;
   text-decoration: none;
-  border-bottom: 1px solid rgba(249,245,239,0.20);
+  color: rgba(248,212,24,0.98);
 }
-.pipeCard__numLink:hover{
-  border-bottom-color: rgba(249,245,239,0.45);
+.triMetric__value:hover{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(248,212,24,0.45);
 }
 
-.pipeCard__list{
-  margin-top: 10px;
+.triCard__single{
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.triMetric--single{
+  padding-top: 10px;
+}
+
+.triCard__list{
+  margin-top: 12px;
   display:flex;
   flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.triLink{
+  color: rgba(249,245,239,0.86);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+.triLink:hover{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(248,212,24,0.35);
+}
+
+.triCard__cta{
+  margin-top: 14px;
+  display:flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.triCta{
+  display:inline-flex;
+  align-items:center;
   gap: 8px;
-  position: relative;
-  z-index: 1;
+  text-decoration:none;
+  color: rgba(248,212,24,0.92);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(248,212,24,0.18);
+  background: rgba(0,0,0,0.14);
+}
+.triCta:hover{
+  border-color: rgba(248,212,24,0.32);
+  filter: brightness(1.02);
 }
 
-.pipeCard__link{
-  color: rgba(249,245,239,0.88);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(249,245,239,0.20);
-  width: fit-content;
-}
-.pipeCard__link:hover{
-  border-bottom-color: rgba(249,245,239,0.45);
-}
+/* Subtle tint per card */
+.triCard--new{ background: linear-gradient(135deg, rgba(78,163,255,0.18), rgba(255,255,255,0.03)); }
+.triCard--saved{ background: linear-gradient(135deg, rgba(245,207,76,0.14), rgba(255,255,255,0.03)); }
+.triCard--searches{ background: linear-gradient(135deg, rgba(129,140,248,0.14), rgba(255,255,255,0.03)); }
 
-.pipeCard__cta{
-  margin-top: 12px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
+/* ==================================================
+   4-up slate indicators
+   ================================================== */
 
-.pipeCard__cta a{
-  color: rgba(78,163,255,0.95);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(78,163,255,0.25);
-  font-weight: 750;
-}
-.pipeCard__cta a:hover{
-  border-bottom-color: rgba(78,163,255,0.55);
-}
-
-/* ---------- 4-up slate indicators ---------- */
 .slate4{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  margin-bottom: 14px;
+  margin: 0 0 16px;
 }
 
 @media (max-width: 1100px){
@@ -264,7 +291,8 @@
 .slateCard--violet{ background: linear-gradient(135deg, rgba(129,140,248,0.18), rgba(255,255,255,0.03)); }
 .slateCard--mint{ background: linear-gradient(135deg, rgba(110,231,183,0.14), rgba(255,255,255,0.03)); }
 
-/* ---------- 3D beveled ring ---------- */
+/* -------- 3D beveled ring -------- */
+
 .ring3d{
   width: 62px;
   height: 62px;
@@ -300,7 +328,8 @@
     radial-gradient(18px 18px at 28% 26%, rgba(255,255,255,0.22), transparent 60%),
     linear-gradient(180deg, rgba(11,15,24,0.88), rgba(11,15,24,0.70));
   border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: inset 0 10px 18px rgba(0,0,0,0.35);
+  box-shadow:
+    inset 0 10px 18px rgba(0,0,0,0.35);
 }
 
 .ring3d__txt{
@@ -315,35 +344,42 @@
   z-index: 1;
 }
 
-/* ---------- Section shell ---------- */
-.section{
-  border-radius: 20px;
+/* ==================================================
+   Projects panel + strips (2-row strip)
+   Fields:
+   1) Title (link) · Format · Genre
+   2) Budget Band
+   3) Project Status
+   4) Budget Secured %
+   5) Roadmap Ready
+   ================================================== */
+
+.panel{
+  margin-top: 16px;
+  border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.03);
-  box-shadow: 0 12px 45px rgba(0,0,0,0.35);
+  background: rgba(255,255,255,0.02);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.30);
   overflow: hidden;
 }
 
-.section__head{
+.panel__head{
   display:flex;
   align-items:center;
   justify-content: space-between;
-  gap: 12px;
   padding: 14px 16px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
+  background: rgba(0,0,0,0.10);
 }
 
-.section__title{
+.panel__title{
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(249,245,239,0.72);
-  font-weight: 800;
+  color: rgba(249,245,239,0.70);
 }
 
-/* Pager arrows: prominent + right arrow only on page 1 */
-.pager{
+.panel__pager{
   display:flex;
   align-items:center;
   gap: 10px;
@@ -352,31 +388,19 @@
 }
 
 .pagerbtn{
-  width: 36px;
-  height: 36px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.14);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
   background: rgba(0,0,0,0.18);
-  cursor:pointer;
-  color: rgba(249,245,239,0.95);
+  color: rgba(249,245,239,0.92);
   font-weight: 900;
-  font-size: 18px;
-  display:grid;
-  place-items:center;
+  cursor: pointer;
 }
 .pagerbtn:hover{
-  border-color: rgba(255,255,255,0.22);
-  transform: translateY(-1px);
-}
-.pagerbtn:focus{ outline:none; box-shadow: var(--ring, 0 0 0 4px rgba(248,212,24,0.18)); }
-
-.pagerbtn--onlyNext .pagerbtn--prev{ display:none; }
-
-.pager__meta{
-  color: rgba(249,245,239,0.72);
+  border-color: rgba(255,255,255,0.18);
 }
 
-/* ---------- Project strips (two-row spec) ---------- */
 .projectList{
   display:flex;
   flex-direction: column;
@@ -384,8 +408,12 @@
   padding: 14px;
 }
 
-/* whole strip */
 .project-row{
+  display:grid;
+  grid-template-columns: 92px 1.8fr 1fr 1fr 1fr 1fr;
+  gap: 14px;
+  align-items: center;
+
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(255,255,255,0.03);
@@ -404,7 +432,7 @@
     radial-gradient(240px 170px at 18% 42%, rgba(255,255,255,0.10), transparent 60%),
     radial-gradient(280px 170px at 82% 30%, rgba(255,255,255,0.06), transparent 62%);
   filter: blur(12px);
-  opacity: 0.65; /* reduced to prevent “haze” */
+  opacity: 0.75;
   pointer-events:none;
 }
 
@@ -415,13 +443,9 @@
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
 }
 
-/* Top row: identity */
-.project-row__top{
-  display:flex;
-  align-items:center;
-  gap: 14px;
-  position: relative;
-  z-index: 1;
+.project-row.is-hold{
+  opacity: 0.62;
+  filter: saturate(0.88);
 }
 
 .project-posterWrap{
@@ -429,12 +453,13 @@
   align-items:center;
   justify-content:center;
   width: 92px;
-  flex: 0 0 92px;
+  position: relative;
+  z-index: 1;
 }
 
 .project-poster{
-  width: 72px;
-  height: 108px; /* 2:3 */
+  width: 70px;
+  height: 105px;
   border-radius: 12px;
   object-fit: cover;
   display:block;
@@ -443,19 +468,21 @@
   background: rgba(255,255,255,0.04);
 }
 
-.project-identity{
+.project-meta{
   min-width: 0;
-  flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
-.project-titleRow{
+.project-title{
   display:flex;
   align-items: baseline;
   gap: 10px;
   min-width: 0;
+  flex-wrap: wrap; /* allows "· Feature · Drama" to sit nicely without creating a third row look */
 }
 
-.project-title{
+.project-title__name{
   font-size: 16px;
   font-weight: 850;
   letter-spacing: -0.01em;
@@ -464,44 +491,20 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 52ch;
+  max-width: 34ch;
 }
-.project-title:hover{
+.project-title__name:hover{
   text-decoration: underline;
   text-decoration-color: rgba(248,212,24,0.35);
   text-underline-offset: 3px;
 }
 
-.project-metaInline{
+.project-title__meta{
   font-size: 12px;
   color: rgba(249,245,239,0.72);
   white-space: nowrap;
 }
 
-/* Bottom row: aligned “status columns” */
-.project-row__bottom{
-  margin-top: 12px;
-  display:grid;
-  grid-template-columns: 140px 170px 1fr 140px 170px; /* budget | stage | next | motion | roadmap */
-  gap: 12px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-/* Keep consistent alignment even if text wraps */
-.project-col{ min-width: 0; }
-.project-next{
-  font-size: 12px;
-  color: rgba(249,245,239,0.70);
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Budget pill */
 .pill{
   display:inline-flex;
   align-items:center;
@@ -512,10 +515,14 @@
   color: rgba(249,245,239,0.80);
   font-size: 12px;
   white-space: nowrap;
+  position: relative;
+  z-index: 1;
 }
-.pill--budget{ border-color: rgba(255,255,255,0.12); }
 
-/* Stage pill */
+.pill--budget{
+  border-color: rgba(255,255,255,0.12);
+}
+
 .stage{
   display:inline-flex;
   align-items:center;
@@ -525,8 +532,11 @@
   font-weight: 650;
   border: 1px solid transparent;
   white-space: nowrap;
+  position: relative;
+  z-index: 1;
 }
 
+/* Stage palette */
 .stage--drafting{
   background: rgba(148,163,184,0.14);
   color: #cbd5e1;
@@ -558,90 +568,28 @@
   border-color: rgba(148,163,184,0.28);
 }
 
-/* Motion count */
-.motionCount{
-  font-size: 12px;
-  color: rgba(249,245,239,0.78);
-  white-space: nowrap;
-}
-
-/* Roadmap button */
-.project-roadmap{
-  display:flex;
-  justify-content: flex-end;
-}
-
-.btn{
-  height: 40px;
-  border-radius: 14px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 0 12px;
-  border: 1px solid rgba(255,255,255,0.10);
-  cursor:pointer;
-  font-weight: 750;
-  letter-spacing: 0.06em;
-  font-size: 12px;
-  user-select:none;
-  white-space: nowrap;
-  min-width: 154px;
-  box-shadow: 0 16px 45px rgba(0,0,0,0.25);
-  text-decoration:none;
-  color: inherit;
-}
-
-.btn--roadmapOn{
-  background: linear-gradient(180deg, rgba(248,212,24,0.96), rgba(248,212,24,0.78));
-  color: rgba(7,9,13,0.96);
-  border-color: rgba(248,212,24,0.35);
-}
-.btn--roadmapOn:hover{ filter: brightness(1.03); }
-
-.btn--roadmapOff{
-  background: rgba(255,255,255,0.04);
-  color: rgba(249,245,239,0.55);
-  border-color: rgba(255,255,255,0.08);
-  cursor: default;
-  box-shadow: none;
-  pointer-events:none;
-}
-
-/* On hold treatment */
-.project-row.is-hold{
-  opacity: 0.72;
-  filter: saturate(0.88);
-}
-
-/* Responsive: collapse bottom columns cleanly */
+/* Responsive */
 @media (max-width: 1100px){
-  .project-row__bottom{
-    grid-template-columns: 140px 170px 1fr;
-    grid-template-areas:
-      "budget stage motion"
-      "next   next  roadmap";
+  .project-row{
+    grid-template-columns: 92px 1fr 1fr 1fr;
+  }
+  .project-budget,
+  .project-stage,
+  .project-secured,
+  .project-roadmapReady{
+    justify-self: start;
+  }
+}
+
+@media (max-width: 780px){
+  .project-row{
+    grid-template-columns: 92px 1fr;
     align-items: start;
   }
-
-  .col-budget{ grid-area: budget; }
-  .col-stage{ grid-area: stage; }
-  .col-motion{ grid-area: motion; }
-  .col-next{ grid-area: next; }
-  .col-roadmap{ grid-area: roadmap; justify-self: end; }
-}
-
-@media (max-width: 760px){
-  .project-row__top{ align-items: flex-start; }
-  .project-posterWrap{ width: 80px; flex: 0 0 80px; }
-  .project-poster{ width: 62px; height: 93px; }
-  .project-row__bottom{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "budget"
-      "stage"
-      "motion"
-      "next"
-      "roadmap";
+  .project-budget,
+  .project-stage,
+  .project-secured,
+  .project-roadmapReady{
+    grid-column: 2 / -1;
   }
-  .project-roadmap{ justify-content: flex-start; }
 }
