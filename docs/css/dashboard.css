@@ -18,6 +18,91 @@
   display: block;
 }
 
+/* Sidebar hierarchy + support at bottom */
+.sidebar{
+  display:flex;
+  flex-direction: column;
+}
+.sidebar__support{
+  margin-top: auto;
+}
+
+/* Workspace + nested items bold */
+.sidebar__section{
+  font-weight: 900;
+}
+.nav__item{
+  font-weight: 850;
+}
+.nav{
+  padding-left: 8px; /* slight nested feel under Workspace */
+}
+
+/* Optional: remove visual weight from the collapse icon */
+.iconbtn--ghost{
+  background: transparent;
+  border-color: rgba(255,255,255,0.10);
+}
+
+/* ---------- Topbar: page title + subtitle only (no kicker) ---------- */
+.topbar__title{
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.topbar__pageTitle{
+  font-size: 20px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+  color: rgba(249,245,239,0.95);
+}
+.topbar__pageSub{
+  font-size: 13px;
+  color: rgba(249,245,239,0.72);
+  line-height: 1.35;
+  max-width: 72ch;
+}
+
+/* Ensure right side stays one row, name not beneath icons */
+.topbar__right{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+/* Icon sizing (applies to all inline svgs used above) */
+.icon{
+  width: 18px;
+  height: 18px;
+  display:block;
+}
+
+/* Avatar “E” visible */
+.userpill__avatar{
+  display:grid;
+  place-items:center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.18);
+  color: rgba(249,245,239,0.92);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* Make icon buttons look like boxed actions */
+.iconbtn{
+  display:grid;
+  place-items:center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  color: rgba(249,245,239,0.92);
+}
+
 /* ---------- top 3 cards ---------- */
 
 .tri3{
@@ -84,7 +169,7 @@
 }
 .triRow--solo{ margin-top: 18px; }
 
-/* UPDATED: underline all numbers in Top Opportunities + totals (even if not "hot") */
+/* underline all numbers in Top Opportunities + totals */
 .triNum{
   color: rgba(248,212,24,0.96);
   font-weight: 900;
@@ -108,7 +193,7 @@
   z-index:1;
 }
 
-/* UPDATED: saved searches should always appear underlined (link-like) */
+/* saved searches always appear underlined (link-like) */
 .linkItem{
   color: rgba(249,245,239,0.86);
   text-decoration: underline;
@@ -298,6 +383,7 @@
   justify-content: space-between;
   padding: 14px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 12px;
 }
 .panel__title{
   font-size: 12px;
@@ -305,6 +391,7 @@
   text-transform: uppercase;
   color: rgba(249,245,239,0.78);
   font-weight: 900;
+  white-space: nowrap;
 }
 .panel__pager{
   display:flex;
@@ -312,6 +399,41 @@
   gap: 10px;
   color: rgba(249,245,239,0.70);
   font-size: 13px;
+  white-space: nowrap;
+}
+.panel__tools{
+  flex: 1 1 auto;
+  display:flex;
+  justify-content: center;
+}
+
+/* Search in panel (scoped, avoids the white background issue) */
+.panelSearch{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  width: min(520px, 100%);
+  height: 42px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  padding: 0 12px;
+}
+.panelSearch__icon{
+  color: rgba(249,245,239,0.70);
+  display:flex;
+  align-items:center;
+}
+.panelSearch__input{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: rgba(249,245,239,0.92);
+  font-weight: 650;
+}
+.panelSearch__input::placeholder{
+  color: rgba(249,245,239,0.55);
 }
 
 .pagerbtn{
@@ -324,7 +446,7 @@
   font-weight: 900;
 }
 
-/* UPDATED: strip labels act like a sticky table header */
+/* strip labels act like a sticky table header */
 .stripLabels{
   padding: 10px 14px 10px;
   position: sticky;
@@ -333,8 +455,6 @@
   background: rgba(11,15,24,0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-
-  /* aligns the empty first cell with the poster column */
   display: grid;
   grid-template-columns: 104px 1fr;
   gap: 14px;
@@ -343,13 +463,13 @@
 .stripLabels__cols{
   display:grid;
   grid-template-columns:
-    2.2fr   /* Title */
-    1fr     /* Format */
-    1fr     /* Genre */
-    1.2fr   /* Status */
-    1fr     /* Budget Band */
-    1.2fr   /* % Funding Secured */
-    1.3fr;  /* Roadmap Status */
+    2.2fr
+    1fr
+    1fr
+    1.2fr
+    1fr
+    1.2fr
+    1.3fr;
   gap: 12px;
   color: rgba(249,245,239,0.55);
   font-size: 11px;
@@ -375,8 +495,6 @@
   overflow: hidden;
   position: relative;
   padding: 14px 14px;
-
-  /* UPDATED: make each strip a single “row” with poster + columns */
   display: grid;
   grid-template-columns: 104px 1fr;
   column-gap: 14px;
@@ -401,14 +519,12 @@
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
 }
 
-/* UPDATED: top now just holds the poster; no 2-col grid needed */
 .project-row__top{
   position: relative;
   z-index: 1;
 }
 
 .project-row__cols{
-  /* UPDATED: remove margin-left + remove 4-col legacy grid */
   margin: 0;
   display:grid;
   grid-template-columns:
@@ -425,7 +541,6 @@
   z-index: 1;
 }
 
-/* Optional: keep titles from forcing column blowouts */
 .projectCell{
   min-width: 0;
 }
@@ -433,13 +548,13 @@
   min-width: 0;
 }
 
+/* poster */
 .project-posterWrap{
   display:flex;
   align-items:center;
   justify-content:center;
   width: 104px;
 }
-
 .project-poster{
   width: 78px;
   height: 117px; /* 2:3 */
@@ -451,17 +566,9 @@
   background: rgba(255,255,255,0.04);
 }
 
-/* (kept for compatibility; no longer used by the new single-row layout) */
-.project-meta{ min-width: 0; }
-.project-title{
-  display:flex;
-  align-items:baseline;
-  gap: 10px;
-  min-width: 0;
-}
-
+/* title link */
 .project-title__name{
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: -0.01em;
   color: rgba(249,245,239,0.95);
@@ -475,11 +582,6 @@
   text-decoration: underline;
   text-decoration-color: rgba(248,212,24,0.45);
   text-underline-offset: 3px;
-}
-.project-title__meta{
-  font-size: 13px;
-  color: rgba(249,245,239,0.70);
-  white-space: nowrap;
 }
 
 /* pills */
@@ -524,7 +626,19 @@
 
 /* Responsive */
 @media (max-width: 900px){
-  /* make sticky header readable + reduce columns */
+  .panel__head{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .panel__tools{
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .panel__pager{
+    margin-left: auto;
+  }
+
   .stripLabels{
     position: relative;
     top: auto;
@@ -547,86 +661,4 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-/* ---------- Sidebar hierarchy + support at bottom ---------- */
-.sidebar{
-  display:flex;
-  flex-direction: column;
-}
-.sidebar__support{
-  margin-top: auto;
-}
-
-/* Workspace + nested items bold */
-.sidebar__section{
-  font-weight: 900;
-}
-.nav__item{
-  font-weight: 850;
-}
-.nav{
-  padding-left: 8px; /* slight nested feel under Workspace */
-}
-
-/* Optional: remove visual weight from the collapse icon */
-.iconbtn--ghost{
-  background: transparent;
-  border-color: rgba(255,255,255,0.10);
-}
-
-/* ---------- Topbar fixes (search background + no truncation) ---------- */
-.topbar__search{
-  flex: 1 1 auto;
-  min-width: 320px;
-}
-.topbar__input{
-  background: transparent;
-  border: 0;
-  outline: none;
-  color: rgba(249,245,239,0.92);
-  width: 100%;
-}
-.topbar__input::placeholder{
-  color: rgba(249,245,239,0.55);
-}
-
-/* Ensure right side stays one row, name not beneath icons */
-.topbar__right{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-/* Icon sizing (applies to all inline svgs used above) */
-.icon{
-  width: 18px;
-  height: 18px;
-  display:block;
-}
-
-/* Avatar “E” visible */
-.userpill__avatar{
-  display:grid;
-  place-items:center;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(0,0,0,0.18);
-  color: rgba(249,245,239,0.92);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-}
-
-/* Make icon buttons look like boxed actions (not floating emojis) */
-.iconbtn{
-  display:grid;
-  place-items:center;
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.18);
-  color: rgba(249,245,239,0.92);
-}
-
 }

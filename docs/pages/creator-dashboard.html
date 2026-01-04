@@ -21,20 +21,17 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar__brand">
-  <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" />
-  <div class="sidebar__brandTxt">
-    <div class="sidebar__name">Workspace</div>
-  </div>
+        <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" />
+        <div class="sidebar__brandTxt">
+          <div class="sidebar__name">CineSparq</div>
+        </div>
 
-  <!-- Collapse toggle (icon, not hamburger) -->
-  <button class="iconbtn iconbtn--ghost" aria-label="Collapse sidebar" title="Collapse sidebar" type="button">
-    <!-- chevron-left (inline svg) -->
-    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-</div>
-
+        <!-- Collapse toggle (visual only) -->
+        <button class="iconbtn iconbtn--ghost" aria-label="Collapse sidebar" title="Collapse sidebar" type="button">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
 
       <div class="sidebar__section">Workspace</div>
@@ -53,56 +50,39 @@
     <main class="main">
       <!-- Top bar -->
       <header class="topbar">
-  <div class="topbar__title">
-    <div class="topbar__kicker">CREATOR DASHBOARD</div>
+        <div class="topbar__title">
+          <div class="topbar__pageTitle">Creator Dashboard</div>
+          <div class="topbar__pageSub">Your slate at a glance. Review new opportunities, revisit saved items, and track project stage without losing momentum.</div>
+        </div>
 
-    <div class="topbar__search">
-      <span class="topbar__searchIcon" aria-hidden="true">
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </span>
-      <input class="topbar__input" type="search" placeholder="Search projects, opportunities…" />
-    </div>
-  </div>
+        <div class="topbar__right">
+          <button class="iconbtn" aria-label="Search" title="Search" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
 
-  <div class="topbar__right">
-    <button class="iconbtn" aria-label="Search" title="Search" type="button">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
+          <button class="iconbtn" aria-label="Notifications" title="Notifications" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 7h18s-3 0-3-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M13.7 21a2 2 0 01-3.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
 
-    <button class="iconbtn" aria-label="Notifications" title="Notifications" type="button">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 7h18s-3 0-3-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M13.7 21a2 2 0 01-3.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
+          <button class="iconbtn" aria-label="Settings" title="Settings" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M19.4 15a1.8 1.8 0 00.35 2l.06.06a2 2 0 01-1.4 3.4h-.16a1.9 1.9 0 00-1.7 1.1l-.07.13a2 2 0 01-3.6-1.2v-.16A1.9 1.9 0 0011 21.3h-.2a1.9 1.9 0 00-1.9 1.2v.16a2 2 0 01-3.6 1.2l-.07-.13a1.9 1.9 0 00-1.7-1.1h-.16A2 2 0 012 20.1l.06-.06a1.8 1.8 0 00.35-2v-.1a1.9 1.9 0 00-1.2-1.7H1a2 2 0 010-4h.21a1.9 1.9 0 001.2-1.7v-.1a1.8 1.8 0 00-.35-2L2 8.7A2 2 0 013.4 5.3h.16a1.9 1.9 0 001.7-1.1l.07-.13a2 2 0 013.6 1.2v.16A1.9 1.9 0 0011 2.7h.2a1.9 1.9 0 001.9-1.2v-.16a2 2 0 013.6-1.2l.07.13a1.9 1.9 0 001.7 1.1h.16A2 2 0 0122 8.7l-.06.06a1.8 1.8 0 00-.35 2v.1a1.9 1.9 0 001.2 1.7H23a2 2 0 010 4h-.21a1.9 1.9 0 00-1.2 1.7z"
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
 
-    <button class="iconbtn" aria-label="Settings" title="Settings" type="button">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="none" stroke="currentColor" stroke-width="2"/>
-        <path d="M19.4 15a1.8 1.8 0 00.35 2l.06.06a2 2 0 01-1.4 3.4h-.16a1.9 1.9 0 00-1.7 1.1l-.07.13a2 2 0 01-3.6-1.2v-.16A1.9 1.9 0 0011 21.3h-.2a1.9 1.9 0 00-1.9 1.2v.16a2 2 0 01-3.6 1.2l-.07-.13a1.9 1.9 0 00-1.7-1.1h-.16A2 2 0 012 20.1l.06-.06a1.8 1.8 0 00.35-2v-.1a1.9 1.9 0 00-1.2-1.7H1a2 2 0 010-4h.21a1.9 1.9 0 001.2-1.7v-.1a1.8 1.8 0 00-.35-2L2 8.7A2 2 0 013.4 5.3h.16a1.9 1.9 0 001.7-1.1l.07-.13a2 2 0 013.6 1.2v.16A1.9 1.9 0 0011 2.7h.2a1.9 1.9 0 001.9-1.2v-.16a2 2 0 013.6-1.2l.07.13a1.9 1.9 0 001.7 1.1h.16A2 2 0 0122 8.7l-.06.06a1.8 1.8 0 00-.35 2v.1a1.9 1.9 0 001.2 1.7H23a2 2 0 010 4h-.21a1.9 1.9 0 00-1.2 1.7z"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-
-    <div class="userpill" aria-label="User">
-      <div class="userpill__avatar">E</div>
-      <div class="userpill__name">EUNICE</div>
-    </div>
-  </div>
-</header>
-
+          <div class="userpill" aria-label="User">
+            <div class="userpill__avatar">E</div>
+            <div class="userpill__name">EUNICE</div>
+          </div>
+        </div>
       </header>
-
-      <section class="pageHead">
-        <h1 class="pageHead__h1">Creator Dashboard</h1>
-        <p class="pageHead__sub">
-          Your slate at a glance. Review new opportunities, revisit saved items, and track project stage without losing momentum.
-        </p>
-      </section>
 
       <!-- 3 cards (top) -->
       <section class="tri3">
@@ -114,28 +94,27 @@
           <div class="triList" aria-label="New opportunities by category">
             <div class="triRow">
               <span>Grants &amp; Public Funds</span>
-              <!-- UPDATED: underline numbers even when linked -->
-              <a class="triNum" href="pages/opportunities-grants-public-funds.html" style="text-decoration:underline; text-underline-offset:3px;">14</a>
+              <a class="triNum" href="pages/opportunities-grants-public-funds.html">14</a>
             </div>
 
             <div class="triRow">
               <span>Brand Partnerships &amp; Commissions</span>
-              <a class="triNum" href="pages/opportunities-brand-partnerships.html" style="text-decoration:underline; text-underline-offset:3px;">9</a>
+              <a class="triNum" href="pages/opportunities-brand-partnerships.html">9</a>
             </div>
 
             <div class="triRow">
               <span>Non-Equity Financing</span>
-              <a class="triNum triNum--hot" href="pages/opportunities-non-equity-financing.html" style="text-decoration:underline; text-underline-offset:3px;">5</a>
+              <a class="triNum triNum--hot" href="pages/opportunities-non-equity-financing.html">5</a>
             </div>
 
             <div class="triRow">
               <span>Market-Based Funding</span>
-              <a class="triNum" href="pages/opportunities-market-based-funding.html" style="text-decoration:underline; text-underline-offset:3px;">4</a>
+              <a class="triNum" href="pages/opportunities-market-based-funding.html">4</a>
             </div>
 
             <div class="triRow">
               <span>Incentives &amp; Rebates</span>
-              <a class="triNum triNum--hot" href="pages/opportunities-incentives-rebates.html" style="text-decoration:underline; text-underline-offset:3px;">2</a>
+              <a class="triNum triNum--hot" href="pages/opportunities-incentives-rebates.html">2</a>
             </div>
           </div>
         </article>
@@ -147,8 +126,7 @@
 
           <div class="triRow triRow--solo">
             <span>Total saved</span>
-            <!-- UPDATED: underline total saved number -->
-            <a class="triNum" href="pages/saved-opportunities.html" style="text-decoration:underline; text-underline-offset:3px;">12</a>
+            <a class="triNum" href="pages/saved-opportunities.html">12</a>
           </div>
         </article>
 
@@ -157,12 +135,11 @@
           <div class="triCard__title"><b>Saved Searches</b></div>
           <div class="triCard__asof" data-asof></div>
 
-          <!-- UPDATED: underline saved searches to appear as hyperlinks -->
           <div class="linkList" aria-label="Saved searches">
-            <a class="linkItem" href="pages/search-atl-rfps.html" style="text-decoration:underline; text-underline-offset:3px;">ATL RFPs</a>
-            <a class="linkItem" href="pages/search-ga-creator-grants.html" style="text-decoration:underline; text-underline-offset:3px;">GA Creator Grants</a>
-            <a class="linkItem" href="pages/search-series-content-investors.html" style="text-decoration:underline; text-underline-offset:3px;">Series Content Investors</a>
-            <a class="linkItem" href="pages/search-us-buyer-producers.html" style="text-decoration:underline; text-underline-offset:3px;">US Buyer/Producers</a>
+            <a class="linkItem" href="pages/search-atl-rfps.html">ATL RFPs</a>
+            <a class="linkItem" href="pages/search-ga-creator-grants.html">GA Creator Grants</a>
+            <a class="linkItem" href="pages/search-series-content-investors.html">Series Content Investors</a>
+            <a class="linkItem" href="pages/search-us-buyer-producers.html">US Buyer/Producers</a>
           </div>
 
           <div class="linkCta">
@@ -236,14 +213,26 @@
       <section class="panel">
         <div class="panel__head">
           <div class="panel__title">YOUR PROJECTS</div>
+
+          <!-- Search moved here (above strips) -->
+          <div class="panel__tools" aria-label="Project tools">
+            <div class="panelSearch" role="search">
+              <span class="panelSearch__icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <input class="panelSearch__input" type="search" placeholder="Search projects, opportunities…" />
+            </div>
+          </div>
+
           <div class="panel__pager">
             <span>Showing 1–6 of 12</span>
             <button class="pagerbtn" aria-label="Next">›</button>
           </div>
         </div>
 
-        <!-- UPDATED: Column labels now include Title / Format / Genre and Roadmap Status -->
-        <!-- Also: keep this block for future sticky/freeze in CSS -->
+        <!-- Column labels -->
         <div class="stripLabels" aria-hidden="true">
           <div></div>
           <div class="stripLabels__cols">
@@ -259,7 +248,6 @@
 
         <div class="projectList">
           <!-- ONE real linked project (roadmap + funding %) -->
-          <!-- UPDATED: make project strip a single row aligned with headings -->
           <article class="project-row" aria-label="Project: As Time Goes By">
             <div class="project-row__top">
               <a class="project-posterWrap" href="pages/roadmap.html" aria-label="Open project roadmap">
@@ -267,14 +255,12 @@
               </a>
             </div>
 
-            <!-- UPDATED: singular row columns -->
             <div class="project-row__cols">
               <div class="projectCell projectCell--title">
                 <a class="project-title__name" href="pages/roadmap.html">As Time Goes By</a>
               </div>
               <div class="projectCell">Feature</div>
               <div class="projectCell">Drama</div>
-
               <div class="projectCell"><span class="stage stage--motion">In Motion</span></div>
               <div class="projectCell"><span class="pill pill--budget">Upper-Mid</span></div>
               <div class="projectCell"><span class="pill">34%</span></div>
@@ -282,7 +268,6 @@
             </div>
           </article>
 
-          <!-- Others: styled as hyperlinks but do not navigate (demo) -->
           <article class="project-row" aria-label="Project: Hard Sale">
             <div class="project-row__top">
               <a class="project-posterWrap" href="#" onclick="return false;">
@@ -296,11 +281,9 @@
               </div>
               <div class="projectCell">Feature</div>
               <div class="projectCell">Thriller</div>
-
               <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
               <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
               <div class="projectCell"><span class="pill">10%</span></div>
-              <!-- UPDATED: Not ready -> In progress -->
               <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
             </div>
           </article>
@@ -310,69 +293,6 @@
               <a class="project-posterWrap" href="#" onclick="return false;">
                 <img class="project-poster" src="assets/posters/haunted-poster.png" alt="Haunted poster" />
               </a>
-<article class="project-row" aria-label="Project: At First Sight">
-  <div class="project-row__top">
-    <a class="project-posterWrap" href="#" onclick="return false;">
-      <img class="project-poster" src="assets/posters/at-first-sight-poster.png" alt="At First Sight poster" />
-    </a>
-  </div>
-
-  <div class="project-row__cols">
-    <div class="projectCell projectCell--title">
-      <a class="project-title__name" href="#" onclick="return false;">At First Sight</a>
-    </div>
-    <div class="projectCell">Series</div>
-    <div class="projectCell">Romance</div>
-
-    <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
-    <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
-    <div class="projectCell"><span class="pill">0%</span></div>
-    <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
-  </div>
-</article>
-
-<article class="project-row" aria-label="Project: Learning to Fall In Love">
-  <div class="project-row__top">
-    <a class="project-posterWrap" href="#" onclick="return false;">
-      <img class="project-poster" src="assets/posters/learning-poster.png" alt="Learning to Fall In Love poster" />
-    </a>
-  </div>
-
-  <div class="project-row__cols">
-    <div class="projectCell projectCell--title">
-      <a class="project-title__name" href="#" onclick="return false;">Learning to Fall In Love</a>
-    </div>
-    <div class="projectCell">Feature</div>
-    <div class="projectCell">Drama-Comedy</div>
-
-    <div class="projectCell"><span class="stage stage--motion">In Motion</span></div>
-    <div class="projectCell"><span class="pill pill--budget">Upper-Mid</span></div>
-    <div class="projectCell"><span class="pill">12%</span></div>
-    <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
-  </div>
-</article>
-
-<article class="project-row" aria-label="Project: The Wind Blows From The North">
-  <div class="project-row__top">
-    <a class="project-posterWrap" href="#" onclick="return false;">
-      <img class="project-poster" src="assets/posters/wind-blows-poster.png" alt="The Wind Blows From The North poster" />
-    </a>
-  </div>
-
-  <div class="project-row__cols">
-    <div class="projectCell projectCell--title">
-      <a class="project-title__name" href="#" onclick="return false;">The Wind Blows From The North</a>
-    </div>
-    <div class="projectCell">Animated Feature</div>
-    <div class="projectCell">Anime</div>
-
-    <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
-    <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
-    <div class="projectCell"><span class="pill">0%</span></div>
-    <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
-  </div>
-</article>
-
             </div>
 
             <div class="project-row__cols">
@@ -381,33 +301,90 @@
               </div>
               <div class="projectCell">Feature</div>
               <div class="projectCell">Horror</div>
-
               <div class="projectCell"><span class="stage stage--ready">Ready</span></div>
               <div class="projectCell"><span class="pill pill--budget">Low</span></div>
               <div class="projectCell"><span class="pill">0%</span></div>
-              <!-- UPDATED: Not ready -> In progress -->
+              <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
+            </div>
+          </article>
+
+          <article class="project-row" aria-label="Project: At First Sight">
+            <div class="project-row__top">
+              <a class="project-posterWrap" href="#" onclick="return false;">
+                <img class="project-poster" src="assets/posters/at-first-sight-poster.png" alt="At First Sight poster" />
+              </a>
+            </div>
+
+            <div class="project-row__cols">
+              <div class="projectCell projectCell--title">
+                <a class="project-title__name" href="#" onclick="return false;">At First Sight</a>
+              </div>
+              <div class="projectCell">Series</div>
+              <div class="projectCell">Romance</div>
+              <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
+              <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
+              <div class="projectCell"><span class="pill">0%</span></div>
+              <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
+            </div>
+          </article>
+
+          <article class="project-row" aria-label="Project: Learning to Fall In Love">
+            <div class="project-row__top">
+              <a class="project-posterWrap" href="#" onclick="return false;">
+                <img class="project-poster" src="assets/posters/learning-poster.png" alt="Learning to Fall In Love poster" />
+              </a>
+            </div>
+
+            <div class="project-row__cols">
+              <div class="projectCell projectCell--title">
+                <a class="project-title__name" href="#" onclick="return false;">Learning to Fall In Love</a>
+              </div>
+              <div class="projectCell">Feature</div>
+              <div class="projectCell">Drama-Comedy</div>
+              <div class="projectCell"><span class="stage stage--motion">In Motion</span></div>
+              <div class="projectCell"><span class="pill pill--budget">Upper-Mid</span></div>
+              <div class="projectCell"><span class="pill">12%</span></div>
+              <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
+            </div>
+          </article>
+
+          <article class="project-row" aria-label="Project: The Wind Blows From The North">
+            <div class="project-row__top">
+              <a class="project-posterWrap" href="#" onclick="return false;">
+                <img class="project-poster" src="assets/posters/wind-blows-poster.png" alt="The Wind Blows From The North poster" />
+              </a>
+            </div>
+
+            <div class="project-row__cols">
+              <div class="projectCell projectCell--title">
+                <a class="project-title__name" href="#" onclick="return false;">The Wind Blows From The North</a>
+              </div>
+              <div class="projectCell">Animated Feature</div>
+              <div class="projectCell">Anime</div>
+              <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
+              <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
+              <div class="projectCell"><span class="pill">0%</span></div>
               <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
             </div>
           </article>
         </div>
       </section>
 
+      <script>
+        // “As of” system date (America/Chicago) for demo freshness
+        (function(){
+          const els = document.querySelectorAll("[data-asof]");
+          const fmt = new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/Chicago",
+            month: "short",
+            day: "numeric",
+            year: "numeric"
+          });
+          const d = fmt.format(new Date());
+          els.forEach(el => el.textContent = "As of " + d);
+        })();
+      </script>
     </main>
   </div>
-
-  <script>
-    // “As of” system date (America/Chicago) for demo freshness
-    (function(){
-      const els = document.querySelectorAll("[data-asof]");
-      const fmt = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/Chicago",
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-      });
-      const d = fmt.format(new Date());
-      els.forEach(el => el.textContent = "As of " + d);
-    })();
-  </script>
 </body>
 </html>
