@@ -547,4 +547,86 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+/* ---------- Sidebar hierarchy + support at bottom ---------- */
+.sidebar{
+  display:flex;
+  flex-direction: column;
+}
+.sidebar__support{
+  margin-top: auto;
+}
+
+/* Workspace + nested items bold */
+.sidebar__section{
+  font-weight: 900;
+}
+.nav__item{
+  font-weight: 850;
+}
+.nav{
+  padding-left: 8px; /* slight nested feel under Workspace */
+}
+
+/* Optional: remove visual weight from the collapse icon */
+.iconbtn--ghost{
+  background: transparent;
+  border-color: rgba(255,255,255,0.10);
+}
+
+/* ---------- Topbar fixes (search background + no truncation) ---------- */
+.topbar__search{
+  flex: 1 1 auto;
+  min-width: 320px;
+}
+.topbar__input{
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: rgba(249,245,239,0.92);
+  width: 100%;
+}
+.topbar__input::placeholder{
+  color: rgba(249,245,239,0.55);
+}
+
+/* Ensure right side stays one row, name not beneath icons */
+.topbar__right{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+/* Icon sizing (applies to all inline svgs used above) */
+.icon{
+  width: 18px;
+  height: 18px;
+  display:block;
+}
+
+/* Avatar “E” visible */
+.userpill__avatar{
+  display:grid;
+  place-items:center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.18);
+  color: rgba(249,245,239,0.92);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* Make icon buttons look like boxed actions (not floating emojis) */
+.iconbtn{
+  display:grid;
+  place-items:center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  color: rgba(249,245,239,0.92);
+}
+
 }

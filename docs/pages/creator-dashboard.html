@@ -21,13 +21,20 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar__brand">
-        <!-- UPDATED: add inline sizing to prevent overlap (no path/name change) -->
-        <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" style="width:28px;height:28px;object-fit:contain;flex:0 0 28px;" />
-        <div class="sidebar__brandTxt">
-          <div class="sidebar__name">CineSparq</div>
-          <div class="sidebar__sub">Creator Dashboard</div>
-        </div>
-        <button class="iconbtn" aria-label="Menu">≡</button>
+  <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" />
+  <div class="sidebar__brandTxt">
+    <div class="sidebar__name">Workspace</div>
+  </div>
+
+  <!-- Collapse toggle (icon, not hamburger) -->
+  <button class="iconbtn iconbtn--ghost" aria-label="Collapse sidebar" title="Collapse sidebar" type="button">
+    <!-- chevron-left (inline svg) -->
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
       </div>
 
       <div class="sidebar__section">Workspace</div>
@@ -46,23 +53,48 @@
     <main class="main">
       <!-- Top bar -->
       <header class="topbar">
-        <div class="topbar__title">
-          <div class="topbar__kicker">DASHBOARD</div>
-          <div class="topbar__search">
-            <span class="topbar__searchIcon">🔎</span>
-            <input class="topbar__input" type="search" placeholder="Search projects, opportunities…" />
-          </div>
-        </div>
+  <div class="topbar__title">
+    <div class="topbar__kicker">CREATOR DASHBOARD</div>
 
-        <div class="topbar__right">
-          <button class="iconbtn" aria-label="Search">🔎</button>
-          <button class="iconbtn" aria-label="Notifications">🔔</button>
-          <button class="iconbtn" aria-label="Settings">⚙️</button>
-          <div class="userpill" aria-label="User">
-            <div class="userpill__avatar"></div>
-            <div class="userpill__name">EUNICE</div>
-          </div>
-        </div>
+    <div class="topbar__search">
+      <span class="topbar__searchIcon" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <input class="topbar__input" type="search" placeholder="Search projects, opportunities…" />
+    </div>
+  </div>
+
+  <div class="topbar__right">
+    <button class="iconbtn" aria-label="Search" title="Search" type="button">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <button class="iconbtn" aria-label="Notifications" title="Notifications" type="button">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 7h18s-3 0-3-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M13.7 21a2 2 0 01-3.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <button class="iconbtn" aria-label="Settings" title="Settings" type="button">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M19.4 15a1.8 1.8 0 00.35 2l.06.06a2 2 0 01-1.4 3.4h-.16a1.9 1.9 0 00-1.7 1.1l-.07.13a2 2 0 01-3.6-1.2v-.16A1.9 1.9 0 0011 21.3h-.2a1.9 1.9 0 00-1.9 1.2v.16a2 2 0 01-3.6 1.2l-.07-.13a1.9 1.9 0 00-1.7-1.1h-.16A2 2 0 012 20.1l.06-.06a1.8 1.8 0 00.35-2v-.1a1.9 1.9 0 00-1.2-1.7H1a2 2 0 010-4h.21a1.9 1.9 0 001.2-1.7v-.1a1.8 1.8 0 00-.35-2L2 8.7A2 2 0 013.4 5.3h.16a1.9 1.9 0 001.7-1.1l.07-.13a2 2 0 013.6 1.2v.16A1.9 1.9 0 0011 2.7h.2a1.9 1.9 0 001.9-1.2v-.16a2 2 0 013.6-1.2l.07.13a1.9 1.9 0 001.7 1.1h.16A2 2 0 0122 8.7l-.06.06a1.8 1.8 0 00-.35 2v.1a1.9 1.9 0 001.2 1.7H23a2 2 0 010 4h-.21a1.9 1.9 0 00-1.2 1.7z"
+              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="userpill" aria-label="User">
+      <div class="userpill__avatar">E</div>
+      <div class="userpill__name">EUNICE</div>
+    </div>
+  </div>
+</header>
+
       </header>
 
       <section class="pageHead">
@@ -278,6 +310,69 @@
               <a class="project-posterWrap" href="#" onclick="return false;">
                 <img class="project-poster" src="assets/posters/haunted-poster.png" alt="Haunted poster" />
               </a>
+<article class="project-row" aria-label="Project: At First Sight">
+  <div class="project-row__top">
+    <a class="project-posterWrap" href="#" onclick="return false;">
+      <img class="project-poster" src="assets/posters/at-first-sight-poster.png" alt="At First Sight poster" />
+    </a>
+  </div>
+
+  <div class="project-row__cols">
+    <div class="projectCell projectCell--title">
+      <a class="project-title__name" href="#" onclick="return false;">At First Sight</a>
+    </div>
+    <div class="projectCell">Series</div>
+    <div class="projectCell">Romance</div>
+
+    <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
+    <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
+    <div class="projectCell"><span class="pill">0%</span></div>
+    <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
+  </div>
+</article>
+
+<article class="project-row" aria-label="Project: Learning to Fall In Love">
+  <div class="project-row__top">
+    <a class="project-posterWrap" href="#" onclick="return false;">
+      <img class="project-poster" src="assets/posters/learning-poster.png" alt="Learning to Fall In Love poster" />
+    </a>
+  </div>
+
+  <div class="project-row__cols">
+    <div class="projectCell projectCell--title">
+      <a class="project-title__name" href="#" onclick="return false;">Learning to Fall In Love</a>
+    </div>
+    <div class="projectCell">Feature</div>
+    <div class="projectCell">Drama-Comedy</div>
+
+    <div class="projectCell"><span class="stage stage--motion">In Motion</span></div>
+    <div class="projectCell"><span class="pill pill--budget">Upper-Mid</span></div>
+    <div class="projectCell"><span class="pill">12%</span></div>
+    <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
+  </div>
+</article>
+
+<article class="project-row" aria-label="Project: The Wind Blows From The North">
+  <div class="project-row__top">
+    <a class="project-posterWrap" href="#" onclick="return false;">
+      <img class="project-poster" src="assets/posters/wind-blows-poster.png" alt="The Wind Blows From The North poster" />
+    </a>
+  </div>
+
+  <div class="project-row__cols">
+    <div class="projectCell projectCell--title">
+      <a class="project-title__name" href="#" onclick="return false;">The Wind Blows From The North</a>
+    </div>
+    <div class="projectCell">Animated Feature</div>
+    <div class="projectCell">Anime</div>
+
+    <div class="projectCell"><span class="stage stage--packaging">Packaging</span></div>
+    <div class="projectCell"><span class="pill pill--budget">Mid</span></div>
+    <div class="projectCell"><span class="pill">0%</span></div>
+    <div class="projectCell"><span class="pill pill--notready">In progress</span></div>
+  </div>
+</article>
+
             </div>
 
             <div class="project-row__cols">
