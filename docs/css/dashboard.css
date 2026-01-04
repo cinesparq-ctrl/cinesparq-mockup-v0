@@ -9,13 +9,22 @@
               linear-gradient(180deg, var(--bg-1, #0b0f17), var(--bg-0, #07090d));
 }
 
-/* ---------- sidebar brand mark sizing (prevents overlap) ---------- */
+/* ---------- sidebar brand logo sizing (full side logo) ---------- */
+/* keep sidebar__mark rules for compatibility, but we now use sidebar__logo */
 .sidebar__mark{
   width: 28px;
   height: 28px;
   object-fit: contain;
   flex: 0 0 28px;
   display: block;
+}
+
+/* NEW: full side logo */
+.sidebar__logo{
+  height: 22px;
+  width: auto;
+  display:block;
+  object-fit: contain;
 }
 
 /* Sidebar hierarchy + support at bottom */
@@ -375,7 +384,9 @@
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.02);
-  overflow:hidden;
+
+  /* UPDATED: sticky headers can be clipped by overflow:hidden */
+  overflow: visible;
 }
 .panel__head{
   display:flex;
@@ -444,6 +455,50 @@
   background: rgba(0,0,0,0.18);
   color: rgba(249,245,239,0.92);
   font-weight: 900;
+}
+
+/* ---------- Key / Legend ---------- */
+.key{
+  padding: 12px 14px 0;
+}
+.key__card{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.12);
+  padding: 12px 12px;
+}
+.key__title{
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(249,245,239,0.70);
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.key__grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (max-width: 1100px){
+  .key__grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  .key__grid{ grid-template-columns: 1fr; }
+}
+.keyItem{
+  min-width: 0;
+}
+.keyItem__label{
+  font-weight: 900;
+  color: rgba(249,245,239,0.92);
+  font-size: 12px;
+}
+.keyItem__desc{
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(249,245,239,0.70);
 }
 
 /* strip labels act like a sticky table header */
@@ -566,17 +621,24 @@
   background: rgba(255,255,255,0.04);
 }
 
-/* title link */
+/* title link (UPDATED: wrap + clamp so it never bleeds into next column) */
 .project-title__name{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+
   font-size: 16px;
   font-weight: 900;
   letter-spacing: -0.01em;
   color: rgba(249,245,239,0.95);
   text-decoration:none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 44ch;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.15;
+  max-width: 100%;
 }
 .project-title__name:hover{
   text-decoration: underline;
@@ -637,6 +699,10 @@
   }
   .panel__pager{
     margin-left: auto;
+  }
+
+  .key{
+    padding: 12px 14px 0;
   }
 
   .stripLabels{

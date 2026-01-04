@@ -21,10 +21,8 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar__brand">
-        <img class="sidebar__mark" src="assets/logo/cs-mark-white.png" alt="CineSparq" />
-        <div class="sidebar__brandTxt">
-          <div class="sidebar__name">CineSparq</div>
-        </div>
+        <!-- UPDATED: switch from mark + text to full side logo -->
+        <img class="sidebar__logo" src="assets/logo/cs-side-logo-white.png" alt="CineSparq" />
 
         <!-- Collapse toggle (visual only) -->
         <button class="iconbtn iconbtn--ghost" aria-label="Collapse sidebar" title="Collapse sidebar" type="button">
@@ -229,6 +227,31 @@
           <div class="panel__pager">
             <span>Showing 1–6 of 12</span>
             <button class="pagerbtn" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        <!-- NEW: Key / Legend -->
+        <div class="key" aria-label="Dashboard key">
+          <div class="key__card">
+            <div class="key__title">Key</div>
+            <div class="key__grid">
+              <div class="keyItem">
+                <div class="keyItem__label">Status</div>
+                <div class="keyItem__desc">Where the project currently sits (Packaging, In Motion, Ready).</div>
+              </div>
+              <div class="keyItem">
+                <div class="keyItem__label">Budget Band</div>
+                <div class="keyItem__desc">A planning range used to match opportunities to scale.</div>
+              </div>
+              <div class="keyItem">
+                <div class="keyItem__label">% Funding Secured</div>
+                <div class="keyItem__desc">How much of the target budget is confirmed today.</div>
+              </div>
+              <div class="keyItem">
+                <div class="keyItem__label">Roadmap Status</div>
+                <div class="keyItem__desc">Whether your packaging plan is ready to execute or still in progress.</div>
+              </div>
+            </div>
           </div>
         </div>
 
