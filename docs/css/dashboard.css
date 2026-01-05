@@ -772,4 +772,39 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+/* ==================================================
+   Nuke the “blue haze” overlay in Projects strips
+   (kills any lingering ::before/::after glow coming from other CSS files)
+   ================================================== */
+
+/* Ensure these create a stable stacking context */
+.panel,
+.projectList,
+.project-row{
+  position: relative;
+}
+
+/* Force ALL pseudo-element overlays off in the Projects area */
+.panel::before,
+.panel::after,
+.projectList::before,
+.projectList::after,
+.project-row::before,
+.project-row::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep strip content above anything else */
+.project-row__top,
+.project-row__cols{
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional: keep strip background clean (no glow at all) */
+.project-row{
+  background: rgba(255,255,255,0.03) !important;
+}
+
 }
