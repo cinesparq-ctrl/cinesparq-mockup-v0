@@ -550,7 +550,7 @@
   padding: 14px;
 }
 
-/* IMPORTANT: remove ALL glow/haze from strips */
+/* NO haze: no gradients, no pseudo-elements, no blur */
 .project-row{
   position: relative;
   display: grid;
@@ -562,30 +562,32 @@
 
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.03); /* no gradients */
-  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
 
+  background: rgba(255,255,255,0.03);
+
+  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
   overflow: hidden;
 }
 
-/* hard-disable any pseudo overlays that could tint posters/content */
+/* Hard-disable any overlay pseudo elements */
 .project-row::before,
 .project-row::after{
   content: none !important;
   display: none !important;
 }
 
-/* keep hover subtle (still no gradients) */
+/* Keep strip content above anything else */
+.project-row__top,
+.project-row__cols{
+  position: relative;
+  z-index: 1;
+}
+
 .project-row:hover{
   background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.14);
   transform: translateY(-1px);
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-}
-
-.project-row__top{
-  position: relative;
-  z-index: 1;
 }
 
 .project-row__cols{
@@ -601,8 +603,6 @@
     1.3fr;
   gap: 12px;
   align-items:center;
-  position: relative;
-  z-index: 1;
 }
 
 .projectCell{
@@ -618,7 +618,12 @@
   align-items:center;
   justify-content:center;
   width: 104px;
+
+  /* IMPORTANT: if poster PNG has transparency, this prevents page tint bleeding through */
+  background: #0b0f17;
+  border-radius: 12px;
 }
+
 .project-poster{
   width: 78px;
   height: 117px; /* 2:3 */
@@ -627,7 +632,9 @@
   display:block;
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow: 0 18px 55px rgba(0,0,0,0.55);
-  background: rgba(255,255,255,0.04);
+
+  /* Solid behind any transparent pixels in PNG */
+  background: #0b0f17;
 }
 
 /* title link (wrap + clamp so it never bleeds into next column) */
@@ -709,36 +716,7 @@
   display: block;
 }
 
-/* ==================================================
-   Kill any lingering overlay haze in the Projects area
-   (also fixes the structural / brace issues in your prior paste)
-   ================================================== */
-
-.panel,
-.projectList,
-.project-row{
-  position: relative;
-}
-
-.panel::before,
-.panel::after,
-.projectList::before,
-.projectList::after{
-  content: none !important;
-  display: none !important;
-}
-
-/* LAST-RESORT: if another stylesheet is adding a full-page overlay via these,
-   this removes it (this is the most common source of the “spans full page” haze). */
-.app::before,
-.app::after,
-.main::before,
-.main::after{
-  content: none !important;
-  display: none !important;
-}
-
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media (max-width: 900px){
   .panel__head{
     flex-wrap: wrap;
