@@ -550,7 +550,7 @@
   padding: 14px;
 }
 
-/* IMPORTANT: glow is in background layers (behind content), no overlay haze */
+/* IMPORTANT: remove ALL glow/haze from strips */
 .project-row{
   position: relative;
   display: grid;
@@ -562,44 +562,22 @@
 
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.10);
-
-  background:
-    radial-gradient(
-      240px 170px at 18% 42%,
-      rgba(255,255,255,0.08),
-      transparent 60%
-    ),
-    radial-gradient(
-      280px 170px at 82% 30%,
-      rgba(255,255,255,0.05),
-      transparent 62%
-    ),
-    rgba(255,255,255,0.03);
-
+  background: rgba(255,255,255,0.03); /* no gradients */
   box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+
   overflow: hidden;
 }
 
-/* hard-disable any prior overlay haze */
-.project-row::before{
+/* hard-disable any pseudo overlays that could tint posters/content */
+.project-row::before,
+.project-row::after{
   content: none !important;
   display: none !important;
 }
 
+/* keep hover subtle (still no gradients) */
 .project-row:hover{
-  background:
-    radial-gradient(
-      240px 170px at 18% 42%,
-      rgba(255,255,255,0.10),
-      transparent 60%
-    ),
-    radial-gradient(
-      280px 170px at 82% 30%,
-      rgba(255,255,255,0.06),
-      transparent 62%
-    ),
-    rgba(255,255,255,0.04);
-
+  background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.14);
   transform: translateY(-1px);
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
@@ -731,7 +709,36 @@
   display: block;
 }
 
-/* Responsive */
+/* ==================================================
+   Kill any lingering overlay haze in the Projects area
+   (also fixes the structural / brace issues in your prior paste)
+   ================================================== */
+
+.panel,
+.projectList,
+.project-row{
+  position: relative;
+}
+
+.panel::before,
+.panel::after,
+.projectList::before,
+.projectList::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* LAST-RESORT: if another stylesheet is adding a full-page overlay via these,
+   this removes it (this is the most common source of the “spans full page” haze). */
+.app::before,
+.app::after,
+.main::before,
+.main::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 900px){
   .panel__head{
     flex-wrap: wrap;
@@ -744,10 +751,6 @@
   }
   .panel__pager{
     margin-left: auto;
-  }
-
-  .key{
-    padding: 12px 14px 0;
   }
 
   .stripLabels{
@@ -772,39 +775,4 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-/* ==================================================
-   Nuke the “blue haze” overlay in Projects strips
-   (kills any lingering ::before/::after glow coming from other CSS files)
-   ================================================== */
-
-/* Ensure these create a stable stacking context */
-.panel,
-.projectList,
-.project-row{
-  position: relative;
-}
-
-/* Force ALL pseudo-element overlays off in the Projects area */
-.panel::before,
-.panel::after,
-.projectList::before,
-.projectList::after,
-.project-row::before,
-.project-row::after{
-  content: none !important;
-  display: none !important;
-}
-
-/* Keep strip content above anything else */
-.project-row__top,
-.project-row__cols{
-  position: relative;
-  z-index: 1;
-}
-
-/* Optional: keep strip background clean (no glow at all) */
-.project-row{
-  background: rgba(255,255,255,0.03) !important;
-}
-
 }
