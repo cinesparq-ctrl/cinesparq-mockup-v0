@@ -44,11 +44,15 @@
 
 /* Workspace + nested items bold */
 .sidebar__section{
-  font-weight: 800;
-}
-.nav__item{
   font-weight: 650;
 }
+.nav__item{
+  font-weight: 300;
+}
+.nav__item.is-active{
+  font-weight: 450;
+}
+
 .nav{
   padding-left: 8px; /* slight nested feel under Workspace */
 }
@@ -747,4 +751,15 @@
   object-fit: contain;
   display: block;
 
+}
+/* Ensure strip glow sits BEHIND the card, not over content */
+.project-row{
+  position: relative;
+  z-index: 0;
+}
+
+.project-row::before{
+  inset: -80px -120px auto -120px; /* pull it upward */
+  height: 180px;
+  opacity: 0.28;
 }
