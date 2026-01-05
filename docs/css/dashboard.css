@@ -44,10 +44,10 @@
 
 /* Workspace + nested items bold */
 .sidebar__section{
-  font-weight: 900;
+  font-weight: 800;
 }
 .nav__item{
-  font-weight: 850;
+  font-weight: 650;
 }
 .nav{
   padding-left: 8px; /* slight nested feel under Workspace */
@@ -733,4 +733,18 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+/* BIG sidebar logo override (wins over other CSS) */
+.sidebar__brand{
+  align-items: flex-start;
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+.sidebar__logo{
+  width: 100%;
+  max-width: 220px;   /* controls how wide it can get */
+  height: 72px;       /* controls visual presence */
+  object-fit: contain;
+  display: block;
+
 }
