@@ -19,19 +19,19 @@
   display: block;
 }
 
-/* NEW: full side logo (bigger) */
+/* Full side logo (bigger) */
 .sidebar__logo{
-  height: 74px;   /* was 44px */
+  height: 74px;
   width: auto;
   display: block;
   object-fit: contain;
 }
+
 .sidebar__brand{
   gap: 10px;
   padding-top: 6px;
   padding-bottom: 6px;
 }
-
 
 /* Sidebar hierarchy + support at bottom */
 .sidebar{
@@ -42,7 +42,7 @@
   margin-top: auto;
 }
 
-/* Workspace + nested items bold */
+/* Workspace emphasis only */
 .sidebar__section{
   font-weight: 650;
 }
@@ -394,9 +394,7 @@
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.02);
-
-  /* UPDATED: sticky headers can be clipped by overflow:hidden */
-  overflow: visible;
+  overflow: visible; /* sticky headers can be clipped by overflow:hidden */
 }
 .panel__head{
   display:flex;
@@ -552,33 +550,56 @@
   padding: 14px;
 }
 
+/* IMPORTANT: glow is in background layers (behind content), no overlay haze */
 .project-row{
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.03);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
-  overflow: hidden;
   position: relative;
-  padding: 14px 14px;
   display: grid;
   grid-template-columns: 104px 1fr;
   column-gap: 14px;
   align-items: center;
-}
-.project-row::before{
-  content:"";
-  position:absolute;
-  inset: -120px -120px auto -120px;
-  height: 220px;
+
+  padding: 14px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+
   background:
-    radial-gradient(240px 170px at 18% 42%, rgba(255,255,255,0.10), transparent 60%),
-    radial-gradient(280px 170px at 82% 30%, rgba(255,255,255,0.06), transparent 62%);
-  filter: blur(12px);
-  opacity: 0.75;
-  pointer-events:none;
+    radial-gradient(
+      240px 170px at 18% 42%,
+      rgba(255,255,255,0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      280px 170px at 82% 30%,
+      rgba(255,255,255,0.05),
+      transparent 62%
+    ),
+    rgba(255,255,255,0.03);
+
+  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+  overflow: hidden;
 }
+
+/* hard-disable any prior overlay haze */
+.project-row::before{
+  content: none !important;
+  display: none !important;
+}
+
 .project-row:hover{
-  background: rgba(255,255,255,0.04);
+  background:
+    radial-gradient(
+      240px 170px at 18% 42%,
+      rgba(255,255,255,0.10),
+      transparent 60%
+    ),
+    radial-gradient(
+      280px 170px at 82% 30%,
+      rgba(255,255,255,0.06),
+      transparent 62%
+    ),
+    rgba(255,255,255,0.04);
+
   border-color: rgba(255,255,255,0.14);
   transform: translateY(-1px);
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
@@ -631,7 +652,7 @@
   background: rgba(255,255,255,0.04);
 }
 
-/* title link (UPDATED: wrap + clamp so it never bleeds into next column) */
+/* title link (wrap + clamp so it never bleeds into next column) */
 .project-title__name{
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -696,6 +717,20 @@
   border-color: rgba(255,255,255,0.08);
 }
 
+/* BIG sidebar logo override (wins over other CSS) */
+.sidebar__brand{
+  align-items: flex-start;
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+.sidebar__logo{
+  width: 100%;
+  max-width: 220px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+}
+
 /* Responsive */
 @media (max-width: 900px){
   .panel__head{
@@ -737,29 +772,4 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-/* BIG sidebar logo override (wins over other CSS) */
-.sidebar__brand{
-  align-items: flex-start;
-  padding-top: 14px;
-  padding-bottom: 10px;
-}
-
-.sidebar__logo{
-  width: 100%;
-  max-width: 220px;   /* controls how wide it can get */
-  height: 72px;       /* controls visual presence */
-  object-fit: contain;
-  display: block;
-
-}
-/* Ensure strip glow sits BEHIND the card, not over content */
-.project-row{
-  position: relative;
-  z-index: 0;
-}
-
-.project-row::before{
-  inset: -80px -120px auto -120px; /* pull it upward */
-  height: 180px;
-  opacity: 0.28;
 }
