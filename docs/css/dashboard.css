@@ -3,11 +3,32 @@
    docs/css/dashboard.css
    ================================================== */
 
+/* ==================================================
+   REMOVE PAGE-WIDE HAZE (culprit: .dash background radials)
+   ================================================== */
+
+/* REPLACE your existing .dash{} with this */
 .dash{
-  background: radial-gradient(900px 520px at 30% 5%, rgba(10,79,132,0.22), transparent 60%),
-              radial-gradient(800px 520px at 75% 70%, rgba(248,212,24,0.10), transparent 62%),
-              linear-gradient(180deg, var(--bg-1, #0b0f17), var(--bg-0, #07090d));
+  /* no radial glows */
+  background: linear-gradient(180deg, var(--bg-1, #0b0f17), var(--bg-0, #07090d));
 }
+
+/* In case any layout wrapper uses a pseudo-element glow */
+.dash::before,
+.dash::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* Optional but safe: if the haze is coming from body/html pseudos in another file */
+html::before,
+html::after,
+body::before,
+body::after{
+  content: none !important;
+  display: none !important;
+}
+
 
 /* ---------- sidebar brand logo sizing (full side logo) ---------- */
 /* keep sidebar__mark rules for compatibility, but we now use sidebar__logo */
