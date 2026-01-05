@@ -21,7 +21,7 @@
 
 /* NEW: full side logo (bigger) */
 .sidebar__logo{
-  height: 44px;   /* was 22px */
+  height: 74px;   /* was 44px */
   width: auto;
   display: block;
   object-fit: contain;
