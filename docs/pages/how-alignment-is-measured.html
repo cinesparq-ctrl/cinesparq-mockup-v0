@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a4f84" />
+  <title>CineSparq | How Alignment Is Measured</title>
+
+  <!-- IMPORTANT: keep this -->
+  <base href="../">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/alignment.css">
+</head>
+
+<body class="page page--alignment">
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__logo" src="assets/logo/cs-side-logo-white.png" alt="CineSparq" />
+        <button class="iconbtn iconbtn--ghost" aria-label="Collapse sidebar" title="Collapse sidebar" type="button">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="sidebar__section">Workspace</div>
+      <nav class="nav">
+        <a class="nav__item" href="pages/creator-dashboard.html">Dashboard</a>
+        <a class="nav__item" href="pages/saved-opportunities.html">Saved</a>
+        <a class="nav__item" href="pages/funding-paths.html">Funding Paths</a>
+        <a class="nav__item" href="pages/projects.html">Projects</a>
+        <a class="nav__item" href="pages/readiness-summary.html">Readiness</a>
+      </nav>
+
+      <a class="sidebar__support" href="#">Support</a>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar__title">
+          <div class="topbar__pageTitle">How Alignment Is Measured</div>
+          <div class="topbar__pageSub">
+            CineSparq evaluates alignment across consistent signals so creators can see how projects align with real opportunities.
+          </div>
+        </div>
+
+        <div class="topbar__right">
+          <a class="toplink" href="pages/roadmap.html">Back to Roadmap</a>
+        </div>
+      </header>
+
+      <div class="wrap">
+        <section class="panel">
+          <div class="panel__head">
+            <div class="panel__title">ALIGNMENT CATEGORIES</div>
+          </div>
+
+          <div class="alignGrid" aria-label="Alignment categories">
+            <article class="alignCard">
+              <h2 class="alignCard__title">Financial Alignment</h2>
+              <p class="alignCard__desc">How clearly a project’s financial structure and use of capital are communicated.</p>
+              <ul class="alignList">
+                <li>Budget clarity and realism</li>
+                <li>Visibility into how funds are allocated</li>
+                <li>Cash-flow logic (timing of funds in and out)</li>
+              </ul>
+            </article>
+
+            <article class="alignCard">
+              <h2 class="alignCard__title">Legal Alignment</h2>
+              <p class="alignCard__desc">How clearly project rights and ownership are established.</p>
+              <ul class="alignList">
+                <li>Chain of title clarity</li>
+                <li>Rights ownership and control</li>
+                <li>Readiness to receive external funding</li>
+              </ul>
+            </article>
+
+            <article class="alignCard">
+              <h2 class="alignCard__title">Package Alignment</h2>
+              <p class="alignCard__desc">How cohesively a project communicates its creative and production intent.</p>
+              <ul class="alignList">
+                <li>Consistency across materials</li>
+                <li>Clarity of creative vision</li>
+                <li>Team and scope articulation</li>
+              </ul>
+            </article>
+
+            <article class="alignCard">
+              <h2 class="alignCard__title">Market Alignment</h2>
+              <p class="alignCard__desc">How clearly a project situates itself within an audience, cultural, or mandate context.</p>
+              <ul class="alignList">
+                <li>Audience definition</li>
+                <li>Comparable projects or references</li>
+                <li>Cultural, regional, or thematic relevance</li>
+              </ul>
+            </article>
+
+            <article class="alignCard">
+              <h2 class="alignCard__title">Timeline Alignment</h2>
+              <p class="alignCard__desc">How clearly a project’s production timing and readiness are communicated.</p>
+              <ul class="alignList">
+                <li>Production window clarity</li>
+                <li>Stage of development or production</li>
+                <li>Compatibility with opportunity timelines</li>
+              </ul>
+            </article>
+
+            <article class="alignCard">
+              <h2 class="alignCard__title">Collateral Alignment</h2>
+              <p class="alignCard__desc">Evaluated when relevant to debt-based opportunities.</p>
+              <ul class="alignList">
+                <li>Incentives or rebates</li>
+                <li>Pre-sales or guarantees</li>
+                <li>Other assignable elements</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

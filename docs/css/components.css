@@ -110,10 +110,13 @@
   border-color: var(--cs-border-subtle);
 }
 
+/* Active nav item — canonical */
+.nav__item.is-active,
 .nav__item--active{
   background: rgba(10,79,132,0.18);
   border-color: rgba(10,79,132,0.28);
 }
+
 
 .ico{
   width: 18px;
